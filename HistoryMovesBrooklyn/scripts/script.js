@@ -5,7 +5,7 @@ var results;
 var neighbourhoodIndex = {};
 var markers = [];
 
-$.getJSON("data/pediacities-nyc-neighborhoods.json", function (json) {
+$.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
     //console.log(json);
     for (var i in json.features) {
         var obj = json.features[i];
