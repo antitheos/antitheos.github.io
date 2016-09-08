@@ -51,16 +51,44 @@ body {
     bottom: 120px;
 }
 
-.sidebar div {
-    margin: 16px;
+.personselector {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.54);
+    position: relative;
+    padding-left: 24px;
+    margin: 8px 8px;
     font-size: 13px;
-    line-height: 20px;
+    line-height: 30px;
+    height: 32px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 3px;
+}
+
+.personselector.active {
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
     cursor: pointer;
 }
 
-.sidebar div.selected {
-    font-weight: 600;
-    color: blue;
+.personselector.active.selected {
+    color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.indicator {
+    display: none;
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    border-radius: 8px;
+    left: 8px;
+    top: 50%;
+    margin-top: -4px;
+}
+
+.personselector.active .indicator {
+    display: block;
 }
 
 

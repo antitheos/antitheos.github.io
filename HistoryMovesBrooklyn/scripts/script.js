@@ -1,11 +1,43 @@
 var map;
+var center;
+var centerLatLong;
+var results;
+var neighbourhoodIndex = {};
+var markers = [];
+
+$.getJSON("data/pediacities-nyc-neighborhoods.json", function (json) {
+    //console.log(json);
+    for (var i in json.features) {
+        var obj = json.features[i];
+        //console.log(obj);
+        var key = obj.properties.neighborhood;
+        var borough = obj.properties.borough;
+        if (borough == "Brooklyn") {
+            var coordinates = obj.geometry.coordinates[0];
+            var latLongs = [];
+            for (var l in coordinates) {
+                var point = coordinates[l];
+                var newLatLong = {
+                    "lng": point[0],
+                    "lat": point[1]
+                };
+                latLongs.push(newLatLong);
+            }
+            obj.googleLatLongs = latLongs;
+            neighbourhoodIndex[key] = obj;
+        }
+    }
+});
 
 function initMap() {
+    center = {
+        lat: 40.6782,
+        lng: -73.9442
+    };
+    centerLatLong = new google.maps.LatLng(center.lat, center.lng);
+
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 40.6782,
-            lng: -73.9442
-        },
+        center: center,
         zoom: 12,
         // zoomControl: false,
         mapTypeControl: false,
@@ -16,39 +48,44 @@ function initMap() {
         scrollwheel: false
     });
 
-    for (var pIndex in data) {
-        var person = data[pIndex];
+    for (var name in data) {
+        var person = data[name];
         var color = person.color;
+        person.mapObjects = [];
+
+        for (var lIndex in person.locations) {
+            var area = person.neighborhoods[lIndex];
+            var areaObject = neighbourhoodIndex[area];
+            if (areaObject != null && areaObject != undefined) {
+                var area = drawAreaShape(areaObject.googleLatLongs, color);
+                person.mapObjects.push(area);
+                area.person = name;
+                markers.push(area);
+            }
+        }
+
         for (var lIndex in person.locations) {
             var location = person.locations[lIndex];
             var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
 
-            var marker = new Marker({
-                map: map,
+
+            var marker = new google.maps.Marker({
                 position: myLatlng,
                 icon: {
-                    path: SQUARE_PIN,
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 6,
                     fillColor: color,
-                    fillOpacity: 1,
-                    strokeColor: '',
-                    strokeWeight: 0,
-                    width: 30,
-                    height: 30
+                    fillOpacity: 0.8,
+                    strokeWeight: 1,
+                    strokeOpacity: 0.9,
+                    strokeColor: color
                 },
-                map_icon_label: '<span class="map-icon ' + location.icon + '"></span>'
+                title: location.category,
+                map: map
             });
-            marker.person = person.name;
+            marker.person = name;
+            person.mapObjects.push(marker);
             markers.push(marker);
-
-
-
-
-            //console.log(marker);
-            /* var marker = new google.maps.Marker({
-                 position: myLatlng,
-                 title: location.category,
-                 map: map
-             });*/
 
         }
     }
@@ -58,20 +95,44 @@ function initMap() {
     });
 
 
+
+
+}
+
+function drawAreaShape(coordinates, color) {
+    var area = new google.maps.Polygon({
+        paths: [coordinates],
+        strokeColor: color,
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: color,
+        fillOpacity: 0.35
+    });
+    console.log(coordinates)
+    console.log(area)
+    area.setMap(map);
+    return area;
 }
 
 function buttonClicked(e) {
     var ele = $(e);
-    var hasItem = ele.hasClass("selected");
-    $(".sidebar div.selected").removeClass("selected");
-    selectedAttr = null;
-    if (!hasItem) {
-        ele.addClass("selected");
-        selectedAttr = ele.text();
-
-
+    if (ele.hasClass("selected")) {
+        return; // selected nothing todo
     }
-    
+
+
+    $(".sidebar .personselector.selected").removeClass("selected");
+
+    ele.addClass("selected");
+
+    selectedAttr = null;
+
+    selectedAttr = $(ele).find(".name").text();
+    if (selectedAttr == "All") {
+        selectedAttr = null;
+    }
+
+
     for (var i in markers) {
         var m = markers[i];
         if (selectedAttr == null || selectedAttr == m.person) {
@@ -79,22 +140,22 @@ function buttonClicked(e) {
         } else {
             m.setMap(null);
         }
-
-
     }
 
 
 }
 
 var selectedAttr = null;
-var data = [{
+var data = {
+    "Carmen": {
         "name": "Carmen",
         "color": "#0091EA",
+        "neighborhoods": ["Park Slope"],
         "locations": [{ //40.,-73.
                 "latitude": "40.6551599",
                 "longitude": "-73.9449971",
                 "category": "Hospital",
-                "icon": "map-icon-health"
+                "icon": "map-icon-health",
             },
             { //40.,-74.
                 "latitude": "40.67931",
@@ -127,9 +188,10 @@ var data = [{
                 "icon": "map-icon-health"
             }]
     },
-    {
+    "Barbara": {
         "name": "Barbara",
         "color": "#F4511E",
+        "neighborhoods": ["Bedford-Stuyvesant", "East New York", "Brownsville"],
         "locations": [{
                 "latitude": "40.6800476",
                 "longitude": "-73.9390813",
@@ -210,6 +272,4 @@ var data = [{
                 "icon": "map-icon-health"
             }]
     }
-];
-
-var markers = [];
+};
