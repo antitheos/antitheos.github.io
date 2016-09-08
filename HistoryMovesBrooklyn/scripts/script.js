@@ -4,55 +4,21 @@ var centerLatLong;
 var results;
 var neighbourhoodIndex = {};
 var markers = [];
+var mapReady = false;
+var neigborHoodsReady = false;
 
-$.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
-    //console.log(json);
-    for (var i in json.features) {
-        var obj = json.features[i];
-        //console.log(obj);
-        var key = obj.properties.neighborhood;
-        var borough = obj.properties.borough;
-        if (borough == "Brooklyn") {
-            var coordinates = obj.geometry.coordinates[0];
-            var latLongs = [];
-            for (var l in coordinates) {
-                var point = coordinates[l];
-                var newLatLong = {
-                    "lng": point[0],
-                    "lat": point[1]
-                };
-                latLongs.push(newLatLong);
-            }
-            obj.googleLatLongs = latLongs;
-            neighbourhoodIndex[key] = obj;
-        }
+function loadNeighbourHoods() {
+    if (!neigborHoodsReady || !mapReady) {
+        //neighborboods and map are not ready, let us wait
+        setTimeout(loadNeighbourHoods, 800);
+        return;
     }
-});
 
-function initMap() {
-    center = {
-        lat: 40.6782,
-        lng: -73.9442
-    };
-    centerLatLong = new google.maps.LatLng(center.lat, center.lng);
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: center,
-        zoom: 12,
-        // zoomControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        //draggable: false,
-        scrollwheel: false
-    });
 
     for (var name in data) {
         var person = data[name];
         var color = person.color;
         person.mapObjects = [];
-
         for (var lIndex in person.locations) {
             var area = person.neighborhoods[lIndex];
             var areaObject = neighbourhoodIndex[area];
@@ -93,10 +59,56 @@ function initMap() {
     $(".sidebar div").click(function () {
         buttonClicked(this);
     });
+}
+
+$.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
+    for (var i in json.features) {
+        var obj = json.features[i];
+        //console.log(obj);
+        var key = obj.properties.neighborhood;
+        var borough = obj.properties.borough;
+        if (borough == "Brooklyn") {
+            var coordinates = obj.geometry.coordinates[0];
+            var latLongs = [];
+            for (var l in coordinates) {
+                var point = coordinates[l];
+                var newLatLong = {
+                    "lng": point[0],
+                    "lat": point[1]
+                };
+                latLongs.push(newLatLong);
+            }
+            obj.googleLatLongs = latLongs;
+            neighbourhoodIndex[key] = obj;
+        }
+    }
+    neigborHoodsReady = true;
+
+});
+
+function initMap() {
+    center = {
+        lat: 40.6782,
+        lng: -73.9442
+    };
+    centerLatLong = new google.maps.LatLng(center.lat, center.lng);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: center,
+        zoom: 12,
+        // zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        //draggable: false,
+        scrollwheel: false
+    });
 
 
-
-
+    mapReady = true;
+    //call method in async format!
+    setTimeout(loadNeighbourHoods, 800);
 }
 
 function drawAreaShape(coordinates, color) {
