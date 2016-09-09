@@ -1,0 +1,283 @@
+{
+    "Carmen": {
+        "name": "Carmen",
+        "color": "#0091EA",
+        "neighborhoods": ["Park Slope"],
+        "locations": [{
+                "latitude": "40.6554",
+                "longitude": "-73.9457",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.67931",
+                "longitude": "-74.002098",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6757599",
+                "longitude": "-73.9808751",
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": "40.6679966",
+                "longitude": "-73.9791499",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.764715",
+                "longitude": "-73.940301",
+                "category": "Addiction Treatment",
+                "icon": "map-icon-place-of-worship"
+            },
+            {
+                "latitude": "40.7524819",
+                "longitude": "-73.9914569",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            }]
+    },
+    "Barbara": {
+        "name": "Barbara",
+        "color": "#F4511E",
+        "neighborhoods": ["Bedford-Stuyvesant", "East New York", "Brownsville"],
+        "locations": [
+            {
+                "latitude": "40.6800476",
+                "longitude": "-73.9390813",
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": "40.659793",
+                "longitude": "-73.894784",
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": "40.658742",
+                "longitude": "-73.894412",
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": "40.7474495",
+                "longitude": "-73.7456514",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6622861",
+                "longitude": "-73.89481",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6548311",
+                "longitude": "-73.9123391",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.7691996",
+                "longitude": "-73.9847828",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.6566016",
+                "longitude": "-73.9462274",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.7187077",
+                "longitude": "-73.7704641",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.6756593",
+                "longitude": "-73.9276913",
+                "category": "Event",
+                "icon": "map-icon-jewelry-store"
+            },
+            {
+                "latitude": "40.6986943",
+                "longitude": "-73.9828011",
+                "category": "Church",
+                "icon": "map-icon-funeral-home"
+            },
+            {
+                "latitude": "40.6800353",
+                "longitude": "-73.945657",
+                "category": "Addiction Treatment",
+                "icon": "map-icon-place-of-worship"
+            },
+            {
+                "latitude": "40.6782113",
+                "longitude": "-73.9375313",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            }]
+    },
+    "Carol": {
+        "name": "Carol",
+        "color": "#D500F9",
+        "neighborhoods": ["Parkside"],
+        "locations": [
+            {
+                "latitude": "40.6554",
+                "longitude": "-73.9457",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.6708378",
+                "longitude": "-73.9036833",
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": "40.6514007",
+                "longitude": "-73.9139658",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6716132",
+                "longitude": "-73.8933899",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6738488",
+                "longitude": "-73.8961726",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": "40.6814452",
+                "longitude": "-73.9496057",
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+
+            {
+                "latitude": "40.6550942",
+                "longitude": "-73.9126313",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.6924992",
+                "longitude": "-73.9865063",
+                "category": "Location",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.674766",
+                "longitude": "-73.8748035",
+                "category": "Health Center",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.752473",
+                "longitude": "-73.9936547",
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": "40.692164",
+                "longitude": "-73.9877646",
+                "category": "Health Center",
+                "icon": "map-icon-health"
+            }
+        ]
+    },
+    "Cheri": {
+        "name": "Cheri",
+        "color": "#F50057",
+        "neighborhoods": ["Crown Heights"],
+        "locations": [{
+                "name": "Union Hospital Union Community Health Center",
+                "address": "260 E 188th St, Bronx, NY 10458, United States",
+                "latitude": "40.8607858",
+                "longitude": "-73.8959893",
+                "category": "Hospital"
+            },
+            {
+                "name": "William H.Maxwell High School",
+                "address": "145 Pennsylvania Ave, Brooklyn, NY 11207, United States",
+                "latitude": "40.6738372",
+                "longitude": "-73.8960768",
+                "category": "School"
+            },
+            {
+                "name": "Thomas Jefferson High School",
+                "address": "400 Pennsylvania Ave, Brooklyn, NY 11207",
+                "latitude": "40.66686869",
+                "longitude": "-73.89524241",
+                "category": "School"
+            },
+            {
+                "name": "Kingdom Hall-Jehovah’ s Witness",
+                "address": "5201 Foster Avenue, Brooklyn, NY 11203",
+                "latitude": "40.64013153",
+                "longitude": "-73.92697086",
+                "category": "Church"
+            },
+            {
+                "name": "Rikers Island",
+                "address": "Rikers Island, NY, United States",
+                "latitude": "40.7921205",
+                "longitude": "-73.88643915",
+                "category": "Prison"
+            },
+            {
+                "name": "Brookdale Hospital and Medical Center",
+                "address": "1 Brookdale Plaza, Brooklyn, NY 11212",
+                "latitude": "40.6550664",
+                "longitude": "-73.9125793",
+                "category": "Hospital"
+            }
+        ]
+    },
+
+    "Cookie": {
+        "name": "Cookie"
+    },
+    "Esther": {
+        "name": "Esther"
+    },
+    "Gloria": {
+        "name": "Gloria"
+    },
+    "Jeanette": {
+        "name": "Jeanette"
+    },
+    "Loretta": {
+        "name": "Loretta"
+    },
+    "Marie": {
+        "name": "Marie"
+    },
+    "Peaches": {
+        "name": "Peaches"
+    },
+    "Pearl": {
+        "name": "Pearl"
+    },
+    "Redell": {
+        "name": "Redell"
+    },
+    "Roslyn": {
+        "name": "Roslyn"
+    },
+    "Yolanda": {
+        "name": "Yolanda"
+    }
+}

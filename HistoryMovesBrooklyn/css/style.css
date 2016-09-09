@@ -49,6 +49,7 @@ body {
     right: 24px;
     top: 40px;
     bottom: 120px;
+    overflow: scroll;
 }
 
 .personselector {
