@@ -175,8 +175,8 @@ var data = {
         "color": "#0091EA",
         "neighborhoods": ["Park Slope"],
         "locations": [{ //40.,-73.
-                "latitude": "40.6551599",
-                "longitude": "-73.9449971",
+                "latitude": "40.6554",
+                "longitude": "-73.9457",
                 "category": "Hospital",
                 "icon": "map-icon-health",
             },
@@ -302,8 +302,8 @@ var data = {
         neighborhoods: ["Parkside"],
         locations: [
             {
-                "latitude": 40.655435,
-                "longitude": -73.947912,
+                "latitude": "40.6554",
+                "longitude": "-73.9457",
                 "category": "Hospital",
                 "icon": "map-icon-health"
             },
