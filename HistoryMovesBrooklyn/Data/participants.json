@@ -202,7 +202,14 @@
         "name": "Cheri",
         "color": "#F50057",
         "neighborhoods": ["Crown Heights"],
-        "locations": [{
+        "locations": [
+            {
+                "name": "SUNY Downstate",
+                "address": "450 Clarkson Ave, Brooklyn, NY 11203",
+                "latitude": "40.6554",
+                "longitude": "-73.9457",
+                "category": "Hospital"
+            }, {
                 "name": "Union Hospital Union Community Health Center",
                 "address": "260 E 188th St, Bronx, NY 10458, United States",
                 "latitude": "40.8607858",
