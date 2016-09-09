@@ -47,6 +47,7 @@ function loadNeighbourHoods() {
 
             var marker = new google.maps.Marker({
                 position: myLatlng,
+                visible: false,
                 icon: {
                     path: google.maps.SymbolPath.CIRCLE,
                     scale: 6,
@@ -74,7 +75,9 @@ function loadNeighbourHoods() {
     $(".personselector.active").click(function () {
         buttonClicked(this);
     });
+
     sidebar.css("display", "");
+    $("#allselector").click();
 }
 
 $.getJSON("Data/participants.json", function (json) {
@@ -135,6 +138,7 @@ function initMap() {
 
 function drawAreaShape(coordinates, color) {
     var area = new google.maps.Polygon({
+        visible: false,
         paths: [coordinates],
         strokeColor: color,
         strokeOpacity: 0.8,
@@ -165,11 +169,27 @@ function buttonClicked(e) {
         selectedAttr = null;
     }
 
+    var latlngbounds = new google.maps.LatLngBounds();
+
 
     for (var i in markers) {
         var m = markers[i];
-        m.setVisible((selectedAttr == null || selectedAttr == m.person));
+        var isVisible = (selectedAttr == null || selectedAttr == m.person)
+        m.setVisible(isVisible);
+        if (isVisible) {
+            if (m.position != undefined) {
+                latlngbounds.extend(m.position);
+            } else if (m.latLngs != undefined) {
+                m.getPath().forEach(function (e) {
+                    latlngbounds.extend(e);
+                })
+            }
+        }
+
     }
+
+    map.setCenter(latlngbounds.getCenter());
+    map.fitBounds(latlngbounds);
 }
 
 
