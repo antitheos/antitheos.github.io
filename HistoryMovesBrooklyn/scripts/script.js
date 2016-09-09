@@ -168,17 +168,8 @@ function buttonClicked(e) {
 
     for (var i in markers) {
         var m = markers[i];
-        if (selectedAttr == null || selectedAttr == m.person) {
-            if (m.map == null) {
-                m.setMap(map);
-            }
-        } else {
-            m.setMap(null);
-        }
+        m.setVisible((selectedAttr == null || selectedAttr == m.person));
     }
-
-
-
 }
 
 
