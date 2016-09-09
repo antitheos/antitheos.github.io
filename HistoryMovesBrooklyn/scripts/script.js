@@ -19,14 +19,21 @@ function loadNeighbourHoods() {
         var person = data[name];
         var color = person.color;
         person.mapObjects = [];
-        for (var lIndex in person.locations) {
+        for (var lIndex in person.neighborhoods) {
             var area = person.neighborhoods[lIndex];
+            if (area == undefined) {
+                console.log(name + " not found: [" + area + "] property: [" + lIndex + "]")
+                continue;
+            }
+
             var areaObject = neighbourhoodIndex[area];
             if (areaObject != null && areaObject != undefined) {
                 var area = drawAreaShape(areaObject.googleLatLongs, color);
                 person.mapObjects.push(area);
                 area.person = name;
                 markers.push(area);
+            } else {
+                console.log("Not found: " + area)
             }
         }
 
@@ -64,10 +71,14 @@ function loadNeighbourHoods() {
 $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
     for (var i in json.features) {
         var obj = json.features[i];
-        //console.log(obj);
+
         var key = obj.properties.neighborhood;
         var borough = obj.properties.borough;
-        if (borough == "Brooklyn") {
+        if (borough == "Brooklyn" || borough == null || borough == undefined) {
+            if (key == "Parkside") {
+                console.log(obj);
+
+            }
             var coordinates = obj.geometry.coordinates[0];
             var latLongs = [];
             for (var l in coordinates) {
@@ -120,8 +131,8 @@ function drawAreaShape(coordinates, color) {
         fillColor: color,
         fillOpacity: 0.35
     });
-    console.log(coordinates)
-    console.log(area)
+    //console.log(coordinates)
+    //console.log(area)
     area.setMap(map);
     return area;
 }
@@ -204,7 +215,8 @@ var data = {
         "name": "Barbara",
         "color": "#F4511E",
         "neighborhoods": ["Bedford-Stuyvesant", "East New York", "Brownsville"],
-        "locations": [{
+        "locations": [
+            {
                 "latitude": "40.6800476",
                 "longitude": "-73.9390813",
                 "category": "Home",
@@ -283,5 +295,79 @@ var data = {
                 "category": "Hospital",
                 "icon": "map-icon-health"
             }]
+    },
+    "Carol": {
+        "name": "Carol",
+        "color": "#D500F9",
+        neighborhoods: ["Parkside"],
+        locations: [
+            {
+                "latitude": 40.655435,
+                "longitude": -73.947912,
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": 40.6708378,
+                "longitude": -73.9036833,
+                "category": "Home",
+                "icon": "map-icon-lodging"
+            },
+            {
+                "latitude": 40.6514007,
+                "longitude": -73.9139658,
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": 40.6716132,
+                "longitude": -73.8933899,
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": 40.6738488,
+                "longitude": -73.8961726,
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+            {
+                "latitude": 40.6814452,
+                "longitude": -73.9496057,
+                "category": "School",
+                "icon": "map-icon-university"
+            },
+
+            {
+                "latitude": 40.6550942,
+                "longitude": -73.9126313,
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": 40.6924992,
+                "longitude": -73.9865063,
+                "category": "Location",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": .674766,
+                "longitude": -73.8748035,
+                "category": "Health Center",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": 40.752473,
+                "longitude": -73.9936547,
+                "category": "Hospital",
+                "icon": "map-icon-health"
+            },
+            {
+                "latitude": 40.692164,
+                "longitude": -73.9877646,
+                "category": "Health Center",
+                "icon": "map-icon-health"
+            }
+        ]
     }
 };
