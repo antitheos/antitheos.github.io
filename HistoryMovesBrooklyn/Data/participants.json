@@ -236,7 +236,14 @@
                 "latitude": "40.7921205",
                 "longitude": "-73.88643915",
                 "category": "Prison"
+            }, {
+                "name": "Linden Houses",
+                "address": "914 Van Siclen Ave, Brooklyn, NY 11207",
+                "latitude": "40.65768391",
+                "longitude": "-73.88437895",
+                "category": "Home"
             },
+
             {
                 "name": "Brookdale Hospital and Medical Center",
                 "address": "1 Brookdale Plaza, Brooklyn, NY 11212",
