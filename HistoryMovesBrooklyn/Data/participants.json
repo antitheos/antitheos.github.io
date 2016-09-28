@@ -210,45 +210,57 @@
                 "longitude": "-73.9457",
                 "category": "Hospital"
             }, {
-                "name": "Union Hospital Union Community Health Center",
+                "name": "Union Community Health Center",
                 "address": "260 E 188th St, Bronx, NY 10458, United States",
                 "latitude": "40.8607858",
                 "longitude": "-73.8959893",
-                "category": "Hospital"
+                "category": "Hospital",
+                "time": "12 Jan 1971",
+                "extract": "I was born at Union Hospital in Brooklyn, I’ve lived in Brooklyn pretty much my whole life. "
             },
             {
                 "name": "William H.Maxwell High School",
                 "address": "145 Pennsylvania Ave, Brooklyn, NY 11207, United States",
                 "latitude": "40.6738372",
                 "longitude": "-73.8960768",
-                "category": "School"
+                "category": "School",
+                "time": "?",
+                "extract": "And that was because of my rebellious behavior, she wanted to keep me close because she worked for New York City Transit, she was a bus driver.  The depot was down the block and her route was past school.  She did the B20 bus, so she rode past my school all the time.  I hated high school, I hated it very much so.  I resented my mother because I was like – you didn't make decisions for anybody else when they went to high school, everybody got to choose their own schools.  Why am I so different?  She was afraid what I was going to do if I went too far away from home; but I did it anyway, right under her nose."
             },
             {
                 "name": "Thomas Jefferson High School",
                 "address": "400 Pennsylvania Ave, Brooklyn, NY 11207",
                 "latitude": "40.66686869",
                 "longitude": "-73.89524241",
-                "category": "School"
+                "category": "School",
+                "time": "?",
+                "extract": "she finally transferred me to Thomas Jefferson but by the time she transferred me to Thomas Jefferson, I was done with school.  My mentality was – I'm done with school, I'm not doing this anymore, I'm just going just to be going.  Sometimes I didn't even go."
             },
             {
                 "name": "Kingdom Hall-Jehovah’ s Witness",
                 "address": "5201 Foster Avenue, Brooklyn, NY 11203",
                 "latitude": "40.64013153",
                 "longitude": "-73.92697086",
-                "category": "Church"
+                "category": "Church",
+                "time": "?",
+                "extract": "being raised a Jehovah’s Witness, we went to the Kingdom Hall all the time, so I had those friends as well because everybody lived in the projects, so I could walk to any of my friends’ homes and things like that.  My social life wasn’t that bad, wasn’t that bad at all, wasn’t until I got to high school she had a problem"
             },
             {
                 "name": "Rikers Island",
                 "address": "Rikers Island, NY, United States",
                 "latitude": "40.7921205",
                 "longitude": "-73.88643915",
-                "category": "Prison"
+                "category": "Prison",
+                "time": "?",
+                "extract": "I don't know why they didn't test him in the prison.  He was on Rikers Island that whole time, so they don’t really do that on Rikers Island.  It’s when you go upstate that they do the HIV test.  If you’re on the island, they don’t care. He never got tested on the Island. "
             }, {
                 "name": "Linden Houses",
                 "address": "914 Van Siclen Ave, Brooklyn, NY 11207",
                 "latitude": "40.65768391",
                 "longitude": "-73.88437895",
-                "category": "Home"
+                "category": "Home",
+                "time": "?",
+                "extract": "lived in Linden Houses.  We were like a family.  There were these four buildings that’s on a square, and they're kind of like separate from all the rest of the buildings, that’s what it looked like, and everybody called it Four Corners; that’s where I lived.  And Four Corners was like a little family; we pretty much did everything together.  We had a park in the middle so we all played in the same park together."
             },
 
             {
@@ -256,7 +268,9 @@
                 "address": "1 Brookdale Plaza, Brooklyn, NY 11212",
                 "latitude": "40.6550664",
                 "longitude": "-73.9125793",
-                "category": "Hospital"
+                "category": "Hospital",
+                "time": "1998",
+                "extract": "my pressure was 220 over 180.  And everybody said the same thing – you should have had a stroke!  That’s how I knew God was on my side.  ‘Cause I should have had a stroke…<br/>the very first phone call I get is from my husband, which is fine, I expected that.  I didn't expect the response I got when I said hello.  I’m like, ‘Hello?’  He starts yelling at me, so I hang up the phone (laughter).  I'm not dealing with that right now, because I was also upset because I'm sitting in Brookdale and I hate Brookdale Hospital<br>Brookdale is the worst…<br>Brookdale is the worst, always has been."
             }
         ]
     },

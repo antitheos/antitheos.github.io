@@ -92,6 +92,17 @@ body {
     display: block;
 }
 
+.mapwindow {
+    width: 300px;
+    min-height: 100px;
+    max-height: 400px;
+}
+
+.mapwindowheader {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
 
 /*
 .map-icon-label .map-icon {

@@ -9,6 +9,7 @@ var mapReady = false;
 var neigborHoodsReady = false;
 var dataReady = false;
 var selectedAttr = null;
+var mapInfoWindow = null;
 
 function loadNeighbourHoods() {
     if (!neigborHoodsReady || !mapReady || !dataReady) {
@@ -61,8 +62,28 @@ function loadNeighbourHoods() {
                 map: map
             });
             marker.person = name;
+            marker.location = location;
             person.mapObjects.push(marker);
             markers.push(marker);
+            marker.addListener('click', function () {
+                var loc = this.location;
+                var text = "";
+                if (loc.extract != undefined) {
+                    var text = '<div class="mapwindow">' +
+                        '<div class="mapwindowheader">' + loc.name + " - " + loc.time + '</div>' +
+                        '<div>' + loc.extract + '</div>' +
+                        '</div>'
+
+                } else {
+                    var text = '<div style="width:200px;height:100px;">' +
+                        '<div>' + this.person + '</div>' +
+                        '<div>' + loc.category + '</div>' +
+                        '</div>'
+                }
+
+                mapInfoWindow.setContent(text);
+                mapInfoWindow.open(map, this);
+            });
 
         }
         var isactive = person.mapObjects.length == 0 ? "" : "active";
@@ -130,7 +151,7 @@ function initMap() {
         scrollwheel: false
     });
 
-
+    mapInfoWindow = new google.maps.InfoWindow({});
     mapReady = true;
     //call method in async format!
     setTimeout(loadNeighbourHoods, 800);
