@@ -4,3 +4,11 @@ HistoryMovesBrooklyn/.DS_Store
 .DS_Store
 
 HistoryMovesBrooklyn/Data/~$indexedcontent.xlsx
+
+HistoryMovesBrooklyn/Data/Ignore/
+
+HistoryMovesBrooklyn/Data/Ignore/new-york_new-york.imposm-geojson.zip
+
+HistoryMovesBrooklyn/Data/Ignore/new-york_new-york.imposm-geojson/new-york_new-york_admin.geojson
+
+HistoryMovesBrooklyn/Data/Ignore/new-york_new-york.imposm-geojson/new-york_new-york_aeroways.geojson
