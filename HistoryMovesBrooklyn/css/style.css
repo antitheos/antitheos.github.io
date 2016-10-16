@@ -93,14 +93,76 @@ body {
 }
 
 .mapwindow {
-    width: 300px;
+    width: 352px;
     min-height: 100px;
-    max-height: 400px;
 }
 
 .mapwindowheader {
     font-weight: 500;
     margin-bottom: 4px;
+}
+
+.extracts {
+    padding-bottom: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.extract {
+    max-height: 300px;
+    overflow: scroll;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.extractheader {
+    margin-bottom: 8px;
+}
+
+.mapnextquote,
+.maplastquote {
+    padding: 8px 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.mapnextquote:hover,
+.maplastquote:hover {
+    color: royalblue;
+    font-weight: 500;
+}
+
+.mapnextquote {
+    width: 44px
+}
+
+.maplastquote {
+    width: 44px
+}
+
+.mapmovequote {
+    position: absolute;
+    left: 10px;
+    right: -8px;
+    bottom: 0px;
+    display: flex;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 11px;
+}
+
+.movecontent {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    flex-grow: 0;
+    display: flex;
+    margin-left: auto;
+    padding: 0px;
+}
+
+#extractcounter {
+    padding: 8px;
+    flex-grow: 1;
+    text-align: right;
 }
 
 

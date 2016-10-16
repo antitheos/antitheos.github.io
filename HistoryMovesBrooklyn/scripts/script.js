@@ -2,95 +2,104 @@ var map;
 var center;
 var centerLatLong;
 var results;
-var data;
+var data = {};
+var dataReady = false;
+var partipants = {};
+var participantsReady = false;
+var sharedLocations = {};
+var sharedLocationsReady = false;
+
 var neighbourhoodIndex = {};
 var markers = [];
 var mapReady = false;
 var neigborHoodsReady = false;
-var dataReady = false;
 var selectedAttr = null;
 var mapInfoWindow = null;
 
+
 function loadNeighbourHoods() {
-    if (!neigborHoodsReady || !mapReady || !dataReady) {
+    if (!neigborHoodsReady || !mapReady || !dataReady || !sharedLocationsReady || !participantsReady) {
         //neighborboods and map are not ready, let us wait
+        console.log("not ready");
         setTimeout(loadNeighbourHoods, 800);
         return;
     }
 
+
+
+
+
+
     var sidebar = $("#sidebar");
-    for (var name in data) {
-        var person = data[name];
+    for (var name in partipants) {
+
+
+        var person = partipants[name];
         var color = person.color;
-        person.mapObjects = [];
-        for (var lIndex in person.neighborhoods) {
-            var area = person.neighborhoods[lIndex];
-            if (area == undefined) {
-                console.log(name + " not found: [" + area + "] property: [" + lIndex + "]")
-                continue;
+
+
+        var locations = data[name]
+        for (var lIndex in locations) {
+            var location = locations[lIndex];
+            var locName = location.locationName;
+            location.sharedData = sharedLocations[locName];
+            if (location.sharedData != null) {
+                location.latitude = location.sharedData.latitude;
+                location.longitude = location.sharedData.longitude;
+                location.feature = location.sharedData.feature;
             }
 
-            var areaObject = neighbourhoodIndex[area];
-            if (areaObject != null && areaObject != undefined) {
-                var area = drawAreaShape(areaObject.googleLatLongs, color);
-                person.mapObjects.push(area);
-                area.person = name;
-                markers.push(area);
-            } else {
-                console.log("Not found: " + area)
-            }
-        }
-
-        for (var lIndex in person.locations) {
-            var location = person.locations[lIndex];
-            var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
-
-
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                visible: false,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    scale: 6,
-                    fillColor: color,
-                    fillOpacity: 0.8,
-                    strokeWeight: 1,
-                    strokeOpacity: 0.9,
-                    strokeColor: color
-                },
-                title: location.category,
-                map: map
-            });
-            marker.person = name;
-            marker.location = location;
-            person.mapObjects.push(marker);
-            markers.push(marker);
-            marker.addListener('click', function () {
-                var loc = this.location;
-                var text = "";
-                if (loc.extract != undefined) {
-                    var text = '<div class="mapwindow">' +
-                        '<div class="mapwindowheader">' + loc.name + " - " + loc.time + '</div>' +
-                        '<div>' + loc.extract + '</div>' +
-                        '</div>'
-
+            if (location.feature == "Area") {
+                var areaObject = neighbourhoodIndex[locName];
+                if (areaObject != null && areaObject != undefined) {
+                    var area = drawAreaShape(areaObject.googleLatLongs, color);
+                    location.paths = areaObject.googleLatLongs;
+                    addMapLocations(area, location, name, person);
                 } else {
-                    var text = '<div style="width:200px;height:100px;">' +
-                        '<div>' + this.person + '</div>' +
-                        '<div>' + loc.category + '</div>' +
-                        '</div>'
+                    console.log("Not found: " + lIndex)
+                }
+            } else if (location.feature == "Road") {
+                if (location.paths != null) {
+                    var road = new google.maps.Polyline({
+                        path: location.paths,
+                        strokeColor: color,
+                        strokeOpacity: 0.8,
+                        strokeWeight: 3,
+                        geodesic: true,
+                        map: map
+                    });
+                    addMapLocations(road, location, name, person);
                 }
 
-                mapInfoWindow.setContent(text);
-                mapInfoWindow.open(map, this);
-            });
+            } else if (location.feature == "Location" && location.latitude != "" && location.longitude != "") {
+                var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
+
+
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    visible: false,
+                    icon: {
+                        path: google.maps.SymbolPath.CIRCLE,
+                        scale: 6,
+                        fillColor: color,
+                        fillOpacity: 0.8,
+                        strokeWeight: 1,
+                        strokeOpacity: 0.9,
+                        strokeColor: color
+                    },
+                    title: location.category,
+                    map: map
+                });
+                addMapLocations(marker, location, name, person);
+
+
+            }
+
 
         }
         var isactive = person.mapObjects.length == 0 ? "" : "active";
         var text = '<div class="personselector ' + isactive + '" data-name=' + name + '"><span class = "indicator" style = "background-color:' + color + '"></span><span class="name ">' + name + '</span></div>';
         var obj = sidebar.append(text);
-
-
     }
 
     $(".personselector.active").click(function () {
@@ -101,10 +110,164 @@ function loadNeighbourHoods() {
     $("#allselector").click();
 }
 
-$.getJSON("Data/participants.json", function (json) {
-    data = json;
-    dataReady = true;
+function addMapLocations(marker, location, name, person) {
 
+    marker.person = name;
+    marker.location = location;
+    person.mapObjects.push(marker);
+    markers.push(marker);
+
+    var text = '<div class="mapwindow"><div class="mapwindowheader">' + name + " &bull; " + location.locationName + '</div><div class="extracts">'
+
+    var count = 0;
+    for (var di in location.data) {
+        var ex = location.data[di];
+        count++;
+        var txt = "<div class='extract'>" +
+            "<div class='extractheader'>" + ex.date + " | " +
+            ex.category + " | " +
+            ex.event + "</div>" +
+            "<div>" + ex.extract + "</div></div>";
+        text += txt;
+
+    }
+    text += "</div>"
+    if (count > 1) {
+        text += "<div class='mapmovequote'> <div></div><div class='movecontent'><div id='extractcounter'> 1 of " + count + "</div><div class='maplastquote' onclick='movelast()'>previous</div><div class='mapnextquote' onclick='movenext()'>next</div></div></div>"
+    }
+    location.count = count;
+    location.html = text + "</div>";
+
+
+    marker.addListener('click', function () {
+        var loc = this.location;
+        mapInfoWindow.person = this.person;
+        mapInfoWindow.count = loc.count;
+        mapInfoWindow.currentLocation = 1;
+        mapInfoWindow.setContent(loc.html);
+        if (loc.feature == "Area" || loc.feature == "Road") {
+            mapInfoWindow.setPosition(loc.paths[0]);
+            mapInfoWindow.open(map);
+        } else {
+            mapInfoWindow.open(map, this);
+        }
+
+
+
+    });
+}
+$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/1/public/values?alt=json-in-script',
+    dataType: 'jsonp',
+    success: function (dataWeGotViaJsonp) {
+        var ls = dataWeGotViaJsonp.feed.entry;
+        for (var i in ls) {
+            var p = ls[i];
+            var person = p.gsx$participant.$t;
+            if (partipants[person] == null) {
+                partipants[person] = {
+                    personName: person,
+                    color: p.gsx$color.$t,
+                    mapObjects: []
+                };
+            }
+        }
+        participantsReady = true;
+    }
+});
+
+$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/2/public/values?alt=json-in-script',
+    dataType: 'jsonp',
+    success: function (dataWeGotViaJsonp) {
+        var ls = dataWeGotViaJsonp.feed.entry;
+        for (var i in ls) {
+            var p = ls[i];
+            var key = p.gsx$locationname.$t;
+            if (sharedLocations[key] == null) {
+                sharedLocations[key] = {
+                    locationName: p.gsx$locationname.$t,
+                    address: p.gsx$address.$t,
+                    feature: p.gsx$mapfeature.$t,
+                    latitude: p.gsx$latitude.$t,
+                    longitude: p.gsx$longitude.$t
+                }
+            }
+        }
+        sharedLocationsReady = true;
+    }
+});
+
+
+$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/3/public/values?alt=json-in-script',
+    dataType: 'jsonp',
+    success: function (dataWeGotViaJsonp) {
+
+        var ls = dataWeGotViaJsonp.feed.entry;
+        for (var i in ls) {
+            var p = ls[i];
+            var person = p.gsx$participant.$t;
+            if (data[person] == null) {
+                data[person] = {}
+            }
+            var locations = data[person];
+
+            var key = p.gsx$locationname.$t;
+            if (key == "") {
+                key = p.gsx$address.$t;
+            }
+
+            if (locations[key] == null) {
+
+                locations[key] = {
+                    locationName: p.gsx$locationname.$t,
+                    address: p.gsx$address.$t,
+                    feature: p.gsx$mapfeature.$t,
+                    latitude: p.gsx$latitude.$t,
+                    longitude: p.gsx$longitude.$t,
+                    data: []
+                }
+
+                if (locations[key].feature == "Road") {
+                    var paths = [];
+                    var srcLatitude = locations[key].latitude.split("\n");
+                    for (var pt in srcLatitude) {
+                        var point = srcLatitude[pt].split(",");
+                        if (point.length == 2) {
+                            paths.push({
+                                lat: parseFloat(point[0].trim()),
+                                lng: parseFloat(point[1].trim())
+                            });
+                        } else {
+                            console.log("unable to parse item:" + locations[key].latitude);
+                            paths = null;
+                            break;
+                        }
+
+                    }
+                    if (paths != null) {
+                        locations[key].paths = paths;
+                    }
+
+
+                }
+
+            }
+            var loc = locations[key];
+
+
+            loc.data.push({
+                category: p.gsx$placecategory.$t,
+                event: p.gsx$event.$t,
+                date: p.gsx$date.$t,
+                people: p.gsx$people.$t,
+                things: p.gsx$things.$t,
+                extract: p.gsx$extract.$t.replace(/\n/g, "<br>")
+            });
+        }
+        dataReady = true;
+    }
 });
 
 $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
@@ -113,7 +276,7 @@ $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
 
         var key = obj.properties.neighborhood;
         var borough = obj.properties.borough;
-        if (borough == "Brooklyn" || borough == null || borough == undefined) {
+        if (borough == "Queens" || borough == "Brooklyn" || borough == null || borough == undefined) {
             var coordinates = obj.geometry.coordinates[0];
             var latLongs = [];
             for (var l in coordinates) {
@@ -132,6 +295,40 @@ $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
 
 });
 
+function movenext() {
+
+    if (mapInfoWindow.currentLocation >= mapInfoWindow.count) {
+        return;
+    }
+    var w = $(".gm-style-iw .mapwindow .extracts").width();
+    var left = $(".gm-style-iw .mapwindow .extracts").scrollLeft();
+    left += w;
+    $(".gm-style-iw .mapwindow .extracts").animate({
+        scrollLeft: left
+    });
+    mapInfoWindow.currentLocation++;
+    updateExtractCounterText()
+}
+
+function movelast() {
+    if (mapInfoWindow.currentLocation <= 1) {
+        return;
+    }
+    var w = $(".gm-style-iw .mapwindow .extracts").width();
+    var left = $("#map .mapwindow .extracts").scrollLeft();
+    left -= w;
+
+    $("#map .mapwindow .extracts").animate({
+        scrollLeft: left
+    });
+    mapInfoWindow.currentLocation--;
+    updateExtractCounterText();
+}
+
+function updateExtractCounterText() {
+    $("#map #extractcounter").text(mapInfoWindow.currentLocation + " of " + mapInfoWindow.count);
+}
+
 function initMap() {
     center = {
         lat: 40.6782,
@@ -142,12 +339,10 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: center,
         zoom: 12,
-        // zoomControl: false,
         mapTypeControl: false,
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
-        //draggable: false,
         scrollwheel: false
     });
 
@@ -167,17 +362,18 @@ function drawAreaShape(coordinates, color) {
         fillColor: color,
         fillOpacity: 0.35
     });
-    //console.log(coordinates)
-    //console.log(area)
     area.setMap(map);
     return area;
 }
 
 function buttonClicked(e) {
+
     var ele = $(e);
     if (ele.hasClass("selected")) {
         return; // selected nothing todo
     }
+
+
 
     $("#sidebar .personselector.selected").removeClass("selected");
 
@@ -189,7 +385,9 @@ function buttonClicked(e) {
     if (selectedAttr == "All") {
         selectedAttr = null;
     }
-
+    if (selectedAttr != null && mapInfoWindow.person != selectedAttr) {
+        mapInfoWindow.close();
+    }
     var latlngbounds = new google.maps.LatLngBounds();
 
 
