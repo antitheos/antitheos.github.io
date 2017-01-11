@@ -204,17 +204,27 @@ function addMapLocations(marker, location, name, person) {
         var selectedItems = loc[getSelectedText()];
         for (var di in selectedItems) {
             var ex = selectedItems[di];
+            var audiopath = ex.audiopath;
+            var hasAudio = (audiopath != null && audiopath != "");
+
             count++;
-            var txt = "<div class='extract'>" +
+            var txt = "<div class='extract' hasaudio='" + hasAudio + "'>" +
                 "<div class='extractheader'>" +
                 ex.person + " | " +
                 ex.date + " | " +
                 ex.event + "</div><div class='extracttheme'>" +
                 ex.themes.toString() + "</div>" +
                 "<div class='extractcontent'>";
+
+
+            if (hasAudio) {
+                txt += '<div class="extractaudiocontainer"><audio class="extractaudio" controls><source src="' + audiopath +
+                    '" type="audio/mpeg">Your browser does not support the audio element.</audio></div>'
+
+            }
+
+
             var imageurl = ex.imagepath;
-
-
             if (imageurl != null && imageurl != "") {
                 txt += "<img class='extractimage' src='" + imageurl + "'></img>";
 
@@ -429,7 +439,8 @@ $.ajax({
                 extract: p.gsx$extract.$t.replace(/\n/g, "<br>"),
                 themes: p.gsx$theme.$t.split("\n"),
                 person: person,
-                imagepath: p.gsx$image.$t
+                imagepath: p.gsx$image.$t,
+                audiopath: p.gsx$audio.$t
             }
 
 

@@ -144,7 +144,29 @@ body {
     max-height: 340px;
 }
 
-.extractimage {
+.extract[hasaudio="true"] {
+    padding-bottom: 20px;
+}
+
+.extract .extractaudiocontainer .extractaudio {
+    width: 100%;
+    height: 25px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: block;
+}
+
+.extract .extractaudiocontainer {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.87);
+    /* width: 100%; */
+    padding: 6px 0px;
+    bottom: 16px;
+    left: 8px;
+    width: 412px;
+}
+
+.extract .extractimage {
     display: block;
     max-height: 280px;
     margin: auto;
@@ -186,7 +208,7 @@ body {
 .mapmovequote {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.87);
-    left: 16px;
+    left: 8px;
     right: 16px;
     bottom: -16px;
     display: flex;
