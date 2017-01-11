@@ -95,7 +95,6 @@ body {
 .mapwindow {
     width: 400px;
     min-height: 100px;
-    max-height: 340px;
 }
 
 .mapwindowheader {
@@ -103,15 +102,38 @@ body {
     margin-bottom: 4px;
 }
 
+.extractsbackground {
+    position: absolute;
+    top: 0px;
+    bottom: -16px;
+    left: 0px;
+    width: 8px;
+    border-radius: 2px 0px 0 2px;
+    display: none;
+}
+
+.gm-style div.gm-style-iw {
+    border-radius: 2px 2px 0 0;
+    top: 1px!important;
+    left: 1px!important;
+    padding-top: 8px!important;
+    padding-left: 14px!important;
+    overflow: visible!important;
+}
+
+.mapwindow[shouldhighlight="true"] .extractsbackground {
+    background-color: #38c5e8;
+    display: block;
+}
+
 .extracts {
-    max-height: 320px;
     width: 423px;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
 }
 
-.gm-style-iw > div:first-child {
+.gm-style div.gm-style-iw > div:first-child {
     overflow: visible!important;
 }
 
@@ -119,6 +141,7 @@ body {
     width: 100%;
     overflow: scroll;
     flex-shrink: 0;
+    max-height: 340px;
 }
 
 .extractimage {
@@ -163,9 +186,9 @@ body {
 .mapmovequote {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.87);
-    left: 0px;
+    left: 16px;
     right: 16px;
-    bottom: 0px;
+    bottom: -16px;
     display: flex;
     color: rgba(0, 0, 0, 0.54);
     font-size: 11px;

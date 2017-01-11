@@ -184,7 +184,11 @@ function addMapLocations(marker, location, name, person) {
     //person.mapObjects.push(marker);
     markers.push(marker);
 
-    var text = '<div id="mapwindow" class="mapwindow"><div class="mapwindowheader">' + location.locationName + " &bull; " + location.category + '</div><div class="extracts">'
+    var shouldHighlight = (location.sharedData != null && location.sharedData.highlightLocation == "Highlight");
+
+    var text = '<div id="mapwindow" class="mapwindow" shouldHighlight="' + shouldHighlight + '"> <div class="extractsbackground"></div><div><div class="mapwindowheader">' +
+        location.locationName + " &bull; " +
+        location.category + '</div><div class="extracts">'
     location.htmlBase = text;
 
 
@@ -195,6 +199,7 @@ function addMapLocations(marker, location, name, person) {
         mapInfoWindow.currentLocation = 1;
 
         var html = loc.htmlBase;
+
         var count = 0;
         var selectedItems = loc[getSelectedText()];
         for (var di in selectedItems) {
@@ -293,6 +298,8 @@ function addMapLocations(marker, location, name, person) {
     });
 }
 */
+
+//get people spaces
 $.ajax({
     url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/1/public/values?alt=json-in-script',
     dataType: 'jsonp',
@@ -313,6 +320,7 @@ $.ajax({
     }
 });
 
+//get public spaces
 $.ajax({
     url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/2/public/values?alt=json-in-script',
     dataType: 'jsonp',
@@ -328,7 +336,8 @@ $.ajax({
                     feature: p.gsx$mapfeature.$t,
                     latitude: p.gsx$latitude.$t,
                     longitude: p.gsx$longitude.$t,
-                    category: p.gsx$category.$t
+                    category: p.gsx$category.$t,
+                    highlightLocation: p.gsx$highlightlocation.$t
                 }
             }
         }
@@ -336,7 +345,7 @@ $.ajax({
     }
 });
 
-
+//get the detail for the actual locations
 $.ajax({
     url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/3/public/values?alt=json-in-script',
     dataType: 'jsonp',
@@ -436,6 +445,7 @@ $.ajax({
     }
 });
 
+//get geometries for know locations
 $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
     for (var i in json.features) {
         var obj = json.features[i];
