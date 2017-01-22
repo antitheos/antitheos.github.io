@@ -13,17 +13,29 @@ var defaultColor = "green";
 
 var neighbourhoodIndex = {};
 var markers = [];
+var themes = {};
+var themeData = {
+    "Unknown": []
+};
+var themesReady = false;
 var mapReady = false;
 var neigborHoodsReady = false;
 var selectedAttr = null;
 var mapInfoWindow = null;
 
+function getThemeColor(theme) {
+    var x = themes[theme];
+    if (x == null) {
+        x = themes["All"];
+    }
+    return x.color;
+}
 
 function loadNeighbourHoods() {
-    if (!neigborHoodsReady || !mapReady || !dataReady || !sharedLocationsReady || !participantsReady) {
+    if (!neigborHoodsReady || !mapReady || !dataReady || !sharedLocationsReady || !themesReady || !participantsReady) {
         //neighborboods and map are not ready, let us wait
         console.log("not ready");
-        setTimeout(loadNeighbourHoods, 800);
+        setTimeout(loadNeighbourHoods, 850);
         return;
     }
 
@@ -39,11 +51,24 @@ function loadNeighbourHoods() {
             aLoc.category = aLoc.sharedData.category;
         }
 
+        var theme = "Unknown";
+
+        for (var t in aLoc.themes) {
+            theme = t;
+            break;
+        }
+        if (theme == "Unknown") {
+            themeData[theme].push(aLoc);
+            aLoc.themes[theme] = aLoc.All;
+        }
+
+        var color = getThemeColor(theme);
+
 
         if (aLoc.feature == "Area") {
             var areaObject = neighbourhoodIndex[lName];
             if (areaObject != null && areaObject != undefined) {
-                var area = drawAreaShape(areaObject.googleLatLongs, defaultColor);
+                var area = drawAreaShape(areaObject.googleLatLongs, color);
                 aLoc.paths = areaObject.googleLatLongs;
                 addMapLocations(area, aLoc, name, person);
             } else {
@@ -53,7 +78,7 @@ function loadNeighbourHoods() {
             if (aLoc.paths != null) {
                 var road = new google.maps.Polyline({
                     path: aLoc.paths,
-                    strokeColor: defaultColor,
+                    strokeColor: color,
                     strokeOpacity: 0.8,
                     strokeWeight: 3,
                     geodesic: true,
@@ -69,7 +94,7 @@ function loadNeighbourHoods() {
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 visible: false,
-                icon: getIcon(defaultColor),
+                icon: getIcon(color),
                 title: aLoc.category,
                 map: map
             });
@@ -91,76 +116,31 @@ function loadNeighbourHoods() {
         var person = partipants[name];
         var color = person.color;
 
-
-        /* var locations = data[name]
-         for (var lIndex in locations) {
-             var location = locations[lIndex];
-             var locName = location.locationName;
-             location.sharedData = sharedLocations[locName];
-             if (location.sharedData != null) {
-                 location.latitude = location.sharedData.latitude;
-                 location.longitude = location.sharedData.longitude;
-                 location.feature = location.sharedData.feature;
-             }
-
-             if (location.feature == "Area") {
-                 var areaObject = neighbourhoodIndex[locName];
-                 if (areaObject != null && areaObject != undefined) {
-                     var area = drawAreaShape(areaObject.googleLatLongs, color);
-                     location.paths = areaObject.googleLatLongs;
-                     addMapLocations(area, location, name, person);
-                 } else {
-                     console.log("Not found: " + lIndex)
-                 }
-             } else if (location.feature == "Road") {
-                 if (location.paths != null) {
-                     var road = new google.maps.Polyline({
-                         path: location.paths,
-                         strokeColor: color,
-                         strokeOpacity: 0.8,
-                         strokeWeight: 3,
-                         geodesic: true,
-                         map: map
-                     });
-                     addMapLocations(road, location, name, person);
-                 }
-
-             } else if (location.feature == "Location" && location.latitude != "" && location.longitude != "") {
-                 var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
-
-
-                 var marker = new google.maps.Marker({
-                     position: myLatlng,
-                     visible: false,
-                     icon: {
-                         path: google.maps.SymbolPath.CIRCLE,
-                         scale: 6,
-                         fillColor: color,
-                         fillOpacity: 0.8,
-                         strokeWeight: 1,
-                         strokeOpacity: 0.9,
-                         strokeColor: color
-                     },
-                     title: location.category,
-                     map: map
-                 });
-                 addMapLocations(marker, location, name, person);
-
-
-             }
-
-
-         }*/
-
         var isactive = data[name] == undefined ? "" : "active";
         var text = '<div class="personselector ' + isactive + '" data-name="' + name + '"><span class = "indicator" style = "background-color:' + color + '"></span><span class="name ">' + name + '</span></div>';
         var obj = sidebar.append(text);
     }
 
+    var themebar = $("#themebar");
+    for (var name in themes) {
+
+
+        var theme = themes[name];
+        var color = theme.color;
+        var isactive = (themeData[name] == undefined && name != "All") ? "" : "active";
+        var text = '<div class="themeoption ' + isactive + '" data-name="' + name + '"><span class = "indicator" style = "background-color:' + color + '"></span><span class="name ">' + name + '</span></div>';
+        var obj = themebar.append(text);
+    }
     $(".personselector.active").click(function () {
         buttonClicked(this);
     });
 
+    $(".themeoption.active").click(function () {
+        themeClicked(this);
+    });
+
+
+    themebar.css("display", "");
     sidebar.css("display", "");
     $("#allselector").click();
 }
@@ -262,52 +242,6 @@ function addMapLocations(marker, location, name, person) {
     });
 }
 
-/*
-function addMapLocations(marker, location, name, person) {
-
-    marker.person = name;
-    marker.location = location;
-    person.mapObjects.push(marker);
-    markers.push(marker);
-
-    var text = '<div class="mapwindow"><div class="mapwindowheader">' + location.locationName + " &bull; " + location.category + '</div><div class="extracts">'
-
-    var count = 0;
-    for (var di in location.data) {
-        var ex = location.data[di];
-        count++;
-        var txt = "<div class='extract'>" +
-            "<div class='extractheader'>" +
-            name + " | " +
-            ex.date + " | " +
-            ex.event + "</div>" +
-            "<div>" + ex.extract + "</div></div>";
-        text += txt;
-
-    }
-    text += "</div>"
-    if (count > 1) {
-        text += "<div class='mapmovequote'> <div></div><div class='movecontent'><div id='extractcounter'> 1 of " + count + "</div><div class='maplastquote' onclick='movelast()'>previous</div><div class='mapnextquote' onclick='movenext()'>next</div></div></div>"
-    }
-    location.count = count;
-    location.html = text + "</div>";
-
-
-    marker.addListener('click', function () {
-        var loc = this.location;
-        mapInfoWindow.person = this.person;
-        mapInfoWindow.count = loc.count;
-        mapInfoWindow.currentLocation = 1;
-        mapInfoWindow.setContent(loc.html);
-        if (loc.feature == "Area" || loc.feature == "Road") {
-            mapInfoWindow.setPosition(loc.paths[0]);
-            mapInfoWindow.open(map);
-        } else {
-            mapInfoWindow.open(map, this);
-        }
-    });
-}
-*/
 
 //get people spaces
 $.ajax({
@@ -384,6 +318,7 @@ $.ajax({
                     latitude: p.gsx$latitude.$t,
                     longitude: p.gsx$longitude.$t,
                     category: p.gsx$placecategory.$t,
+                    themes: {},
                     All: []
                 };
                 locationData[key] = locItem;
@@ -444,12 +379,27 @@ $.ajax({
             }
 
 
+
             if (locItem[person] == null) {
                 locItem[person] = [];
             }
 
             locItem[person].push(itemPoint);
             locItem.All.push(itemPoint);
+            itemPoint.themes.forEach(function (theme) {
+                if (theme.trim().length > 0) {
+                    if (locItem.themes[theme] == null) {
+                        locItem.themes[theme] = [];
+                    }
+                    locItem.themes[theme].push(itemPoint);
+
+                    if (themeData[theme] == null) {
+                        themeData[theme] = [];
+                    }
+                    themeData[theme].push(itemPoint);
+                }
+            });
+
             loc.data.push(itemPoint);
         }
         dataReady = true;
@@ -481,6 +431,33 @@ $.getJSON("Data/pediacities-nyc-neighborhoods.json", function (json) {
     neigborHoodsReady = true;
 
 });
+
+
+//get themes
+$.ajax({
+    url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/4/public/values?alt=json-in-script',
+    dataType: 'jsonp',
+    success: function (dataWeGotViaJsonp) {
+
+        var ls = dataWeGotViaJsonp.feed.entry;
+        for (var i in ls) {
+            var t = ls[i];
+            var theme = t.gsx$theme.$t;
+            if (themes[theme] == null) {
+                themes[theme] = {
+                    name: theme,
+                    color: t.gsx$color.$t
+                };
+
+
+            }
+        }
+        themesReady = true;
+
+    }
+});
+
+
 
 function movenext() {
 
@@ -530,7 +507,49 @@ function initMap() {
         scaleControl: false,
         streetViewControl: false,
         rotateControl: false,
-        scrollwheel: false
+        scrollwheel: false,
+        styles: [
+            {
+                featureType: 'road',
+                elementType: 'all',
+                stylers: [{
+                    visibility: 'off'
+                }]
+
+            }, {
+                featureType: 'poi',
+                elementType: 'all',
+                stylers: [{
+                    visibility: 'off'
+
+                }]
+            }, {
+                featureType: 'administrative',
+                elementType: 'all',
+                stylers: [{
+                    visibility: 'off'
+                }]
+            }, {
+                featureType: 'all',
+                elementType: 'labels',
+                stylers: [{
+                    visibility: 'off'
+                }]
+            }, {
+                featureType: 'landscape',
+                elementType: 'all',
+                stylers: [{
+                    visibility: 'off'
+                }]
+            }, {
+                featureType: 'transit',
+                elementType: 'all',
+                stylers: [{
+                    visibility: 'off'
+                }]
+            }]
+
+
     });
 
     mapInfoWindow = new google.maps.InfoWindow({});
@@ -559,13 +578,40 @@ function getSelectedText() {
     return $("#sidebar .personselector.selected .name").text()
 }
 
+function getSelectedTheme() {
+    var ary = [];
+    $.each($("#themebar .themeoption.selected .name"), function (index, obj) {
+
+
+            var txt = $(obj).text();
+            if (txt != "All") {
+                ary.push(txt);
+            }
+        }
+
+    );
+
+    return ary;
+}
+
+
+function themeClicked(e) {
+
+    var ele = $(e);
+    if (ele.attr("data-name") == "All") {
+        $("#themebar .themeoption.selected").removeClass("selected");
+    } else {
+        ele.toggleClass("selected");
+    }
+    filterMapMarkers();
+}
+
 function buttonClicked(e) {
 
     var ele = $(e);
     if (ele.hasClass("selected")) {
         return; // selected nothing todo
     }
-
 
 
     $("#sidebar .personselector.selected").removeClass("selected");
@@ -578,48 +624,44 @@ function buttonClicked(e) {
     if (selectedAttr == "All") {
         selectedAttr = null;
     }
+    filterMapMarkers();
+
+}
+
+
+function filterMapMarkers() {
+
     mapInfoWindow.close();
 
-    var latlngbounds = new google.maps.LatLngBounds();
 
-    /*
-        for (var i in markers) {
-            var m = markers[i];
-            var isVisible = (selectedAttr == null || selectedAttr == m.person)
-            m.setVisible(isVisible);
-            if (isVisible) {
-                if (m.position != undefined) {
-                    latlngbounds.extend(m.position);
-                } else if (m.latLngs != undefined) {
-                    m.getPath().forEach(function (e) {
-                        latlngbounds.extend(e);
-                    })
-                }
-            }
+    var selectedthemes = getSelectedTheme();
 
-        }*/
-
-    var color = (partipants[selectedAttr] == undefined) ? defaultColor : partipants[selectedAttr].color;
+    var list = [];
 
 
-
+    var allThemes = selectedthemes.length == 0;
+    var allPeople = selectedAttr == null;
     for (var i in markers) {
         var m = markers[i];
-        var isVisible = (selectedAttr == null || m.location[selectedAttr] != null)
+        var personMatch = (allPeople || m.location[selectedAttr] != null);
+        var isVisible = (allThemes && personMatch);
+
+        if (personMatch && !isVisible) {
+            selectedthemes.forEach(function (obj) {
+
+                if (m.location.themes[obj] != null) {
+                    isVisible = true;
+                }
+
+            })
+        };
+
         m.setVisible(isVisible);
 
 
         if (isVisible) {
-            if (m.position != undefined) {
-                latlngbounds.extend(m.position);
-            } else if (m.latLngs != undefined) {
-                m.getPath().forEach(function (e) {
-                    latlngbounds.extend(e);
-                })
-            }
-
-
-            if (m.location.feature == "Road") {
+            list.push(m);
+            /*if (m.location.feature == "Road") {
                 m.setOptions({
                     strokeColor: color
                 });
@@ -631,16 +673,32 @@ function buttonClicked(e) {
                 });
             } else if (m.location.feature == "Location") {
                 m.setIcon(getIcon(color));
-            }
+            }*/
         }
 
     }
+    setMapBounds(list);
 
+}
+
+function setMapBounds(ary) {
+    var list = (ary.length == 0) ? markers : ary;
+    var latlngbounds = new google.maps.LatLngBounds();
+
+    for (var i in list) {
+        var m = list[i];
+        if (m.position != undefined) {
+            latlngbounds.extend(m.position);
+        } else if (m.latLngs != undefined) {
+            m.getPath().forEach(function (e) {
+                latlngbounds.extend(e);
+            })
+        }
+
+    }
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
 }
-
-
 
 var iconIndex = {
     "School": "map-icon-university",
