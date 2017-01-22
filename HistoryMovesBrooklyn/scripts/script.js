@@ -166,9 +166,9 @@ function addMapLocations(marker, location, name, person) {
 
     var shouldHighlight = (location.sharedData != null && location.sharedData.highlightLocation == "Highlight");
 
-    var text = '<div id="mapwindow" class="mapwindow" shouldHighlight="' + shouldHighlight + '"> <div class="extractsbackground"></div><div><div class="mapwindowheader">' +
+    var text = '<div id="mapwindow" class="mapwindow" shouldHighlight="' + shouldHighlight + '"><div><div class="mapwindowheader">' +
         location.locationName + " &bull; " +
-        location.category + '</div><div class="extracts">'
+        location.category + '</div><div class="person_pin material-icons">person_pin</div><div class="specialicon material-icons">stars</div><div class="extracts">'
     location.htmlBase = text;
 
 

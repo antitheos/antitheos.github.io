@@ -119,13 +119,30 @@ body {
     top: 1px!important;
     left: 1px!important;
     padding-top: 8px!important;
-    padding-left: 14px!important;
+    padding-left: 30px!important;
     overflow: visible!important;
 }
 
-.mapwindow[shouldhighlight="true"] .extractsbackground {
-    background-color: #38c5e8;
+.gm-style div.gm-style-iw > div:first-child {
+    overflow: visible!important;
+}
+
+.mapwindow .material-icons {
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    display: none;
+    font-size: 18px;
+}
+
+.mapwindow[shouldhighlight="true"] .material-icons.specialicon {
     display: block;
+    color: #38c5e8;
+}
+
+.mapwindow[shouldhighlight="false"] .material-icons.person_pin {
+    display: block;
+    color: rgba(0, 0, 0, 0.4);
 }
 
 .extracts {
@@ -133,10 +150,6 @@ body {
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
-}
-
-.gm-style div.gm-style-iw > div:first-child {
-    overflow: visible!important;
 }
 
 .extract {
