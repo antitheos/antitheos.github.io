@@ -1,0 +1,98 @@
+body,
+html {
+    font-family: "Roboto";
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.87);
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.staticwidth {
+    width: 80%;
+    padding: 0% 10%;
+    margin: auto;
+}
+
+#mainmenu {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0px 10%;
+}
+
+.fixed {
+    position: fixed;
+    z-index: -1;
+    top: 0px;
+}
+
+#Header {
+    font-size: 34px;
+    line-height: 72px;
+    font-weight: 700;
+}
+
+#Header #storykey {}
+
+.menuitem {
+    min-width: 21%;
+    flex-grow: 0;
+    flex-basis: 21%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    padding: 5px 0px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+#featurestransition {
+    background: linear-gradient(rgba(255, 255, 255, 0.0), white);
+    height: 300px;
+    margin-top: 100px;
+    transition: all 0.5s;
+}
+
+#featurestransition:hover {
+    background: transparent;
+    height: 550px;
+    transition: all 0.5s;
+}
+
+#featuredstories {
+    padding-bottom: 72px;
+    background-color: white;
+}
+
+#featuredstories .title {
+    padding: 16px 0px;
+    border-top: 8px solid rgba(0, 0, 0, 0.16);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#featuredstories .data {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+#featuredstories .data .featuredstory {
+    min-width: 32%;
+    flex-grow: 0;
+    flex-basis: 32%;
+    padding: 24px 16px;
+    padding-top: 48px;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.54);
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    margin-bottom: 16px;
+    align-items: flex-end;
+    display: flex;
+}
