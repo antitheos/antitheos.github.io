@@ -14,6 +14,10 @@ html {
     margin: auto;
 }
 
+#topwrapper {
+    width: 100%;
+}
+
 #mainmenu {
     display: flex;
     flex-wrap: wrap;
@@ -35,6 +39,14 @@ html {
     font-weight: 700;
 }
 
+#returnHomeButton {
+    position: absolute;
+    margin-left: -48px;
+    cursor: pointer;
+    line-height: 72px;
+    font-size: 40px;
+}
+
 #Header #storykey {}
 
 .menuitem {
@@ -46,6 +58,7 @@ html {
     font-size: 14px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
 }
 
 #featurestransition {
@@ -54,12 +67,13 @@ html {
     width: 80%;
     margin: auto;
     margin-top: 100px;
+    overflow: hidden;
     transition: all 0.5s;
 }
 
 #featurestransition:hover {
     background: transparent;
-    height: 550px;
+    height: 500px;
     transition: all 0.5s;
 }
 
@@ -97,4 +111,118 @@ html {
     margin-bottom: 16px;
     align-items: flex-end;
     display: flex;
+    cursor: pointer;
+}
+
+#SelectedStory {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    padding: 0px 8px;
+}
+
+#body.showstory .hiddenWithStory {
+    display: none;
+}
+
+#body:not(.showstory) .hiddenWithoutStory {
+    display: none;
+}
+
+#body.showstory .hiddenWithoutStory {}
+
+#storiessection {
+    margin-top: 100px;
+    padding-bottom: 72px;
+}
+
+#stories {
+    width: 64%;
+}
+
+.astory {
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    margin-bottom: 72px;
+}
+
+.storytext {
+    height: 320px;
+}
+
+.storyinfo {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.storyfooter {
+    display: flex;
+    height: 32px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.progresstracker {
+    flex: 1;
+    padding: 0px 32px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.progressindicator {
+    height: 6px;
+    background-color: #f2f2f2;
+    flex: 1;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.progressindicatorinner {
+    background-color: #b1b1b1;
+    width: 0%;
+    height: 100%;
+}
+
+#audioplaypause {
+    padding-left: 16px;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.volumecontrol {
+    width: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.volumelevel {
+    width: 10%;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.volumelevel.active {
+    background-color: #b1b1b1;
+}
+
+.volumelevel:nth-child(2) {
+    height: 20%;
+}
+
+.volumelevel:nth-child(3) {
+    height: 40%;
+}
+
+.volumelevel:nth-child(4) {
+    height: 60%;
+}
+
+.volumelevel:nth-child(5) {
+    height: 80%;
+}
+
+.volumelevel:nth-child(6) {
+    height: 100%;
 }
