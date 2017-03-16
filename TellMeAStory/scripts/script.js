@@ -182,19 +182,24 @@ function playbackPaused(event) {
     var parent = $(o).attr("data-myparent");
     $("#" + parent + " #audioplaypause").text("play_circle_filled");
 }
+var currentObject = null;
 
 function playbackStarted(event) {
     var o = event.srcElement;
     var parent = $(o).attr("data-myparent");
     $("#" + parent + " #audioplaypause").text("pause_circle_filled");
     var obj = $("#" + parent);
-    var related = $("#related");
-
     var story = obj.data("mystory");
-    $.each(story.themes, function (index, theme) {
-        related.append("<div>" + theme + "</div>")
+    if (story != currentObject) {
 
-    });
+        var related = $("#related");
+        related.html("");
+
+        $.each(story.themes, function (index, theme) {
+            related.append("<div>" + theme + "</div>")
+
+        });
+    }
 
 }
 

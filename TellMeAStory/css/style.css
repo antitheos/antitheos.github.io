@@ -175,7 +175,13 @@ html {
 }
 
 #related {
-    font-size: 12px;
+    font-size: 15px;
+    position: fixed;
+    left: 64%;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .astory {
@@ -186,6 +192,9 @@ html {
 
 .storytext {
     height: 320px;
+    font-size: 17px;
+    line-height: 32px;
+    overflow: hidden;
 }
 
 .storyinfo {
