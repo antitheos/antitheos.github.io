@@ -38,7 +38,7 @@ function initializePage() {
         success: function (dataWeGotViaJsonp) {
             var ls = dataWeGotViaJsonp.feed.entry;
             $.each(ls, function (index, data) {
-                if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined) {
+                if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
                     var o = {
                         "subject": data.gsx$woman.$t,
                         "city": data.gsx$city.$t,
