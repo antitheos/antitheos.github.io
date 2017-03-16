@@ -13,68 +13,73 @@
 </head>
 
 
-<body id="body">
-    <div class="fixed" id="topwrapper">
-        <div id="Header" class="staticwidth">
+<body id="body" class="hidden">
+    <div class="topwrapper fixed" id="Header">
+        <div class="staticwidth">
             <i id="returnHomeButton" class="material-icons hiddenWithoutStory" onclick="returnHome()">arrow_back</i>
             <div>Tell me a <span id="storykey">story</span> about<span class="hiddenWithStory">...</span> <span id="SelectedStory" class="hiddenWithoutStory">Story Name</span></div>
         </div>
 
+
+    </div>
+    <div class="topwrapper hiddenWithStory" id="menuwrapper">
         <div class="menu hiddenWithStory" id="mainmenu">
+            <div id="featuredata"></div>
+            <div id="featurestransition"></div>
         </div>
     </div>
-    <div class="hiddenWithStory">
-        <div id="featurestransition"></div>
+    <div class="hiddenWithStory content">
+
         <div id="featuredstories" class="staticwidth">
 
             <div class=" title ">Featured Stories</div>
-            <div class="data "> </div>
+            <div class="data"> </div>
         </div>
     </div>
-    <div id="storiessection" class="hiddenWithoutStory staticwidth">
+    <div id="storiessection" class="hiddenWithoutStory staticwidth content">
         <div id="counter"></div>
         <div id="stories">
-            <div class="astory" id="astory">
-                <div class="storytext">This is some interesting text, get excited now</div>
-                <audio src="audio/barbaraQuote1.mp3" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
-                <div class="storyfooter">
-                    <div class="storyinfo">
-                        <div>Barbara</div>
-                        <div>Brooklyn</div>
-                    </div>
-                    <div id="audioplaypause" class="material-icons" onclick="togglePlay(event)">play_circle_filled</div>
-                    <div class="progresstracker">
-
-                        <div class="progressindicator">
-                            <div class="progressindicatorinner"></div>
-                        </div>
-                    </div>
-
-                    <div class="volumecontrol">
-                        <div class="volumelevel" data-level="0" onclick="setVolume(event)"></div>
-                        <div class="volumelevel" data-level="0.2" onclick="setVolume(event)"></div>
-                        <div class="volumelevel" data-level="0.4" onclick="setVolume(event)"></div>
-                        <div class="volumelevel" data-level="0.6" onclick="setVolume(event)"></div>
-                        <div class="volumelevel" data-level="0.8" onclick="setVolume(event)"></div>
-                        <div class="volumelevel" data-level="1" onclick="setVolume(event)"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="astory"></div>
-            <div class="astory"></div>
-            <div class="astory"></div>
-            <div class="astory"></div>
         </div>
         <div id="related"></div>
+    </div>
+
+    <div id="templates">
+        <div class="astory" id="astory">
+            <div class="storytext">This is some interesting text, get excited now</div>
+            <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
+            <div class="storyfooter">
+                <div class="storyinfo">
+                    <div class="person">Barbara</div>
+                    <div class="city">Brooklyn</div>
+                </div>
+                <div id="audioplaypause" class="material-icons" onclick="togglePlay(event)">play_circle_filled</div>
+                <div class="progresstracker">
+
+                    <div class="progressindicator">
+                        <div class="progressindicatorinner"></div>
+                    </div>
+                </div>
+
+                <div class="volumecontrol">
+                    <div class="volumelevel" data-level="0" onclick="setVolume(event)"></div>
+                    <div class="volumelevel" data-level="0.2" onclick="setVolume(event)"></div>
+                    <div class="volumelevel" data-level="0.4" onclick="setVolume(event)"></div>
+                    <div class="volumelevel" data-level="0.6" onclick="setVolume(event)"></div>
+                    <div class="volumelevel" data-level="0.8" onclick="setVolume(event)"></div>
+                    <div class="volumelevel" data-level="1" onclick="setVolume(event)"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
 
 <script src="scripts/script.js " type="text/javascript "></script>
 <script type="text/javascript ">
-    window.onload = function () {
+    window.onload = function() {
         initializePage();
     };
+
 </script>
 
 </html

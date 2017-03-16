@@ -3,17 +3,57 @@
         {
             "subject": "Barbara",
             "City": "Brooklyn",
-            "audio": "",
-            "extract": "",
-            image: "",
-            relatedTopics: [],
-            otherTopics: []
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "I grew up in East New York, matter of fact, I was born and raised right there on Fulton Street, 1557, between Albany and Kingston.",
+            "image": "",
+            "relatedTopics": ["Childhood", "Home"],
+            "otherTopics": []
     },
-        {},
-        {},
-        {},
-        {},
-        {}
+        {
+            "subject": "Barbara",
+            "City": "Brooklyn",
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "And somebody knew somebody who knew somebody who knew somebody who knew my husband, because I got married in ’90, and that’s when I found out I was HIV positive.  But he married me anyway.  I did the programs, I was clean and everything; in ’91 I went right back, I lost my daughter to the system. Got my daughter back in ’92 a year later, got her back but in the process of getting her back and going out to Amityville, Long Island to visit her in the foster care and the programs and stuff, I picked right back up, using.",
+            "image": "",
+            "relatedTopics": ["Diagnosis", "Rehab/Treatment", "Parenthood", "Drugs & Addiction", "Relationships"],
+            "otherTopics": []
+    },
+        {
+            "subject": "Barbara",
+            "City": "Brooklyn",
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "I got a sharp tongue, had it all my life, I'm born with it. I was the darkest one.  So I didn't want my aunties to call me – little black girl with the little short hair. Because everybody had a couple of inches or more.That bothered me.  James Brown came out with this record in the ‘60s or‘70s…Say It Loud, I’m Black and I’m Proud.",
+            "image": "",
+            "relatedTopics": ["Pop Culture", "Labels & Slurs", "Race", "Childhood"],
+            "otherTopics": []
+    },
+        {
+            "subject": "Barbara",
+            "City": "Brooklyn",
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "When I met my daughter’s father because I wanted money for the drugs…I got on drugs rightafter Richard Pryor, we knew about freebasing, Richard Pryor caught fire. I learned then what freebasing was. A couple of people were doing it. Since I was the kind of chick that always said – you know what? I’ll try it once. So I tried it. And that’s when I started selling myself. I was giving it away, nobody wasn’t loving me, I didn't love myself. So I did that. And I became pregnant but I didn'tknow I was pregnant.",
+            "image": "",
+            "relatedTopics": ["Pop Culture", "Drugs & Addiction", "Prostitution", "Relationships", "Pregnancy & Giving Birth"],
+            "otherTopics": []
+    },
+        {
+            "subject": "Barbara",
+            "City": "Brooklyn",
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "The people that are around, as an addict I didn’t sit home, from ’86 when I got on drugs, nobody sit home and watch TV. When they started talking about the GRID or whatever it was, it was a disease that supposed to have been with these white guys in these bathhouses and the gay guys and stuff.",
+            "image": "",
+            "relatedTopics": ["Drugs & Addiction", "Being Sick;"],
+            "otherTopics": []
+    },
+        {
+            "subject": "Barbara",
+            "City": "Brooklyn",
+            "audio": "audio/barbaraQuote1.mp3",
+            "extract": "Quote 6",
+            "image": "",
+            "relatedTopics": [],
+            "otherTopics": []
+    }
 ],
 
     "ReadNext": []

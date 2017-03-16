@@ -8,23 +8,34 @@ html {
     padding: 0px;
 }
 
+.hidden {
+    display: none;
+}
+
+#body {
+    padding-top: 100px;
+}
+
 .staticwidth {
     width: 80%;
     padding: 0% 10%;
     margin: auto;
 }
 
-#topwrapper {
+.topwrapper {
     width: 100%;
 }
 
 #mainmenu {
+    width: 80%;
+    margin: 0px 10%;
+}
+
+#featuredata {
     display: flex;
     flex-wrap: wrap;
     align-content: space-evenly;
     justify-content: space-between;
-    width: 80%;
-    margin: 0px 10%;
 }
 
 .fixed {
@@ -37,6 +48,8 @@ html {
     font-size: 34px;
     line-height: 72px;
     font-weight: 700;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 #returnHomeButton {
@@ -64,20 +77,34 @@ html {
 #featurestransition {
     background: linear-gradient(rgba(255, 255, 255, 0.0), white);
     height: 300px;
-    width: 80%;
     margin: auto;
-    margin-top: 100px;
     overflow: hidden;
-    transition: all 0.5s;
+    transition: all 0.6s;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 
-#featurestransition:hover {
+#mainmenu {
+    height: 300px;
+    position: relative;
+    transition: all 0.7s;
+}
+
+#mainmenu:hover {
+    height: auto;
+    transition: all 0.7s;
+}
+
+#mainmenu:hover #featurestransition {
     background: transparent;
-    height: 500px;
-    transition: all 0.5s;
+    height: 0px;
+    transition: all 0.6s;
 }
 
 #featuredstories {
+    padding-top: 80px;
     padding-bottom: 72px;
     background-color: white;
 }
@@ -131,13 +158,24 @@ html {
 
 #body.showstory .hiddenWithoutStory {}
 
+.content {
+    z-index: 10;
+    position: relative;
+}
+
 #storiessection {
-    margin-top: 100px;
+    margin-top: 20px;
     padding-bottom: 72px;
+    display: flex;
 }
 
 #stories {
     width: 64%;
+    margin-right: 20px;
+}
+
+#related {
+    font-size: 12px;
 }
 
 .astory {
@@ -225,4 +263,8 @@ html {
 
 .volumelevel:nth-child(6) {
     height: 100%;
+}
+
+#templates {
+    display: none;
 }
