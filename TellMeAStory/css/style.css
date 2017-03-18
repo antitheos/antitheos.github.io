@@ -141,7 +141,7 @@ html {
     cursor: pointer;
 }
 
-#SelectedStory {
+#SelectedStory .theme {
     color: white;
     background-color: black;
     border-radius: 5px;
@@ -172,22 +172,60 @@ html {
 #stories {
     width: 64%;
     margin-right: 20px;
+    padding-bottom: 120px;
 }
 
 #related {
     font-size: 15px;
     position: fixed;
-    left: 64%;
+    left: 66%;
     padding-left: 10px;
     padding-top: 10px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.54);
 }
 
+.relatedstory {
+    cursor: pointer;
+}
+
+.menuitem:hover,
+#featuredstories .featuredstory .text:hover,
+.relatedstory:hover {
+    color: rgba(0, 0, 0, 0.87)
+}
+
+#related .relatedesectiontitle {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.16);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+#relatedcombinedthemestitle {
+    margin-top: 40px;
+}
+
 .astory {
     padding: 16px;
     border: 1px solid rgba(0, 0, 0, 0.16);
     margin-bottom: 72px;
+    opacity: 0.15;
+    transform: scale(0.9);
+}
+
+.astory.playingstory {
+    opacity: 1;
+    transform: scale(1.1);
+    border-width: 2px;
+    transition-duration: 400ms;
+}
+
+#featuredata .menuitem.nodata,
+#featuredstories .featuredstory.nodata {
+    color: rgba(0, 0, 0, 0.15);
+    cursor: not-allowed;
 }
 
 .storytext {

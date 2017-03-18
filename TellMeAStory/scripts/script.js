@@ -3,8 +3,9 @@ var dataEntries = [];
 var themesLoaded = false;
 var dataLoaded = false;
 var featuredLoaded = false;
-var volume = 0.1;
+var volume = 0.2;
 var currentPlayList = null;
+var currentThemes = [];
 
 function initializePage() {
 
@@ -13,9 +14,16 @@ function initializePage() {
     $.getJSON("data/themes.json", function (json) {
 
         var menu = $("#featuredata");
+        var template = $("#templates .menuitem");
         for (var i in json) {
-            // themeData.push(json[i]);
-            menu.append("<div class='menuitem' onclick='showStory(this)'>" + json[i] + "</div>")
+
+            var story = template.clone();
+            menu.append(story);
+            $(story).text(json[i]);
+            var themes = [json[i].trim()];
+            $(story).data("themes", normalizeThemes(themes));
+
+
 
         }
         themesLoaded = true;
@@ -24,9 +32,16 @@ function initializePage() {
     $.getJSON("data/featuredstories.json", function (json) {
 
         var data = $("#featuredstories .data");
+        var template = $("#templates .featuredstory");
         for (var i in json) {
-            // themeData.push(json[i]);
-            data.append("<div class='featuredstory' onclick='showStory(this)'><div>" + json[i].name + "</div></div>")
+            var story = template.clone();
+            data.append(story);
+            $(story).find(".text").text(json[i].name);
+
+            $(story).data("themes", normalizeThemes(json[i].themes));
+            $(story).data("originalTheme", json[i].themes);
+
+
 
         }
         featuredLoaded = true;
@@ -45,10 +60,24 @@ function initializePage() {
                         "audio": "audio/" + data.gsx$audio.$t,
                         "extract": data.gsx$excerpt.$t,
                         "image": "",
-                        "themes": data.gsx$themes.$t.split(";")
+                        "themes": []
                     }
+                    $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
+                        var text = theme.trim();
+                        if (text.length > 0) {
+                            var key = text.toLowerCase();
+                            o.themes.push({
+                                text: text,
+                                key: key
+                            })
 
-                    addObjectToTheme(o);
+                            if (themesData[key] == null) {
+                                themesData[key] = [];
+                            }
+                            themesData[key].push(o);
+                        }
+
+                    });
                 }
             });
             dataLoaded = true;
@@ -60,23 +89,39 @@ function initializePage() {
 
 }
 
+function normalizeThemes(themes) {
+    var newThemes = [];
+    newThemes.data = {};
+    $.each(themes, function (index, theme) {
+        var t = theme.trim();
+        t = {
+            text: t,
+            key: t.toLowerCase()
+        };
+        newThemes.push(t);
+        newThemes.data[t.key] = true;
+    });
+    return newThemes;
+}
+
 function enableApp() {
     if (themesLoaded == false || dataLoaded == false || featuredLoaded == false) {
         setTimeout(enableApp, 500)
     } else {
+
+        $("#featuredata .menuitem,#featuredstories .featuredstory").each(function (index, element) {
+            var themes = $(element).data("themes");
+            var playList = findThemesData(themes);
+            $(element).data("playList", playList);
+            if (playList.length < 1) {
+                $(element).addClass("nodata");
+            }
+        });
         $("#body").removeClass("hidden");
+
     }
 }
 
-function addObjectToTheme(obj) {
-    $.each(obj.themes, function (index, theme) {
-        var t = theme.toLowerCase().trim();
-        if (themesData[t] == null) {
-            themesData[t] = [];
-        }
-        themesData[t].push(obj);
-    });
-}
 
 function togglePlay(event) {
     var o = event.srcElement;
@@ -91,19 +136,82 @@ function togglePlay(event) {
 }
 
 
+function findThemesData(themes) {
+    var playList = themesData[themes[0].key];
+    if (playList == null || playList == undefined) {
+        return [];
+    }
+    if (themes.length > 1) {
+        $.each(themes, function (index, ctheme) {
+
+            if (ctheme.key != themes[0].key) { //we have already filtered this, dont waste cycles
+
+                playList = playList.filter(function (story, index, array) {
+                    var ary = story.themes.filter(function (storyTheme, index, array) {
+                        return storyTheme.key == ctheme.key;
+                    });
+                    return ary.length > 0;
+                });
+            }
+        });
+    }
+    return playList;
+}
+
+
+function shuffleArray(array) {
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 //handle select topic or story
 function showStory(e) {
-    var theme = $(e).text();
-    $("#SelectedStory").text(theme);
-    $("#body").addClass("showstory");
+    if ($(e).hasClass("nodata")) {
+        return;
+    }
 
-    var template = $("#templates .astory");
+    currentThemes = $(e).data("themes");
+    currentPlayList = shuffleArray($(e).data("playList")); //randomize order
+
+    $("#relatedotherthemes").html("");
+    $("#relatedcombinedthemes ").html("");
     var data = $("#stories");
     data.html("");
-    var dt = themesData[theme.toLowerCase().trim()];
-    currentPlayList = dt;
 
-    $.each(dt, function (index, story) {
+    var theme = $(e).text();
+    $("#SelectedStory").html("");
+    var counter = 0;
+    $.each(currentThemes, function (index, theme) {
+        counter++;
+        if (counter > 1 && counter == currentThemes.length) {
+            $("#SelectedStory").append("<span> and </span>");
+        }
+        $("#SelectedStory").append("<span class='theme'>" + theme.text + "</span>");
+
+    });
+
+
+    $("#body").addClass("showstory");
+
+
+
+
+    var template = $("#templates .astory");
+    $.each(currentPlayList, function (index, story) {
 
         var x = $(template.clone());
         var key = "astory" + index;
@@ -124,16 +232,21 @@ function showStory(e) {
 
 
     });
-    updateVolume(volume);
-    playItem("astory0");
+
+    $("#body").animate({
+        "scrollTop": 0 + "px"
+    }, 300, function () {
+        updateVolume(volume);
+        playItem("astory0");
+    })
 
 
 }
 
 function returnHome() {
     $("#body").removeClass("showstory");
-    $("#audioitem")[0].pause();
-    $("#audioitem")[0].load();
+    // $("#audioitem")[0].pause();
+    //$("#audioitem")[0].load();
     $("#stories").html("");
 }
 
@@ -192,11 +305,37 @@ function playbackStarted(event) {
     var story = obj.data("mystory");
     if (story != currentObject) {
 
-        var related = $("#related");
+        var related = $("#related #relatedotherthemes");
         related.html("");
 
+        var combined = $("#related #relatedcombinedthemes");
+        combined.html("");
+
+        var template = $("#templates .relatedstory");
+
         $.each(story.themes, function (index, theme) {
-            related.append("<div>" + theme + "</div>")
+
+            if (currentThemes.data[theme.key] != true) {
+                $.each(currentThemes, function (index, cTheme) {
+                    var cItem = template.clone();
+                    combined.append(cItem);
+                    $(cItem).text(cTheme.text + " + " + theme.text);
+                    var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
+                    $(cItem).data("playList", findThemesData(cItemThemes));
+                    $(cItem).data("themes", cItemThemes);
+
+                });
+
+                var item = template.clone();
+                related.append(item);
+                $(item).text(theme.text);
+                var itemThemes = normalizeThemes([theme.text]);
+                $(item).data("playList", findThemesData(itemThemes));
+                $(item).data("themes", itemThemes);
+
+
+
+            }
 
         });
     }
@@ -222,6 +361,9 @@ function playbackEnd(event) {
 }
 
 function playItem(key) {
+    $(".playingstory").removeClass("playingstory");
+    $("#" + key).addClass("playingstory");
+
     var ls = $("#" + key + " .audio");
     if (ls.length > 0) {
         ls[0].play();

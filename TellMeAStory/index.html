@@ -40,17 +40,28 @@
         <div id="counter"></div>
         <div id="stories">
         </div>
-        <div id="related"></div>
+        <div id="related">
+            <div class="relatedesectiontitle">tell me more about</div>
+            <div id="relatedcombinedthemes"></div>
+            <div class="relatedesectiontitle" id="relatedcombinedthemestitle">tell me about</div>
+            <div id="relatedotherthemes"></div>
+        </div>
     </div>
 
     <div id="templates">
+        <div class='menuitem' onclick='showStory(this)'></div>
+        <div class='featuredstory' onclick='showStory(this)'>
+            <div class="text" onclick='showStory(this)'></div>
+        </div>
+
+        <div class="relatedstory" onclick='showStory(this)'></div>
         <div class="astory" id="astory">
             <div class="storytext">This is some interesting text, get excited now</div>
             <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
             <div class="storyfooter">
                 <div class="storyinfo">
-                    <div class="person">Barbara</div>
-                    <div class="city">Brooklyn</div>
+                    <div class="person"></div>
+                    <div class="city"></div>
                 </div>
                 <div id="audioplaypause" class="material-icons" onclick="togglePlay(event)">play_circle_filled</div>
                 <div class="progresstracker">
