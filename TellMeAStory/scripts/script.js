@@ -52,6 +52,7 @@ function initializePage() {
         dataType: 'jsonp',
         success: function (dataWeGotViaJsonp) {
             var ls = dataWeGotViaJsonp.feed.entry;
+            var counter = {};
             $.each(ls, function (index, data) {
                 if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
                     var o = {
@@ -62,6 +63,7 @@ function initializePage() {
                         "image": "",
                         "themes": []
                     }
+
                     $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
                         var text = theme.trim();
                         if (text.length > 0) {
@@ -78,11 +80,30 @@ function initializePage() {
                         }
 
                     });
+
+                    //quickly calculate how often things occur together;
+                    $.each(o.themes, function (findex, theme) {
+                        var key = theme.key;
+
+                        $.each(o.themes, function (sindex, stheme) {
+                            var skey = stheme.key;
+                            if (sindex > findex) { //only if key is not same as other one
+                                var newKey = (skey < key) ? skey + "_" + key : key + "_" + skey;
+                                if (counter[newKey] == null) {
+                                    counter[newKey] = 1;
+                                } else {
+                                    counter[newKey]++;
+                                }
+                            }
+                        });
+
+                    });
                 }
+
             });
+            //print how many times we see things
+            //console.log(counter);
             dataLoaded = true;
-
-
         }
     });
     enableApp();

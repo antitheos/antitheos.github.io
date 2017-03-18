@@ -141,6 +141,10 @@ html {
     cursor: pointer;
 }
 
+#TitleSection {
+    width: 200%;
+}
+
 #SelectedStory .theme {
     color: white;
     background-color: black;
@@ -190,7 +194,7 @@ html {
 }
 
 .menuitem:hover,
-#featuredstories .featuredstory .text:hover,
+#featuredstories .featuredstory:hover,
 .relatedstory:hover {
     color: rgba(0, 0, 0, 0.87)
 }

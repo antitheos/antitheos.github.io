@@ -17,7 +17,7 @@
     <div class="topwrapper fixed" id="Header">
         <div class="staticwidth">
             <i id="returnHomeButton" class="material-icons hiddenWithoutStory" onclick="returnHome()">arrow_back</i>
-            <div>Tell me a <span id="storykey">story</span> about<span class="hiddenWithStory">...</span> <span id="SelectedStory" class="hiddenWithoutStory">Story Name</span></div>
+            <div id="TitleSection">Tell me a <span id="storykey">story</span> about<span class="hiddenWithStory">...</span> <span id="SelectedStory" class="hiddenWithoutStory">Story Name</span></div>
         </div>
 
 
@@ -51,7 +51,7 @@
     <div id="templates">
         <div class='menuitem' onclick='showStory(this)'></div>
         <div class='featuredstory' onclick='showStory(this)'>
-            <div class="text" onclick='showStory(this)'></div>
+            <div class="text"></div>
         </div>
 
         <div class="relatedstory" onclick='showStory(this)'></div>

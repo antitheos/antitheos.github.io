@@ -1,9 +1,12 @@
 [{
-        "name": "Abuse & Parenthood",
-        "themes": ["Abuse", "Parenthood"]
+        "name": "Drugs & Addiction & Parenthood",
+        "themes": ["Drugs & Addiction", "Parenthood"]
 }, {
-        "name": "Childhood & Abuse",
-        "themes": ["Childhood", "Abuse"]
+        "name": "The Program & The System",
+        "themes": ["The Program", "The System"]
+}, {
+        "name": "Childhood & Family Life",
+        "themes": ["Childhood", "Family Life"]
 }, {
         "name": "Chicago & Violence",
         "themes": ["Chicago", "Violence"]
@@ -11,11 +14,14 @@
         "name": "The Neighborhood & 1960s",
         "themes": ["The Neighborhood", "1960s"]
 }, {
-        "name": "Race & Rebellions",
-        "themes": ["Race", "Rebellions"]
+        "name": "Getting Better & Getting On",
+        "themes": ["Getting Better", "Getting On"]
 }, {
         "name": "Drugs/Addiction & Pop Culture",
         "themes": ["Drugs/Addiction", "Pop Culture"]
+}, {
+        "name": "Relationships & Diagnosis",
+        "themes": ["Relationships", "Diagnosis"]
 }, {
         "name": "Church & Drugs",
         "themes": ["Church", "Drugs"]
@@ -23,8 +29,8 @@
         "name": "Being Sick & Stigma",
         "themes": ["Being Sick", "Stigma"]
 }, {
-        "name": "Chicago & Violence",
-        "themes": ["Chicago", "Violence"]
+        "name": "Doing for Yourself & Parenthood",
+        "themes": ["Doing for Yourself", "Parenthood"]
 }, {
         "name": "The System & Diagnosis",
         "themes": ["The System", "Diagnosis"]
