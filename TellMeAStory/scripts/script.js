@@ -1,18 +1,21 @@
-var themesData = {};
-var dataEntries = [];
-var themesLoaded = false;
-var dataLoaded = false;
-var featuredLoaded = false;
-var volume = 0.2;
-var currentPlayList = null;
-var currentThemes = [];
+var themesData = {},
+    featuredStoriesData = {},
+    dataEntries = [],
+    dataLoaded = false,
+    themesLoaded = false,
+    featuredLoaded = false,
+    volume = 0.2,
+    currentPlayList = null,
+    currentThemes = [],
+    minFeaturedCount = 3,
+    maxFeaturedStoriesCount = 6;
 
 function initializePage() {
 
 
-    //load themes
+    /*load themes
     $.getJSON("data/themes.json", function (json) {
-
+        loadThemesToWindow(json);
         var menu = $("#featuredata");
         var template = $("#templates .menuitem");
         for (var i in json) {
@@ -27,62 +30,71 @@ function initializePage() {
 
         }
         themesLoaded = true;
-    })
-    //load featured
-    $.getJSON("data/featuredstories.json", function (json) {
+    })*/
+    
+    function loadThemesToWindow(themesList) {
+        var menu = $("#featuredata"), 
+            template = $("#templates .menuitem");
+        for (var i in themesList) {
 
-        var data = $("#featuredstories .data");
-        var template = $("#templates .featuredstory");
-        for (var i in json) {
             var story = template.clone();
-            data.append(story);
-            $(story).find(".text").text(json[i].name);
-
-            $(story).data("themes", normalizeThemes(json[i].themes));
-            $(story).data("originalTheme", json[i].themes);
+            menu.append(story);
+            $(story).text(themesList[i]);
+            var themes = [themesList[i].trim()];
+            $(story).data("themes", normalizeThemes(themes));
 
 
 
         }
+        themesLoaded = true;
+    }
+    //load featured
+    /*$.getJSON("data/featuredstories.json", function (json) {
+        loadFeaturedStoriesSection(json)
+    });*/
+    
+    function loadFeaturedStoriesSection(storiesSource) {
+   
+        var stories = [];
+        for (var i in storiesSource){
+            if (storiesSource[i].counter > 2){
+                stories.push(storiesSource[i])
+                
+            }
+        }     
+        
+        var featured = [];
+        while (stories.length > 0 && featured.length < maxFeaturedStoriesCount){
+            var num = getRandomInt(stories.length)
+            featured.push(stories[num]);
+            stories.splice(num, 1);
+            
+        }
+        
+        function getRandomInt( max) {
+            max = Math.floor(max);
+            return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
+        }   
+        
+        console.log(featured);
+        
+        var data = $("#featuredstories .data"),
+            template = $("#templates .featuredstory");
+        for (var i in featured) {
+            var story = template.clone();
+            data.append(story);
+            $(story).find(".text").text(featured[i].name);
+
+            $(story).data("themes", normalizeThemes(featured[i].themes));
+            $(story).data("originalTheme", featured[i].themes);
+        }
         featuredLoaded = true;
-    });
-
-    $.ajax({
-        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
-        dataType: 'jsonp',
-        success: function (dataWeGotViaJsonp) {
-            var ls = dataWeGotViaJsonp.feed.entry;
-            var counter = {};
-            $.each(ls, function (index, data) {
-                if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
-                    var o = {
-                        "subject": data.gsx$woman.$t,
-                        "city": data.gsx$city.$t,
-                        "audio": "audio/" + data.gsx$audio.$t,
-                        "extract": data.gsx$excerpt.$t,
-                        "image": "",
-                        "themes": []
-                    }
-
-                    $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
-                        var text = theme.trim();
-                        if (text.length > 0) {
-                            var key = text.toLowerCase();
-                            o.themes.push({
-                                text: text,
-                                key: key
-                            })
-
-                            if (themesData[key] == null) {
-                                themesData[key] = [];
-                            }
-                            themesData[key].push(o);
-                        }
-
-                    });
-
-                    //quickly calculate how often things occur together;
-                    $.each(o.themes, function (findex, theme) {
+    }
+    
+    function processThemeConnections(themeList){
+          //quickly calculate how often things occur together;
+        /*
+                    $.each(themeList, function (findex, theme) {
                         var key = theme.key;
 
                         $.each(o.themes, function (sindex, stheme) {
@@ -97,13 +109,84 @@ function initializePage() {
                             }
                         });
 
+                    });*/ 
+        var count = themeList.length;
+        for (var i = 0; i < count - 1; i++){
+            var firstTheme = themeList[i].text;
+            for (var j = i + 1; j < count;j++){
+                var secondTheme = themeList[j].text;
+                if (secondTheme < firstTheme){
+                    logThemePair(secondTheme, firstTheme);
+                }
+                else{
+                    logThemePair(firstTheme, secondTheme);
+                } 
+            } 
+        }
+        
+        function logThemePair(first, second) {
+            var name = first + " & " + second;
+            var key = name.toLowerCase();
+            if (featuredStoriesData[key] == null){
+                featuredStoriesData[key] =  {name: name,
+                                             themes:[first, second],
+                                            counter:0};
+            }
+            
+            featuredStoriesData[key].counter++;
+            
+        }
+    }
+
+    $.ajax({
+        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
+        dataType: 'jsonp',
+        success: function (dataWeGotViaJsonp) {
+            var ls = dataWeGotViaJsonp.feed.entry,
+                counter = {},
+                themesList = [];
+            $.each(ls, function (index, data) {
+                if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
+                    var o = {
+                        "subject": data.gsx$woman.$t,
+                        "city": data.gsx$city.$t,
+                        "audio": "audio/" + data.gsx$audio.$t,
+                        "extract": data.gsx$excerpt.$t,
+                        "image": "",
+                        "themes": []
+                    }
+
+                    $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
+                        var text = theme.trim();
+                        
+                        if (text.length > 0) {
+                            var key = text.toLowerCase();
+                            o.themes.push({
+                                text: text,
+                                key: key
+                            })
+
+                            if (themesData[key] == null) { 
+                                themesList.push(text);
+                                themesData[key] = [];
+                            }
+                            themesData[key].push(o);
+                        }
+
                     });
+                    processThemeConnections(o.themes);
+
+                  
                 }
 
             });
             //print how many times we see things
             //console.log(counter);
+            
+            
             dataLoaded = true;
+            loadThemesToWindow(themesList);
+            loadFeaturedStoriesSection(featuredStoriesData);
         }
     });
     enableApp();
@@ -131,8 +214,8 @@ function enableApp() {
     } else {
 
         $("#featuredata .menuitem,#featuredstories .featuredstory").each(function (index, element) {
-            var themes = $(element).data("themes");
-            var playList = findThemesData(themes);
+            var themes = $(element).data("themes"),
+                playList = findThemesData(themes);
             $(element).data("playList", playList);
             if (playList.length < 1) {
                 $(element).addClass("nodata");
@@ -145,10 +228,9 @@ function enableApp() {
 
 
 function togglePlay(event) {
-    var o = event.srcElement;
-    var parent = $(o).attr("data-myparent");
-
-    var audio = $("#" + parent + " #audioitem")[0];
+    var o = event.srcElement,
+        parent = $(o).attr("data-myparent"),
+        audio = $("#" + parent + " #audioitem")[0];
     if (audio.paused) {
         audio.play();
     } else {
@@ -234,8 +316,8 @@ function showStory(e) {
     var template = $("#templates .astory");
     $.each(currentPlayList, function (index, story) {
 
-        var x = $(template.clone());
-        var key = "astory" + index;
+        var x = $(template.clone()),
+            key = "astory" + index;
         x.attr("id", key);
 
         data.append(x);
