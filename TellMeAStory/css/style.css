@@ -268,7 +268,7 @@ html {
     text-align: right; 
     font-weight: 500;
     color: rgba(0,0,0,0.57);
-    margin-top:8px;
+    padding-top:8px;
     padding-right: 12px;
     display: none;
 }

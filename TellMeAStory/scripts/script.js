@@ -76,7 +76,7 @@ function initializePage() {
             return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
         }   
         
-        console.log(featured);
+       
         
         var data = $("#featuredstories .data"),
             template = $("#templates .featuredstory");
@@ -469,16 +469,18 @@ function playbackEnd(event) {
     playNextItem(o); 
 }
 
-function playNextItem(e){
-    console.log(e);
+function playNextItem(e){ 
    var key = $(e).attr("data-next");
     var obj = $("#" + key);
     if (obj.length == 0) {
         return;
     }
+    
+    var h = $(".playingstory .nextstory").outerHeight();
+   
 
     var top = $("#body").scrollTop();
-    top = obj.position().top;
+    top = obj.position().top - h;
 
     $("#body").animate({
         "scrollTop": top + "px"
