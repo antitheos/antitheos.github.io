@@ -83,7 +83,14 @@ function initializePage() {
         for (var i in featured) {
             var story = template.clone();
             data.append(story);
-            $(story).find(".text").text(featured[i].name);
+            var dive = 
+           // $(story).find(".text").text(featured[i].name);
+             $(story).find(".text").append('<div class="themename">'+ featured[i].themes[0] + '</div>');
+             $(story).find(".text").append('<div class="themeconnector"> + </div>'); 
+             $(story).find(".text").append('<div class="themename">'+ featured[i].themes[1] + '</div>');
+            
+            // $(story).find(".text").text(featured[i].name);
+             //$(story).find(".text").text(featured[i].name);
 
             $(story).data("themes", normalizeThemes(featured[i].themes));
             $(story).data("originalTheme", featured[i].themes);
@@ -281,6 +288,8 @@ function shuffleArray(array) {
 
     return array;
 }
+
+
 //handle select topic or story
 function showStory(e) {
     if ($(e).hasClass("nodata")) {
@@ -434,9 +443,7 @@ function playbackStarted(event) {
                 $(item).text(theme.text);
                 var itemThemes = normalizeThemes([theme.text]);
                 $(item).data("playList", findThemesData(itemThemes));
-                $(item).data("themes", itemThemes);
-
-
+                $(item).data("themes", itemThemes); 
 
             }
 
@@ -445,9 +452,26 @@ function playbackStarted(event) {
 
 }
 
+function goToNextStory(e){
+   var o =  $(".playingstory audio");
+    
+    if (o.length  > 0){
+        var audio = o[0];
+        audio.pause();
+        playNextItem(audio);
+    }
+    
+}
+
+
 function playbackEnd(event) {
     var o = event.srcElement;
-    var key = $(o).attr("data-next");
+    playNextItem(o); 
+}
+
+function playNextItem(e){
+    console.log(e);
+   var key = $(e).attr("data-next");
     var obj = $("#" + key);
     if (obj.length == 0) {
         return;
@@ -459,8 +483,9 @@ function playbackEnd(event) {
     $("#body").animate({
         "scrollTop": top + "px"
     }, 300, function () {
+       $("#" + key + " .audio")[0].currentTime = 0;
         playItem(key);
-    })
+    })  
 }
 
 function playItem(key) {

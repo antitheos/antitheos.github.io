@@ -56,6 +56,7 @@
 
         <div class="relatedstory" onclick='showStory(this)'></div>
         <div class="astory" id="astory">
+            <div class="storycontentdiv">
             <div class="storytext">This is some interesting text, get excited now</div>
             <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
             <div class="storyfooter">
@@ -80,6 +81,9 @@
                     <div class="volumelevel" data-level="1" onclick="setVolume(event)"></div>
                 </div>
             </div>
+            </div>
+            
+            <div class="nextstory" onclick="goToNextStory()"><span class="skiptext">Skip</span> <i class="material-icons">arrow_downward</i></div>
         </div>
     </div>
 </body>

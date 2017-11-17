@@ -212,8 +212,8 @@ html {
 }
 
 .astory {
-    padding: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.16);
+    //padding: 16px;
+    //border: 1px solid rgba(0, 0, 0, 0.16);
     margin-bottom: 72px;
     opacity: 0.15;
     transform: scale(0.9);
@@ -258,6 +258,38 @@ html {
     display: flex;
     align-items: center;
 }
+.storycontentdiv{
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.nextstory{
+    cursor: pointer;
+    text-align: right; 
+    font-weight: 500;
+    color: rgba(0,0,0,0.57);
+    margin-top:8px;
+    padding-right: 12px;
+    display: none;
+}
+ 
+
+.astory:not(:last-child).playingstory .nextstory{
+    display: block;
+}
+.nextstory .skiptext{
+        font-size: 10px;
+    padding-right: 8px;
+    line-height: 20px;
+} 
+
+.nextstory i.material-icons{
+     font-size: 15px; 
+    line-height: 20px;
+    position: absolute;
+    
+}
+
 
 .progressindicator {
     height: 6px;
@@ -318,4 +350,14 @@ html {
 
 #templates {
     display: none;
+}
+
+.themename{
+    font-size:21px;
+    font-weight: 600;
+}
+
+.themeconnector{
+    font-size:32px;
+    font-weight: 300;
 }
