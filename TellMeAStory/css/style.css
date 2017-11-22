@@ -211,7 +211,7 @@ html {
     margin-top: 40px;
 }
 
-.astory {
+.storysection {
     //padding: 16px;
     //border: 1px solid rgba(0, 0, 0, 0.16);
     margin-bottom: 72px;
@@ -219,12 +219,14 @@ html {
     transform: scale(0.9);
 }
 
-.astory.playingstory {
+.storysection.playingstory {
     opacity: 1;
     transform: scale(1.1);
     border-width: 2px;
     transition-duration: 400ms;
 }
+ 
+
 
 #featuredata .menuitem.nodata,
 #featuredstories .featuredstory.nodata {
@@ -274,7 +276,7 @@ html {
 }
  
 
-.astory:not(:last-child).playingstory .nextstory{
+.astory.playingstory .nextstory{
     display: block;
 }
 .nextstory .skiptext{
@@ -361,3 +363,71 @@ html {
     font-size:32px;
     font-weight: 300;
 }
+
+.howtocontinue{
+       
+    border-top: 4px solid rgba(0,0,0,0.00);
+    padding-top:36px; 
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 14px;
+    
+}
+
+.playingstory.howtocontinue{
+   border-top: 4px solid rgba(0,0,0,0.16); 
+}
+
+.prompts{
+    font-weight: 200;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.responses{ 
+    display: flex;
+    justify-content: space-between;  
+}
+
+.howtocontinue .continueelement{  
+    min-width: 31%;
+    max-width: 31%;
+  
+}
+    
+.continuemore{
+    width: 100%
+}
+
+.howtocontinue .continueclickelement{ 
+    align-items:center; 
+    display: flex;
+    justify-content: space-between; 
+    box-sizing: border-box;
+    padding: 8px 12px;
+    height: 64px;
+    color:rgba(0,0,0, 0.54);
+}
+.continuemore, .continuemmainmenu{
+    border:1px solid rgba(0,0,0,0.16); 
+    cursor:pointer;
+    border-radius: 6px;
+}
+
+ 
+.howtocontinue.allstoriesloaded .responses{ 
+    padding-bottom: 56px; 
+   border-bottom: 24px solid rgba(0,0,0,0.0); 
+}
+.playingstory.howtocontinue.allstoriesloaded .responses{  
+   border-bottom-color:rgba(0,0,0,0.87); 
+}
+
+.howtocontinue.allstoriesloaded .spacer{ 
+    padding-bottom: 120px;
+}
+
+.howtocontinue.allstoriesloaded .continuemore{
+   display: none;
+}
+
+ 

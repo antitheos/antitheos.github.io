@@ -55,7 +55,7 @@
         </div>
 
         <div class="relatedstory" onclick='showStory(this)'></div>
-        <div class="astory" id="astory">
+        <div class="storysection astory" id="astory">
             <div class="storycontentdiv">
             <div class="storytext">This is some interesting text, get excited now</div>
             <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
@@ -84,6 +84,24 @@
             </div>
             
             <div class="nextstory" onclick="goToNextStory()"><span class="skiptext">Skip</span> <i class="material-icons">arrow_downward</i></div>
+        </div>
+        <div class="storysection howtocontinue"> 
+            <div class="prompts">Now What?</div>
+            <div class="responses">
+                <div class="continuemorewrapper continueelement">
+                    <div class="continuemore continueclickelement" onclick="continuePlaying()">
+                        <div>Keep<br/>Listening</div><i class="material-icons">arrow_downward</i>
+                    </div>
+                </div>
+                <div class="continuemmainmenu continueelement continueclickelement" onclick="returnHome()">
+                    <div>Back to<br/>Themes</div><i class="material-icons">arrow_back</i>
+                </div> 
+                <div class="continueselecttopic continueelement continueclickelement">
+                    <div>Related<br/>Theme</div>
+                    <i  class="material-icons">arrow_forward</i>
+                </div>
+            </div>
+            <div class="spacer"></div>
         </div>
     </div>
 </body>
