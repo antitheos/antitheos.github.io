@@ -34,9 +34,9 @@ function initializePage() {
         }
         themesLoaded = true;
     })*/
-    
+
     function loadThemesToWindow(themesList) {
-        var menu = $("#featuredata"), 
+        var menu = $("#featuredata"),
             template = $("#templates .menuitem");
         for (var i in themesList) {
 
@@ -55,52 +55,52 @@ function initializePage() {
     /*$.getJSON("data/featuredstories.json", function (json) {
         loadFeaturedStoriesSection(json)
     });*/
-    
-     
-    
+
+
+
     function loadFeaturedStoriesSection(storiesSource) {
-   
+
         var stories = [];
-        for (var i in storiesSource){
-            if (storiesSource[i].counter > 2){
+        for (var i in storiesSource) {
+            if (storiesSource[i].counter > 2) {
                 stories.push(storiesSource[i])
-                
+
             }
-        }     
-        
+        }
+
         var featured = [];
-        while (stories.length > 0 && featured.length < maxFeaturedStoriesCount){
+        while (stories.length > 0 && featured.length < maxFeaturedStoriesCount) {
             var num = getRandomInt(stories.length)
             featured.push(stories[num]);
             stories.splice(num, 1);
-            
+
         }
-        
-        
-       
-        
+
+
+
+
         var data = $("#featuredstories .data"),
             template = $("#templates .featuredstory");
         for (var i in featured) {
             var story = template.clone();
             data.append(story);
-            var dive = 
-           // $(story).find(".text").text(featured[i].name);
-             $(story).find(".text").append('<div class="themename">'+ featured[i].themes[0] + '</div>');
-             $(story).find(".text").append('<div class="themeconnector"> + </div>'); 
-             $(story).find(".text").append('<div class="themename">'+ featured[i].themes[1] + '</div>');
-            
+            var dive =
+                // $(story).find(".text").text(featured[i].name);
+                $(story).find(".text").append('<div class="themename">' + featured[i].themes[0] + '</div>');
+            $(story).find(".text").append('<div class="themeconnector"> + </div>');
+            $(story).find(".text").append('<div class="themename">' + featured[i].themes[1] + '</div>');
+
             // $(story).find(".text").text(featured[i].name);
-             //$(story).find(".text").text(featured[i].name);
+            //$(story).find(".text").text(featured[i].name);
 
             $(story).data("themes", normalizeThemes(featured[i].themes));
             $(story).data("originalTheme", featured[i].themes);
         }
         featuredLoaded = true;
     }
-    
-    function processThemeConnections(themeList){
-          //quickly calculate how often things occur together;
+
+    function processThemeConnections(themeList) {
+        //quickly calculate how often things occur together;
         /*
                     $.each(themeList, function (findex, theme) {
                         var key = theme.key;
@@ -117,39 +117,46 @@ function initializePage() {
                             }
                         });
 
-                    });*/ 
+                    });*/
         var count = themeList.length;
-        for (var i = 0; i < count - 1; i++){
+        for (var i = 0; i < count - 1; i++) {
             var firstTheme = themeList[i].text;
-            for (var j = i + 1; j < count;j++){
+            for (var j = i + 1; j < count; j++) {
                 var secondTheme = themeList[j].text;
-                if (secondTheme < firstTheme){
+                if (secondTheme < firstTheme) {
                     logThemePair(secondTheme, firstTheme);
-                }
-                else{
+                } else {
                     logThemePair(firstTheme, secondTheme);
-                } 
-            } 
+                }
+            }
         }
-        
+
         function logThemePair(first, second) {
             var name = first + " & " + second;
             var key = name.toLowerCase();
-            if (featuredStoriesData[key] == null){
-                featuredStoriesData[key] =  {name: name,
-                                             themes:[first, second],
-                                            counter:0};
+            if (featuredStoriesData[key] == null) {
+                featuredStoriesData[key] = {
+                    name: name,
+                    themes: [first, second],
+                    counter: 0
+                };
             }
-            
+
             featuredStoriesData[key].counter++;
-            
+
         }
     }
-
+    console.log("dataWeGotViaJsonp");
     $.ajax({
-        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
-        dataType: 'jsonp',
+        //url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
+        url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts',
+        dataType: 'json',
         success: function (dataWeGotViaJsonp) {
+
+            console.log(dataWeGotViaJsonp);
+            processHerokuRobData(dataWeGotViaJsonp);
+
+            /*
             var ls = dataWeGotViaJsonp.feed.entry,
                 counter = {},
                 themesList = [];
@@ -166,7 +173,7 @@ function initializePage() {
 
                     $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
                         var text = theme.trim();
-                        
+
                         if (text.length > 0) {
                             var key = text.toLowerCase();
                             o.themes.push({
@@ -174,7 +181,7 @@ function initializePage() {
                                 key: key
                             })
 
-                            if (themesData[key] == null) { 
+                            if (themesData[key] == null) {
                                 themesList.push(text);
                                 themesData[key] = [];
                             }
@@ -184,27 +191,127 @@ function initializePage() {
                     });
                     processThemeConnections(o.themes);
 
-                  
+
                 }
 
             });
             //print how many times we see things
             //console.log(counter);
-            
-            
+
+
             dataLoaded = true;
             loadThemesToWindow(themesList);
             loadFeaturedStoriesSection(featuredStoriesData);
+            */
         }
     });
     enableApp();
 
 }
+
+function processGoogleData(dataWeGotViaJsonp) {
+    var ls = dataWeGotViaJsonp.feed.entry,
+        counter = {},
+        themesList = [];
+    $.each(ls, function (index, data) {
+        if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
+            var o = {
+                "subject": data.gsx$woman.$t,
+                "city": data.gsx$city.$t,
+                "audio": "audio/" + data.gsx$audio.$t,
+                "extract": data.gsx$excerpt.$t,
+                "image": "",
+                "themes": []
+            }
+
+            $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
+                var text = theme.trim();
+
+                if (text.length > 0) {
+                    var key = text.toLowerCase();
+                    o.themes.push({
+                        text: text,
+                        key: key
+                    })
+
+                    if (themesData[key] == null) {
+                        themesList.push(text);
+                        themesData[key] = [];
+                    }
+                    themesData[key].push(o);
+                }
+
+            });
+            processThemeConnections(o.themes);
+
+
+        }
+
+    });
+    //print how many times we see things
+    //console.log(counter);
+
+
+    dataLoaded = true;
+    loadThemesToWindow(themesList);
+    loadFeaturedStoriesSection(featuredStoriesData);
+}
+
+function processHerokuRobData(dataList) {
+    var ls = dataList,
+        counter = {},
+        themesList = [];
+    console.log(ls);
+    $.each(ls, function (index, data) {
+        //if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {}
+
+        var o = {
+            "subject": data.women.name,
+            "city": data.women.location.city,
+            "audio": "",
+            "extract": data.extract,
+            "image": data.images,
+            "themes": []
+        }
+
+        $.each(data.themes, function (index, theme) {
+            var text = theme.theme.trim();
+
+            if (text.length > 0) {
+                var key = text.toLowerCase();
+                o.themes.push({
+                    text: text,
+                    key: key
+                })
+
+                if (themesData[key] == null) {
+                    themesList.push(text);
+                    themesData[key] = [];
+                }
+                themesData[key].push(o);
+            }
+
+        });
+        processThemeConnections(o.themes);
+
+
+    });
+    //print how many times we see things
+    //console.log(counter);
+
+
+    dataLoaded = true;
+    loadThemesToWindow(themesList);
+    loadFeaturedStoriesSection(featuredStoriesData);
+}
+
+
+
 function getRandomInt(max) {
-            max = Math.floor(max);
-            return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
-    }   
-       
+    max = Math.floor(max);
+    return Math.floor(Math.random() * max); //The maximum is exclusive and the minimum is inclusive
+}
+
 
 function normalizeThemes(themes) {
     var newThemes = [];
@@ -254,7 +361,7 @@ function togglePlay(event) {
 
 function findThemesData(themes) {
     var playList = themesData[themes[0].key];
-    if (playList == null || playList == undefined) { 
+    if (playList == null || playList == undefined) {
         return [];
     }
     if (themes.length > 1) {
@@ -296,16 +403,16 @@ function shuffleArray(array) {
 }
 
 
-function populateStoriesToScreen(){
+function populateStoriesToScreen() {
     var data = $("#stories");
     var playingList = [];
-    
-    
+
+
     var template = $("#templates .astory");
     var storyToPlay = "astory" + $("#stories .astory").length;
-    
-    
-    while (currentPlayList.length > 0 && playingList.length < maxPlayingStoriesCount){
+
+
+    while (currentPlayList.length > 0 && playingList.length < maxPlayingStoriesCount) {
         var num = getRandomInt(currentPlayList.length)
         story = currentPlayList[num];
         playingList.push(story);
@@ -331,14 +438,14 @@ function populateStoriesToScreen(){
     }
     var x = $($("#templates .howtocontinue").clone());
     x.attr("id", "hearmore" + $("#stories .astory").length);
-    
+
     data.append(x);
-    
-    if (currentPlayList.length ==0 ){
+
+    if (currentPlayList.length == 0) {
         x.addClass("allstoriesloaded");
-    } 
-    
-    
+    }
+
+
 }
 
 //handle select topic or story
@@ -350,14 +457,14 @@ function showStory(e) {
     currentThemes = $(e).data("themes");
     cummulatedThemes = {};
     lastCalculated = 0;
-    currentPlayList =  $(e).data("playList").slice(); //randomize order
+    currentPlayList = $(e).data("playList").slice(); //randomize order
 
     $("#relatedotherthemes").html("");
     $("#relatedcombinedthemes ").html("");
     var data = $("#stories");
     data.html("");
-    
-   
+
+
 
     var theme = $(e).text();
     $("#SelectedStory").html("");
@@ -371,22 +478,22 @@ function showStory(e) {
 
     });
 
-    
+
     populateStoriesToScreen();
-    
+
     $("#body").addClass("showstory");
     updateVolume(volume);
     playNextItem("astory0");
-    
 
-    
+
+
 }
 
 function returnHome() {
     $("#body").removeClass("showstory");
     $("#body").animate({
-        "scrollTop":  "0px"
-    }, 300); 
+        "scrollTop": "0px"
+    }, 300);
     $("#stories").html("");
 }
 
@@ -445,22 +552,22 @@ function playbackStarted(event) {
     var story = obj.data("mystory");
     if (story != currentObject) {
         $.each(story.themes, function (index, theme) {
-            if (cummulatedThemes[theme.key] == undefined){
-            cummulatedThemes[theme.key] = theme;
-        }
+            if (cummulatedThemes[theme.key] == undefined) {
+                cummulatedThemes[theme.key] = theme;
+            }
         });
-        
+
         loadNowPlayingThemes(story.themes);
     }
 }
 
 
-function loadNowPlayingThemes(themes){
+function loadNowPlayingThemes(themes) {
     var related = $("#related #relatedotherthemes");
     related.html("");
 
     var combined = $("#related #relatedcombinedthemes");
-    combined.html(""); 
+    combined.html("");
     var template = $("#templates .relatedstory");
 
     $.each(themes, function (index, theme) {
@@ -481,75 +588,74 @@ function loadNowPlayingThemes(themes){
             $(item).text(theme.text);
             var itemThemes = normalizeThemes([theme.text]);
             $(item).data("playList", findThemesData(itemThemes));
-            $(item).data("themes", itemThemes); 
+            $(item).data("themes", itemThemes);
 
 
-        } 
+        }
     });
 }
 
-function goToNextStory(e){
-   var o =  $(".playingstory audio");
-    
-    if (o.length  > 0){
+function goToNextStory(e) {
+    var o = $(".playingstory audio");
+
+    if (o.length > 0) {
         var audio = o[0];
         audio.pause();
         playNextItem();
     }
-    
+
 }
 
 
 function playbackEnd(event) {
     var o = event.srcElement;
-    playNextItem(); 
+    playNextItem();
 }
 
 
-function continuePlaying(){
+function continuePlaying() {
     cummulatedThemes = {};
-   var current = $("#stories .playingstory");
+    var current = $("#stories .playingstory");
     var nextObject = current.next();
-    var nextObjectId = nextObject.attr("id"); 
+    var nextObjectId = nextObject.attr("id");
     current.remove();
     playItem(nextObjectId);
 }
 
-function playNextItem(key){
+function playNextItem(key) {
     var playKey = key;
     var current = $("#stories .playingstory");
     var top = $("#body").scrollTop();
     var nextObject = null;
-    
-    if (playKey != undefined){
-        nextObject =$("#" + playKey);
+
+    if (playKey != undefined) {
+        nextObject = $("#" + playKey);
         top = 0;
-    }
-    else if (current.length != 0){ 
+    } else if (current.length != 0) {
         nextObject = current.next();
         playKey = nextObject.attr("id");
-        if (nextObject.hasClass("howtocontinue") && !nextObject.hasClass("allstoriesloaded")){
-            populateStoriesToScreen(); 
+        if (nextObject.hasClass("howtocontinue") && !nextObject.hasClass("allstoriesloaded")) {
+            populateStoriesToScreen();
         }
-    } 
-    
-    console.log(playKey); 
-    
+    }
+
+    console.log(playKey);
+
     var nextStory = $(".playingstory .nextstory");
-    if (nextStory.length > 0){ 
-           top = nextObject.position().top - nextStory.outerHeight();
-    }  
+    if (nextStory.length > 0) {
+        top = nextObject.position().top - nextStory.outerHeight();
+    }
 
 
     $("#body").animate({
         "scrollTop": top + "px"
     }, 300, function () {
         var items = $("#" + playKey + " .audio");
-         if (items.length > 0) {
+        if (items.length > 0) {
             items[0].currentTime = 0;
-         }
+        }
         playItem(playKey);
-    })  
+    })
 }
 
 function playItem(key) {
@@ -560,8 +666,7 @@ function playItem(key) {
     var ls = $("#" + key + " .audio");
     if (ls.length > 0) {
         ls[0].play();
-    }
-    else if (obj.hasClass("howtocontinue")){
+    } else if (obj.hasClass("howtocontinue")) {
         loadNowPlayingThemes(cummulatedThemes);
     }
 }
