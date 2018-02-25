@@ -35,179 +35,138 @@ function initializePage() {
         themesLoaded = true;
     })*/
 
-    function loadThemesToWindow(themesList) {
-        var menu = $("#featuredata"),
-            template = $("#templates .menuitem");
-        for (var i in themesList) {
 
-            var story = template.clone();
-            menu.append(story);
-            $(story).text(themesList[i]);
-            var themes = [themesList[i].trim()];
-            $(story).data("themes", normalizeThemes(themes));
-
-
-
-        }
-        themesLoaded = true;
-    }
-    //load featured
-    /*$.getJSON("data/featuredstories.json", function (json) {
-        loadFeaturedStoriesSection(json)
-    });*/
-
-
-
-    function loadFeaturedStoriesSection(storiesSource) {
-
-        var stories = [];
-        for (var i in storiesSource) {
-            if (storiesSource[i].counter > 2) {
-                stories.push(storiesSource[i])
-
-            }
-        }
-
-        var featured = [];
-        while (stories.length > 0 && featured.length < maxFeaturedStoriesCount) {
-            var num = getRandomInt(stories.length)
-            featured.push(stories[num]);
-            stories.splice(num, 1);
-
-        }
-
-
-
-
-        var data = $("#featuredstories .data"),
-            template = $("#templates .featuredstory");
-        for (var i in featured) {
-            var story = template.clone();
-            data.append(story);
-            var dive =
-                // $(story).find(".text").text(featured[i].name);
-                $(story).find(".text").append('<div class="themename">' + featured[i].themes[0] + '</div>');
-            $(story).find(".text").append('<div class="themeconnector"> + </div>');
-            $(story).find(".text").append('<div class="themename">' + featured[i].themes[1] + '</div>');
-
-            // $(story).find(".text").text(featured[i].name);
-            //$(story).find(".text").text(featured[i].name);
-
-            $(story).data("themes", normalizeThemes(featured[i].themes));
-            $(story).data("originalTheme", featured[i].themes);
-        }
-        featuredLoaded = true;
-    }
-
-    function processThemeConnections(themeList) {
-        //quickly calculate how often things occur together;
-        /*
-                    $.each(themeList, function (findex, theme) {
-                        var key = theme.key;
-
-                        $.each(o.themes, function (sindex, stheme) {
-                            var skey = stheme.key;
-                            if (sindex > findex) { //only if key is not same as other one
-                                var newKey = (skey < key) ? skey + "_" + key : key + "_" + skey;
-                                if (counter[newKey] == null) {
-                                    counter[newKey] = 1;
-                                } else {
-                                    counter[newKey]++;
-                                }
-                            }
-                        });
-
-                    });*/
-        var count = themeList.length;
-        for (var i = 0; i < count - 1; i++) {
-            var firstTheme = themeList[i].text;
-            for (var j = i + 1; j < count; j++) {
-                var secondTheme = themeList[j].text;
-                if (secondTheme < firstTheme) {
-                    logThemePair(secondTheme, firstTheme);
-                } else {
-                    logThemePair(firstTheme, secondTheme);
-                }
-            }
-        }
-
-        function logThemePair(first, second) {
-            var name = first + " & " + second;
-            var key = name.toLowerCase();
-            if (featuredStoriesData[key] == null) {
-                featuredStoriesData[key] = {
-                    name: name,
-                    themes: [first, second],
-                    counter: 0
-                };
-            }
-
-            featuredStoriesData[key].counter++;
-
-        }
-    }
-    console.log("dataWeGotViaJsonp");
     $.ajax({
-        //url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
-        url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts',
-        dataType: 'json',
+        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
+        dataType: 'jsonp',
         success: function (dataWeGotViaJsonp) {
-
-            console.log(dataWeGotViaJsonp);
-            processHerokuRobData(dataWeGotViaJsonp);
-
-            /*
-            var ls = dataWeGotViaJsonp.feed.entry,
-                counter = {},
-                themesList = [];
-            $.each(ls, function (index, data) {
-                if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
-                    var o = {
-                        "subject": data.gsx$woman.$t,
-                        "city": data.gsx$city.$t,
-                        "audio": "audio/" + data.gsx$audio.$t,
-                        "extract": data.gsx$excerpt.$t,
-                        "image": "",
-                        "themes": []
-                    }
-
-                    $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
-                        var text = theme.trim();
-
-                        if (text.length > 0) {
-                            var key = text.toLowerCase();
-                            o.themes.push({
-                                text: text,
-                                key: key
-                            })
-
-                            if (themesData[key] == null) {
-                                themesList.push(text);
-                                themesData[key] = [];
-                            }
-                            themesData[key].push(o);
-                        }
-
-                    });
-                    processThemeConnections(o.themes);
-
-
-                }
-
-            });
-            //print how many times we see things
-            //console.log(counter);
-
-
-            dataLoaded = true;
-            loadThemesToWindow(themesList);
-            loadFeaturedStoriesSection(featuredStoriesData);
-            */
+            processGoogleData(dataWeGotViaJsonp);
         }
+        /* url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts',
+         dataType: 'json',  
+         success: function (dataWeGotViaJsonp) {
+
+                     console.log(dataWeGotViaJsonp);
+                     processHerokuRobData(dataWeGotViaJsonp);
+
+                 }*/
     });
     enableApp();
 
 }
+
+function loadThemesToWindow(themesList) {
+    var menu = $("#featuredata"),
+        template = $("#templates .menuitem");
+    for (var i in themesList) {
+
+        var story = template.clone();
+        menu.append(story);
+        $(story).text(themesList[i]);
+        var themes = [themesList[i].trim()];
+        $(story).data("themes", normalizeThemes(themes));
+
+
+
+    }
+    themesLoaded = true;
+}
+//load featured
+/*$.getJSON("data/featuredstories.json", function (json) {
+    loadFeaturedStoriesSection(json)
+});*/
+
+
+
+function loadFeaturedStoriesSection(storiesSource) {
+
+    var stories = [];
+    for (var i in storiesSource) {
+        if (storiesSource[i].counter > 2) {
+            stories.push(storiesSource[i])
+
+        }
+    }
+
+    var featured = [];
+    while (stories.length > 0 && featured.length < maxFeaturedStoriesCount) {
+        var num = getRandomInt(stories.length)
+        featured.push(stories[num]);
+        stories.splice(num, 1);
+
+    }
+
+
+
+
+    var data = $("#featuredstories .data"),
+        template = $("#templates .featuredstory");
+    for (var i in featured) {
+        var story = template.clone();
+        data.append(story);
+        var dive =
+            // $(story).find(".text").text(featured[i].name);
+            $(story).find(".text").append('<div class="themename">' + featured[i].themes[0] + '</div>');
+        $(story).find(".text").append('<div class="themeconnector"> + </div>');
+        $(story).find(".text").append('<div class="themename">' + featured[i].themes[1] + '</div>');
+
+        // $(story).find(".text").text(featured[i].name);
+        //$(story).find(".text").text(featured[i].name);
+
+        $(story).data("themes", normalizeThemes(featured[i].themes));
+        $(story).data("originalTheme", featured[i].themes);
+    }
+    featuredLoaded = true;
+}
+
+function processThemeConnections(themeList) {
+    //quickly calculate how often things occur together;
+    /*
+                $.each(themeList, function (findex, theme) {
+                    var key = theme.key;
+
+                    $.each(o.themes, function (sindex, stheme) {
+                        var skey = stheme.key;
+                        if (sindex > findex) { //only if key is not same as other one
+                            var newKey = (skey < key) ? skey + "_" + key : key + "_" + skey;
+                            if (counter[newKey] == null) {
+                                counter[newKey] = 1;
+                            } else {
+                                counter[newKey]++;
+                            }
+                        }
+                    });
+
+                });*/
+    var count = themeList.length;
+    for (var i = 0; i < count - 1; i++) {
+        var firstTheme = themeList[i].text;
+        for (var j = i + 1; j < count; j++) {
+            var secondTheme = themeList[j].text;
+            if (secondTheme < firstTheme) {
+                logThemePair(secondTheme, firstTheme);
+            } else {
+                logThemePair(firstTheme, secondTheme);
+            }
+        }
+    }
+
+    function logThemePair(first, second) {
+        var name = first + " & " + second;
+        var key = name.toLowerCase();
+        if (featuredStoriesData[key] == null) {
+            featuredStoriesData[key] = {
+                name: name,
+                themes: [first, second],
+                counter: 0
+            };
+        }
+
+        featuredStoriesData[key].counter++;
+
+    }
+}
+
 
 function processGoogleData(dataWeGotViaJsonp) {
     var ls = dataWeGotViaJsonp.feed.entry,
@@ -258,10 +217,12 @@ function processGoogleData(dataWeGotViaJsonp) {
 }
 
 function processHerokuRobData(dataList) {
+
+
     var ls = dataList,
         counter = {},
         themesList = [];
-    console.log(ls);
+    console.log(dataList);
     $.each(ls, function (index, data) {
         //if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {}
 

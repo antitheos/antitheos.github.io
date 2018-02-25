@@ -3,7 +3,7 @@
 <head>
     <title>Tell me a Story...</title>
 
-    <script src="scripts/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery-3.3.1.min.js" type="text/javascript"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -57,35 +57,35 @@
         <div class="relatedstory" onclick='showStory(this)'></div>
         <div class="storysection astory" id="astory">
             <div class="storycontentdiv">
-            <div class="storytext">This is some interesting text, get excited now</div>
-            <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
-            <div class="storyfooter">
-                <div class="storyinfo">
-                    <div class="person"></div>
-                    <div class="city"></div>
-                </div>
-                <div id="audioplaypause" class="material-icons" onclick="togglePlay(event)">play_circle_filled</div>
-                <div class="progresstracker">
+                <div class="storytext">This is some interesting text, get excited now</div>
+                <audio class="audio" src="" id="audioitem" onvolumechange="volumeChanged(event)" ontimeupdate="timeChanged(event)" onplaying="playbackStarted(event)" onpause="playbackPaused(event)" onended="playbackEnd(event)"></audio>
+                <div class="storyfooter">
+                    <div class="storyinfo">
+                        <div class="person"></div>
+                        <div class="city"></div>
+                    </div>
+                    <div id="audioplaypause" class="material-icons" onclick="togglePlay(event)">play_circle_filled</div>
+                    <div class="progresstracker">
 
-                    <div class="progressindicator">
-                        <div class="progressindicatorinner"></div>
+                        <div class="progressindicator">
+                            <div class="progressindicatorinner"></div>
+                        </div>
+                    </div>
+
+                    <div class="volumecontrol">
+                        <div class="volumelevel" data-level="0" onclick="setVolume(event)"></div>
+                        <div class="volumelevel" data-level="0.2" onclick="setVolume(event)"></div>
+                        <div class="volumelevel" data-level="0.4" onclick="setVolume(event)"></div>
+                        <div class="volumelevel" data-level="0.6" onclick="setVolume(event)"></div>
+                        <div class="volumelevel" data-level="0.8" onclick="setVolume(event)"></div>
+                        <div class="volumelevel" data-level="1" onclick="setVolume(event)"></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="volumecontrol">
-                    <div class="volumelevel" data-level="0" onclick="setVolume(event)"></div>
-                    <div class="volumelevel" data-level="0.2" onclick="setVolume(event)"></div>
-                    <div class="volumelevel" data-level="0.4" onclick="setVolume(event)"></div>
-                    <div class="volumelevel" data-level="0.6" onclick="setVolume(event)"></div>
-                    <div class="volumelevel" data-level="0.8" onclick="setVolume(event)"></div>
-                    <div class="volumelevel" data-level="1" onclick="setVolume(event)"></div>
-                </div>
-            </div>
-            </div>
-            
             <div class="nextstory" onclick="goToNextStory()"><span class="skiptext">Skip</span> <i class="material-icons">arrow_downward</i></div>
         </div>
-        <div class="storysection howtocontinue"> 
+        <div class="storysection howtocontinue">
             <div class="prompts">Now What?</div>
             <div class="responses">
                 <div class="continuemorewrapper continueelement">
@@ -95,10 +95,10 @@
                 </div>
                 <div class="continuemmainmenu continueelement continueclickelement" onclick="returnHome()">
                     <div>Back to<br/>Themes</div><i class="material-icons">arrow_back</i>
-                </div> 
+                </div>
                 <div class="continueselecttopic continueelement continueclickelement">
                     <div>Related<br/>Theme</div>
-                    <i  class="material-icons">arrow_forward</i>
+                    <i class="material-icons">arrow_forward</i>
                 </div>
             </div>
             <div class="spacer"></div>
