@@ -42,14 +42,15 @@ function initializePage() {
         success: function (dataWeGotViaJsonp) {
             processGoogleData(dataWeGotViaJsonp);
         }
-        /* url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts',
-         dataType: 'json',  
-         success: function (dataWeGotViaJsonp) {
+        /*
+                url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts/?format=json', //'https://fierce-peak-15205.herokuapp.com/api/excerpts',
+                dataType: 'json',
+                success: function (dataWeGotViaJsonp) {
 
-                     console.log(dataWeGotViaJsonp);
-                     processHerokuRobData(dataWeGotViaJsonp);
+                    console.log(dataWeGotViaJsonp);
+                    processHerokuRobData(dataWeGotViaJsonp);
 
-                 }*/
+                }*/
     });
     enableApp();
 
@@ -169,6 +170,7 @@ function processThemeConnections(themeList) {
 
 
 function processGoogleData(dataWeGotViaJsonp) {
+    var audioRoot = "https://s3.us-east-2.amazonaws.com/historymovesfiles/audiofiles/";
     var ls = dataWeGotViaJsonp.feed.entry,
         counter = {},
         themesList = [];
@@ -177,7 +179,7 @@ function processGoogleData(dataWeGotViaJsonp) {
             var o = {
                 "subject": data.gsx$woman.$t,
                 "city": data.gsx$city.$t,
-                "audio": "audio/" + data.gsx$audio.$t,
+                "audio": audioRoot + data.gsx$audio.$t,
                 "extract": data.gsx$excerpt.$t,
                 "image": "",
                 "themes": []
