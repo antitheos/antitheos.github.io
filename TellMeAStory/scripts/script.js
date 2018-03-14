@@ -54,7 +54,7 @@ function initializePage() {
      });*/
 
     var obj = {};
-    obj = addOmekaHeaders(obj, 'http://historymovestest.omeka.net/api/items', "processOmekaTranscripts");
+    obj = addOmekaHeaders(obj, 'https://historymovestest.omeka.net/api/items', "processOmekaTranscripts");
     $.ajax(obj);
     enableApp();
 
@@ -305,7 +305,7 @@ function processOmekaTranscripts(dataList) {
     var obj = {};
 
     loadThemesToWindow(themesList);
-    obj = addOmekaHeaders(obj, 'http://historymovestest.omeka.net/api/files', "processOmekaFiles");
+    obj = addOmekaHeaders(obj, 'https://historymovestest.omeka.net/api/files', "processOmekaFiles");
 
     $.ajax(obj);
 }
