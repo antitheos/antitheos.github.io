@@ -36,24 +36,44 @@ function initializePage() {
     })*/
 
 
-    $.ajax({
-        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
-        dataType: 'jsonp',
-        success: function (dataWeGotViaJsonp) {
-            processGoogleData(dataWeGotViaJsonp);
-        }
-        /*
-                url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts/?format=json', //'https://fierce-peak-15205.herokuapp.com/api/excerpts',
-                dataType: 'json',
-                success: function (dataWeGotViaJsonp) {
+    /*  $.ajax({
+         url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
+         dataType: 'jsonp',
+         success: function (dataWeGotViaJsonp) {
+             processGoogleData(dataWeGotViaJsonp);
+         }
+         /*
+                 url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts/?format=json', //'https://fierce-peak-15205.herokuapp.com/api/excerpts',
+                 dataType: 'json',
+                 success: function (dataWeGotViaJsonp) {
 
-                    console.log(dataWeGotViaJsonp);
-                    processHerokuRobData(dataWeGotViaJsonp);
+                     console.log(dataWeGotViaJsonp);
+                     processHerokuRobData(dataWeGotViaJsonp);
 
-                }*/
-    });
+                 }
+     });*/
+
+    var obj = {};
+    obj = addOmekaHeaders(obj, 'http://historymovestest.omeka.net/api/items', "processOmekaTranscripts");
+    $.ajax(obj);
     enableApp();
 
+}
+
+function addOmekaHeaders(obj, url, callback) {
+    obj.url = url;
+    /*obj.headers = {
+        'key': '9cef49497314b608c12fd8f08d6cc3d9fff6f0b0',
+        callback: callback
+    };*/
+
+    obj.jsnp = false;
+    obj.jsonpCallback = callback;
+    obj.cache = true;
+    obj.dataType = 'jsonp';
+    obj.method = 'GET';
+
+    return obj;
 }
 
 function loadThemesToWindow(themesList) {
@@ -217,6 +237,88 @@ function processGoogleData(dataWeGotViaJsonp) {
     loadThemesToWindow(themesList);
     loadFeaturedStoriesSection(featuredStoriesData);
 }
+
+var audioKeys = {};
+
+function processOmekaTranscripts(dataList) {
+    audioKeys = {};
+    var counter = {},
+        themesList = [];
+    $.each(dataList.data, function (index, data) {
+        if (data.item_type.name != "Audio Extract" || data.files == null || data.files.url == null) {
+            return;
+        }
+
+        var o = {
+            "subject": null,
+            "city": null,
+            "audio": data.files.url,
+            "extract": null,
+            "image": null,
+            "themesTemp": null,
+            "themes": []
+        }
+
+        audioKeys[data.url] = o;
+
+
+        $.each(data.element_texts, function (index, data) {
+
+            if (data.element.name == "Transcription") {
+                o.extract = data.text;
+            }
+            if (data.element.name == "Participants") {
+                o.subject = data.text;
+            }
+            if (data.element.name == "Themes") {
+                o.themesTemp = data.text.trim().split("\n");
+            }
+            if (data.element.name == "City") {
+                o.city = data.text;
+            }
+        });
+
+        if (o.extract == null || o.subject == null || o.city == null || o.themesTemp == null) {
+            return;
+        }
+
+        $.each(o.themesTemp, function (index, theme) {
+            var text = theme.trim();
+
+            if (text.length > 0) {
+                var key = text.toLowerCase();
+                o.themes.push({
+                    text: text,
+                    key: key
+                })
+
+                if (themesData[key] == null) {
+                    themesList.push(text);
+                    themesData[key] = [];
+                }
+                themesData[key].push(o);
+            }
+
+        });
+    });
+
+    var obj = {};
+
+    loadThemesToWindow(themesList);
+    obj = addOmekaHeaders(obj, 'http://historymovestest.omeka.net/api/files', "processOmekaFiles");
+
+    $.ajax(obj);
+}
+
+function processOmekaFiles(dataList) {
+    $.each(dataList.data, function (index, data) {
+        var key = data.item.url;
+        audioKeys[key].audio = data.file_urls.original;
+    });
+    dataLoaded = true;
+    loadFeaturedStoriesSection(featuredStoriesData);
+}
+
 
 function processHerokuRobData(dataList) {
 
