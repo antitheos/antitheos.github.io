@@ -36,27 +36,28 @@ function initializePage() {
     })*/
 
 
-    /*  $.ajax({
-         url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
-         dataType: 'jsonp',
+    $.ajax({
+        url: 'https://spreadsheets.google.com/feeds/list/1DRi3DjB8YC2AURscSgNhfSEhEdQb3Ehh-5uIaR-CmDo/5/public/values?alt=json-in-script',
+        dataType: 'jsonp',
+        success: function (dataWeGotViaJsonp) {
+            processGoogleData(dataWeGotViaJsonp);
+        }
+        /*
+         url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts/?format=json', //'https://fierce-peak-15205.herokuapp.com/api/excerpts',
+         dataType: 'json',
          success: function (dataWeGotViaJsonp) {
-             processGoogleData(dataWeGotViaJsonp);
-         }
-         /*
-                 url: 'https://fierce-peak-15205.herokuapp.com/api/excerpts/?format=json', //'https://fierce-peak-15205.herokuapp.com/api/excerpts',
-                 dataType: 'json',
-                 success: function (dataWeGotViaJsonp) {
 
-                     console.log(dataWeGotViaJsonp);
-                     processHerokuRobData(dataWeGotViaJsonp);
+             console.log(dataWeGotViaJsonp);
+             processHerokuRobData(dataWeGotViaJsonp);
 
-                 }
-     });*/
-
-    var obj = {};
-    obj = addOmekaHeaders(obj, 'https://historymovestest.omeka.net/api/items', "processOmekaTranscripts");
-    $.ajax(obj);
+         }*/
+    });
+    /* 
+       var obj = {};
+       obj = addOmekaHeaders(obj, 'https://historymovestest.omeka.net/api/items', "processOmekaTranscripts");
+       $.ajax(obj); */
     enableApp();
+
 
 }
 
@@ -190,7 +191,8 @@ function processThemeConnections(themeList) {
 
 
 function processGoogleData(dataWeGotViaJsonp) {
-    var audioRoot = "https://s3.us-east-2.amazonaws.com/historymovesfiles/audiofiles/";
+    //var audioRoot = "https://s3.us-east-2.amazonaws.com/historymovesfiles/audiofiles/";
+    var audioRoot = "/audio/";
     var ls = dataWeGotViaJsonp.feed.entry,
         counter = {},
         themesList = [];
