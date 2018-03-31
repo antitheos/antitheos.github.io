@@ -192,7 +192,7 @@ function processThemeConnections(themeList) {
 
 function processGoogleData(dataWeGotViaJsonp) {
     //var audioRoot = "https://s3.us-east-2.amazonaws.com/historymovesfiles/audiofiles/";
-    var audioRoot = "/audio/";
+    var audioRoot = "audio/";
     var ls = dataWeGotViaJsonp.feed.entry,
         counter = {},
         themesList = [];
