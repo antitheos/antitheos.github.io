@@ -446,9 +446,10 @@ html {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.16);
+    background-color: rgba(0, 0, 0, 0.23);
     z-index: 9999;
-    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     display: flex;
 }
 
