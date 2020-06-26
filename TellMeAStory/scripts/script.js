@@ -80,10 +80,13 @@ function addOmekaHeaders(obj, url, callback) {
 function loadThemesToWindow(themesList) {
     var menu = $("#featuredata"),
         template = $("#templates .menuitem");
+    var id = 0;
     for (var i in themesList) {
 
         var story = template.clone();
         menu.append(story);
+        $(story).attr("id", "story" + (id++));
+
         $(story).text(themesList[i]);
         var themes = [themesList[i].trim()];
         $(story).data("themes", normalizeThemes(themes));
@@ -408,6 +411,7 @@ function enableApp() {
                 $(element).addClass("nodata");
             }
         });
+        configRouter();
         $("#body").removeClass("hidden");
 
     }
@@ -516,7 +520,7 @@ function populateStoriesToScreen() {
 }
 
 //handle select topic or story
-function showStory(e) {
+function showStory(e, stopAutoPlay) {
     if ($(e).hasClass("nodata")) {
         return;
     }
@@ -550,9 +554,9 @@ function showStory(e) {
 
     $("#body").addClass("showstory");
     updateVolume(volume);
-    playNextItem("astory0");
-
-
+    if (stopAutoPlay != true) {
+        playNextItem("astory0");
+    }
 
 }
 
@@ -689,7 +693,7 @@ function continuePlaying() {
     playItem(nextObjectId);
 }
 
-function playNextItem(key) {
+function playNextItem(key, stopAutoPlay) {
     var playKey = key;
     var current = $("#stories .playingstory");
     var top = $("#body").scrollTop();
@@ -721,19 +725,42 @@ function playNextItem(key) {
         if (items.length > 0) {
             items[0].currentTime = 0;
         }
-        playItem(playKey);
+        if (stopAutoPlay != true) {
+            playItem(playKey);
+        }
     })
 }
 
-function playItem(key) {
+function playItem(key, stopAutoPlay) {
     $(".playingstory").removeClass("playingstory");
     var obj = $("#" + key)
     obj.addClass("playingstory");
 
     var ls = $("#" + key + " .audio");
     if (ls.length > 0) {
-        ls[0].play();
+        if (stopAutoPlay != true) {
+            ls[0].play();
+        }
+
     } else if (obj.hasClass("howtocontinue")) {
         loadNowPlayingThemes(cummulatedThemes);
     }
+}
+
+var itemToPlay = null;
+
+function playFromUrl(key) {
+    var e = $("#" + key);
+    if (e.length == 0) {
+        console.log(key + ": not found")
+        return;
+    }
+    itemToPlay = e;
+    showStory(e, true);
+    $("#overlaymessage").removeClass("hidden");
+}
+
+function proceedToContent() {
+    $("#overlaymessage").addClass("hidden");
+    showStory(itemToPlay);
 }

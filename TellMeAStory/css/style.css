@@ -9,7 +9,9 @@ html {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 #body {
@@ -225,7 +227,7 @@ html {
     border-width: 2px;
     transition-duration: 400ms;
 }
- 
+
 
 
 #featuredata .menuitem.nodata,
@@ -260,36 +262,38 @@ html {
     display: flex;
     align-items: center;
 }
-.storycontentdiv{
+
+.storycontentdiv {
     padding: 16px;
     border: 1px solid rgba(0, 0, 0, 0.16);
 }
 
-.nextstory{
+.nextstory {
     cursor: pointer;
-    text-align: right; 
+    text-align: right;
     font-weight: 500;
-    color: rgba(0,0,0,0.57);
-    padding-top:8px;
+    color: rgba(0, 0, 0, 0.57);
+    padding-top: 8px;
     padding-right: 12px;
     display: none;
 }
- 
 
-.astory.playingstory .nextstory{
+
+.astory.playingstory .nextstory {
     display: block;
 }
-.nextstory .skiptext{
-        font-size: 10px;
+
+.nextstory .skiptext {
+    font-size: 10px;
     padding-right: 3px;
     line-height: 20px;
-} 
+}
 
-.nextstory i.material-icons{
-     font-size: 15px; 
+.nextstory i.material-icons {
+    font-size: 15px;
     line-height: 20px;
     position: absolute;
-    
+
 }
 
 
@@ -354,80 +358,136 @@ html {
     display: none;
 }
 
-.themename{
-    font-size:21px;
+.themename {
+    font-size: 21px;
     font-weight: 600;
 }
 
-.themeconnector{
-    font-size:32px;
+.themeconnector {
+    font-size: 32px;
     font-weight: 300;
 }
 
-.howtocontinue{
-       
-    border-top: 4px solid rgba(0,0,0,0.00);
-    padding-top:36px; 
+.howtocontinue {
+
+    border-top: 4px solid rgba(0, 0, 0, 0.00);
+    padding-top: 36px;
     overflow: hidden;
     font-weight: 400;
     font-size: 14px;
-    
+
 }
 
-.playingstory.howtocontinue{
-   border-top: 4px solid rgba(0,0,0,0.16); 
+.playingstory.howtocontinue {
+    border-top: 4px solid rgba(0, 0, 0, 0.16);
 }
 
-.prompts{
+.prompts {
     font-weight: 200;
     font-size: 32px;
     margin-bottom: 20px;
 }
-.responses{ 
+
+.responses {
     display: flex;
-    justify-content: space-between;  
+    justify-content: space-between;
 }
 
-.howtocontinue .continueelement{  
+.howtocontinue .continueelement {
     min-width: 31%;
     max-width: 31%;
-  
+
 }
-    
-.continuemore{
+
+.continuemore {
     width: 100%
 }
 
-.howtocontinue .continueclickelement{ 
-    align-items:center; 
+.howtocontinue .continueclickelement {
+    align-items: center;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     box-sizing: border-box;
     padding: 8px 12px;
     height: 64px;
-    color:rgba(0,0,0, 0.54);
+    color: rgba(0, 0, 0, 0.54);
 }
-.continuemore, .continuemmainmenu{
-    border:1px solid rgba(0,0,0,0.16); 
-    cursor:pointer;
+
+.continuemore,
+.continuemmainmenu {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    cursor: pointer;
     border-radius: 6px;
 }
 
- 
-.howtocontinue.allstoriesloaded .responses{ 
-    padding-bottom: 56px; 
-   border-bottom: 24px solid rgba(0,0,0,0.0); 
-}
-.playingstory.howtocontinue.allstoriesloaded .responses{  
-   border-bottom-color:rgba(0,0,0,0.87); 
+
+.howtocontinue.allstoriesloaded .responses {
+    padding-bottom: 56px;
+    border-bottom: 24px solid rgba(0, 0, 0, 0.0);
 }
 
-.howtocontinue.allstoriesloaded .spacer{ 
+.playingstory.howtocontinue.allstoriesloaded .responses {
+    border-bottom-color: rgba(0, 0, 0, 0.87);
+}
+
+.howtocontinue.allstoriesloaded .spacer {
     padding-bottom: 120px;
 }
 
-.howtocontinue.allstoriesloaded .continuemore{
-   display: none;
+.howtocontinue.allstoriesloaded .continuemore {
+    display: none;
 }
 
- 
+/*overlaymessage sections*/
+#overlaymessage {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.16);
+    z-index: 9999;
+    backdrop-filter: blur(3px);
+    display: flex;
+}
+
+#overlaymessage #messageBox {
+    margin: auto;
+    display: inline-block;
+    padding: 20px 30px;
+    background: white;
+    max-width: 600px;
+    box-sizing: border-box;
+    width: 80%;
+
+}
+
+#overlaymessage .messageTitle {
+    text-transform: uppercase;
+    font-weight: 500;
+    padding-bottom: 13px;
+}
+
+#overlaymessage .messagebody {
+    line-height: 1.5;
+    font-size: 20px;
+}
+
+#overlaymessage .messagebutton {
+    margin-top: 37px;
+    line-height: 2.5;
+    text-align: center;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+    background: #000;
+    color: white;
+
+}
+
+#overlaymessage .messagebutton:hover {
+
+    color: #000;
+    background: white;
+}
