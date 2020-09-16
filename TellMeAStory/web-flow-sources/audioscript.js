@@ -5,6 +5,7 @@ function windowReady() {
         setTimeout(windowReady, 1000);
         return
     }
+    console.log("fetch data")
 
     $.ajax({
         url: 'https://antitheos.github.io/TellMeAStory/web-flow-sources/themes.json',
