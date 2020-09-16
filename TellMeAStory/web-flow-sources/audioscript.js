@@ -14,7 +14,7 @@ function windowReady() {
         console.log(data)
         var el = $("#theme-selector");
         for (var x in data) {
-            el.append("<option>" + data[x] + "</option>");
+            el.append("<option value='" + data[x] + "'>" + data[x] + "</option>");
 
         }
     });
