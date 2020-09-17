@@ -209,7 +209,7 @@ function processGoogleData(dataWeGotViaJsonp) {
                 "image": "",
                 "themes": []
             }
-
+            dataEntries.push(o);
             $.each(data.gsx$themes.$t.trim().split(","), function (index, theme) {
                 var text = theme.trim();
 
@@ -222,9 +222,12 @@ function processGoogleData(dataWeGotViaJsonp) {
 
                     if (themesData[key] == null) {
                         themesList.push(text);
-                        themesData[key] = [];
+                        themesData[key] = {
+                            text: text,
+                            list: []
+                        };
                     }
-                    themesData[key].push(o);
+                    themesData[key].list.push(o);
                 }
 
             });
@@ -431,7 +434,7 @@ function togglePlay(event) {
 
 
 function findThemesData(themes) {
-    var playList = themesData[themes[0].key];
+    var playList = themesData[themes[0].key].list;
     if (playList == null || playList == undefined) {
         return [];
     }
