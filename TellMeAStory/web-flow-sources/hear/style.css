@@ -33,11 +33,55 @@
 
     -moz-appearance: none;
     -webkit-appearance: none;
-    width: 55%;
+    width: 67%;
     font-size: 24px;
 
 }
 
 #selectorsection option {
     font-size: 24px;
+}
+
+
+
+#themeswrapper {
+    max-width: 700px;
+    margin: auto;
+    padding: 100px 0px;
+}
+
+#themestitle {
+    line-height: 2;
+    font-size: 48px;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 100px
+}
+
+#themesblock {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.theme {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    width: 45%;
+    background-color: #f1f1f1;
+    margin-bottom: 30px;
+    padding-left: 20px
+}
+
+
+.theme:nth-child(odd) {
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.theme:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0px;
 }
