@@ -204,13 +204,13 @@ function processGoogleData(dataWeGotViaJsonp) {
             var o = {
                 "subject": data.gsx$woman.$t,
                 "city": data.gsx$city.$t,
-                "audio": audioRoot + data.gsx$audio.$t,
+                "audio": audioRoot + data.gsx$audio.$t + ".mp3",
                 "extract": data.gsx$excerpt.$t,
                 "image": "",
                 "themes": []
             }
 
-            $.each(data.gsx$themes.$t.trim().split(";"), function (index, theme) {
+            $.each(data.gsx$themes.$t.trim().split(","), function (index, theme) {
                 var text = theme.trim();
 
                 if (text.length > 0) {
