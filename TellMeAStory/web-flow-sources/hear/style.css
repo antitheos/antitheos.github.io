@@ -35,7 +35,11 @@
     -webkit-appearance: none;
     width: 76%;
     font-size: 24px;
-
+    padding-right: 30px;
+    background-image: url(https://antitheos.github.io/TellMeAStory/content/chevron.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-repeat: 20px;
 }
 
 #selectorsection option {
