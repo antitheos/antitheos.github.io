@@ -11,7 +11,6 @@ function windowReady() {
         url: 'https://antitheos.github.io/TellMeAStory/web-flow-sources/themes.json',
         dataType: 'json'
     }).done(function (data) {
-        console.log(data)
         var el = $("#theme-selector");
         for (var x in data) {
             el.append("<option value='" + data[x] + "'>" + data[x] + "</option>");
