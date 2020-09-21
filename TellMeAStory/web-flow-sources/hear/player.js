@@ -187,7 +187,7 @@ function showStory(themes, playlist, stopAutoPlay) {
 
 
     populateStoriesToScreen();
-
+    $("body").addClass("active");
     $("body").addClass("showstory");
     updateVolume(volume);
     if (stopAutoPlay != true) {

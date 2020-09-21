@@ -43,6 +43,12 @@ function themeSelected(e) {
 
     $("body").addClass("active");
     showStory(normalizeThemes([th.text]), th.list, false);
+}
 
+function showRelatedStory(e) {
+    var themes = $(e).data("themes");
+    var playList = $(e).data("playList").slice(); //randomize order 
+
+    showStory(themes, playList, false);
 
 }
