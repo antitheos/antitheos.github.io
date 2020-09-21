@@ -38,11 +38,11 @@
     margin-bottom: 0px;
 }
 
-.backbutton {
+.backbutton.material-icons {
     display: none;
 }
 
-.active .backbutton {
+.active .backbutton.material-icons {
     display: block;
     width: 80px;
     height: 80px;
