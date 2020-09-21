@@ -36,12 +36,15 @@ function returnToHome() {
 
 function themeSelected(e) {
     var val = $(e).val();
-    if (themesData[val]) {
+    var th = themesData[val];
+    if (th == null) {
+
         return;
     }
 
 
     $("body").addClass("active");
+    showStory([th], th.list);
 
 
 }

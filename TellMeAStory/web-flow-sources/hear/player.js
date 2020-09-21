@@ -158,15 +158,13 @@ function populateStoriesToScreen() {
 
 
 //handle select topic or story
-function showStory(e, stopAutoPlay) {
-    if ($(e).hasClass("nodata")) {
-        return;
-    }
+function showStory(themes, playlist, stopAutoPlay) {
 
-    currentThemes = $(e).data("themes");
+
+    currentThemes = themes;
     cummulatedThemes = {};
     lastCalculated = 0;
-    currentPlayList = $(e).data("playList").slice(); //randomize order
+    currentPlayList = playlist.slice(); //randomize order
 
     $("#relatedotherthemes").html("");
     $("#relatedcombinedthemes ").html("");
