@@ -26,11 +26,22 @@ function windowReady() {
 
 function returnToHome() {
     $("body").removeClass("active");
+    $("#body").animate({
+        "scrollTop": "0px"
+    }, 300);
+    $("#stories").html("");
 
 }
 
 
-function themeSelected(val) {
+function themeSelected(e) {
+    var val = $(e).val();
+    if (themesData[val]) {
+        return;
+    }
+
+
     $("body").addClass("active");
+
 
 }

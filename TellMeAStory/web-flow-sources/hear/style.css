@@ -95,6 +95,14 @@
     display: block;
 }
 
+#templates {
+    display: none;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0px;
+    width: 0px;
+}
+
 #themeswrapper {
     max-width: 700px;
     margin: auto;
