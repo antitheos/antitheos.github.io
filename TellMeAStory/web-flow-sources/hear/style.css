@@ -66,6 +66,14 @@
 }
 
 
+#audioplaysection {
+    display: none;
+    padding: 60px 0px;
+}
+
+.active #audioplaysection {
+    display: block;
+}
 
 #themeswrapper {
     max-width: 700px;
