@@ -332,7 +332,7 @@ function continuePlaying() {
 function playNextItem(key, stopAutoPlay) {
     var playKey = key;
     var current = $("#stories .playingstory");
-    var top = $("body").scrollTop();
+    var top = $(window).scrollTop();
     var nextObject = null;
 
     if (playKey != undefined) {
@@ -354,7 +354,7 @@ function playNextItem(key, stopAutoPlay) {
     }
 
 
-    $("body").animate({
+    $(window).animate({
         "scrollTop": top + "px"
     }, 300, function () {
         var items = $("#" + playKey + " .audio");
