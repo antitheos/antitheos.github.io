@@ -31,9 +31,7 @@
     margin-top: 0px;
 }
 
-.active #selectorsection > div {
-    display: flex;
-    align-items: baseline;
+.active .titleLabel {
     width: 400px;
 }
 
