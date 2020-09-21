@@ -12,12 +12,26 @@
     margin: auto;
     box-sizing: border-box;
     padding: 20px;
-    display: flex;
-    align-items: baseline;
 }
 
 #selectorsection > div {
     margin-bottom: 40px;
+}
+
+.active #selectorsection {
+    display: flex;
+    align-items: baseline;
+
+}
+
+.active #selectorsectionwrapper {
+    position: sticky;
+    top: 0px;
+}
+
+.active #selectorsection > div {
+    display: flex;
+    align-items: baseline;
     width: 573px;
 }
 
@@ -35,13 +49,16 @@
 
     -moz-appearance: none;
     -webkit-appearance: none;
-    margin-left: 32px;
     font-size: 24px;
     padding-right: 30px;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/chevron.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 15px) center;
     background-size: 20px;
+}
+
+.active #selectorsection select {
+    margin-left: 32px;
 }
 
 #selectorsection option {
