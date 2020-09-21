@@ -20,14 +20,3 @@ function windowReady() {
     });
 
 }
-
-function returntoBasic() {
-    $("body").removeClass("active");
-
-}
-
-
-function themeSelected(val) {
-    $("body").addClass("active");
-
-}
