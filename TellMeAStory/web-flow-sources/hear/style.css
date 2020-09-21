@@ -27,6 +27,7 @@
 .active #selectorsectionwrapper {
     position: sticky;
     top: 0px;
+    margin-top: 0px;
 }
 
 .active #selectorsection > div {
