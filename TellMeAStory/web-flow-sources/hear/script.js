@@ -44,7 +44,7 @@ function themeSelected(e) {
 
 
     $("body").addClass("active");
-    showStory([th], th.list);
+    showStory([th], th.list, true);
 
 
 }

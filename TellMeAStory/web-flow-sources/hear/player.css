@@ -1,0 +1,267 @@
+.content {
+    z-index: 10;
+    position: relative;
+}
+
+#storiessection {
+    margin-top: 20px;
+    padding-bottom: 72px;
+    display: flex;
+}
+
+#stories {
+    width: 64%;
+    margin-right: 20px;
+    padding-bottom: 120px;
+}
+
+#related {
+    font-size: 15px;
+    position: fixed;
+    left: 66%;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.relatedstory {
+    cursor: pointer;
+}
+
+.menuitem:hover,
+#featuredstories .featuredstory:hover,
+.relatedstory:hover {
+    color: rgba(0, 0, 0, 0.87)
+}
+
+#related .relatedesectiontitle {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.16);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+#relatedcombinedthemestitle {
+    margin-top: 40px;
+}
+
+.storysection {
+    //padding: 16px;
+    //border: 1px solid rgba(0, 0, 0, 0.16);
+    margin-bottom: 72px;
+    opacity: 0.15;
+    transform: scale(0.9);
+}
+
+.storysection.playingstory {
+    opacity: 1;
+    transform: scale(1.1);
+    border-width: 2px;
+    transition-duration: 400ms;
+}
+
+
+
+.storytext {
+    height: 320px;
+    font-size: 17px;
+    line-height: 32px;
+    overflow: hidden;
+}
+
+.storyinfo {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.storyfooter {
+    display: flex;
+    height: 32px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.progresstracker {
+    flex: 1;
+    padding: 0px 32px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.storycontentdiv {
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.nextstory {
+    cursor: pointer;
+    text-align: right;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.57);
+    padding-top: 8px;
+    padding-right: 12px;
+    display: none;
+}
+
+
+.astory.playingstory .nextstory {
+    display: block;
+}
+
+.nextstory .skiptext {
+    font-size: 10px;
+    padding-right: 3px;
+    line-height: 20px;
+}
+
+.nextstory i.material-icons {
+    font-size: 15px;
+    line-height: 20px;
+    position: absolute;
+
+}
+
+
+.progressindicator {
+    height: 6px;
+    background-color: #f2f2f2;
+    flex: 1;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.progressindicatorinner {
+    background-color: #b1b1b1;
+    width: 0%;
+    height: 100%;
+}
+
+#audioplaypause {
+    padding-left: 16px;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.volumecontrol {
+    width: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.volumelevel {
+    width: 10%;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.volumelevel.active {
+    background-color: #b1b1b1;
+}
+
+.volumelevel:nth-child(2) {
+    height: 20%;
+}
+
+.volumelevel:nth-child(3) {
+    height: 40%;
+}
+
+.volumelevel:nth-child(4) {
+    height: 60%;
+}
+
+.volumelevel:nth-child(5) {
+    height: 80%;
+}
+
+.volumelevel:nth-child(6) {
+    height: 100%;
+}
+
+#templates {
+    display: none;
+}
+
+.themename {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.themeconnector {
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.howtocontinue {
+
+    border-top: 4px solid rgba(0, 0, 0, 0.00);
+    padding-top: 36px;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+.playingstory.howtocontinue {
+    border-top: 4px solid rgba(0, 0, 0, 0.16);
+}
+
+.prompts {
+    font-weight: 200;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.responses {
+    display: flex;
+    justify-content: space-between;
+}
+
+.howtocontinue .continueelement {
+    min-width: 31%;
+    max-width: 31%;
+
+}
+
+.continuemore {
+    width: 100%
+}
+
+.howtocontinue .continueclickelement {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    height: 64px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.continuemore,
+.continuemmainmenu {
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+
+.howtocontinue.allstoriesloaded .responses {
+    padding-bottom: 56px;
+    border-bottom: 24px solid rgba(0, 0, 0, 0.0);
+}
+
+.playingstory.howtocontinue.allstoriesloaded .responses {
+    border-bottom-color: rgba(0, 0, 0, 0.87);
+}
+
+.howtocontinue.allstoriesloaded .spacer {
+    padding-bottom: 120px;
+}
+
+.howtocontinue.allstoriesloaded .continuemore {
+    display: none;
+}
