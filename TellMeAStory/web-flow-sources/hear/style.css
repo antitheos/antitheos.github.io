@@ -44,11 +44,11 @@
 
 .active .backbutton.material-icons {
     display: block;
-    width: 80px;
-    height: 80px;
-    background-color: cornflowerblue;
+    width: 90px;
+    line-height: 90px;
     cursor: pointer;
     margin-right: 20px;
+    font-size: 40px;
 }
 
 #selectorsection select {
