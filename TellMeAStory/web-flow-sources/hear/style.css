@@ -27,6 +27,8 @@
     position: sticky;
     top: 0px;
     margin-top: 0px;
+    padding: 30px 0px;
+    padding-top: 60px;
 }
 
 .titleLabel {
@@ -86,12 +88,14 @@
 
 }
 
-#audioplaysection {
+#stories {
     display: none;
     padding: 60px 0px;
+    max-width: 700px;
+    margin: auto;
 }
 
-.active #audioplaysection {
+.active #stories {
     display: block;
 }
 
