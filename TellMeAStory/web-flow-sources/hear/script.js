@@ -26,9 +26,7 @@ function windowReady() {
 
 function returnToHome() {
     $("body").removeClass("active");
-    $("#body").animate({
-        "scrollTop": "0px"
-    }, 300);
+    $(window).scrollTo(0, 0);
     $("#stories").html("");
 
 }
