@@ -188,7 +188,7 @@ function showStory(themes, playlist, stopAutoPlay) {
 
     populateStoriesToScreen();
 
-    $("#body").addClass("showstory");
+    $("body").addClass("showstory");
     updateVolume(volume);
     if (stopAutoPlay != true) {
         playNextItem("astory0");
@@ -332,7 +332,7 @@ function continuePlaying() {
 function playNextItem(key, stopAutoPlay) {
     var playKey = key;
     var current = $("#stories .playingstory");
-    var top = $("#body").scrollTop();
+    var top = $("body").scrollTop();
     var nextObject = null;
 
     if (playKey != undefined) {
@@ -354,7 +354,7 @@ function playNextItem(key, stopAutoPlay) {
     }
 
 
-    $("#body").animate({
+    $("body").animate({
         "scrollTop": top + "px"
     }, 300, function () {
         var items = $("#" + playKey + " .audio");
