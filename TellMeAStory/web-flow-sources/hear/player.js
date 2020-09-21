@@ -172,18 +172,18 @@ function showStory(themes, playlist, stopAutoPlay) {
     data.html("");
 
 
+    /*
+       var theme = $(e).text();
+       $("#SelectedStory").html("");
+       var counter = 0;
+       $.each(currentThemes, function (index, theme) {
+           counter++;
+           if (counter > 1 && counter == currentThemes.length) {
+               $("#SelectedStory").append("<span> and </span>");
+           }
+           $("#SelectedStory").append("<span class='theme'>" + theme.text + "</span>");
 
-    var theme = $(e).text();
-    $("#SelectedStory").html("");
-    var counter = 0;
-    $.each(currentThemes, function (index, theme) {
-        counter++;
-        if (counter > 1 && counter == currentThemes.length) {
-            $("#SelectedStory").append("<span> and </span>");
-        }
-        $("#SelectedStory").append("<span class='theme'>" + theme.text + "</span>");
-
-    });
+       });*/
 
 
     populateStoriesToScreen();
