@@ -88,14 +88,14 @@
 
 }
 
-#stories {
+#storiessection {
     display: none;
     padding: 60px 0px;
     max-width: 700px;
     margin: auto;
 }
 
-.active #stories {
+.active #storiessection {
     display: block;
 }
 
