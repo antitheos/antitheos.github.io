@@ -24,7 +24,7 @@ function windowReady() {
 }
 
 
-function returntoBasic() {
+function returnToHome() {
     $("body").removeClass("active");
 
 }
