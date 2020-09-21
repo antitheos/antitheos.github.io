@@ -14,9 +14,7 @@
     padding: 20px;
 }
 
-#selectorsection > div {
-    margin-bottom: 40px;
-}
+
 
 .active #selectorsection {
     display: flex;
@@ -31,8 +29,13 @@
     margin-top: 0px;
 }
 
+.titleLabel {
+    margin-bottom: 40px;
+}
+
 .active .titleLabel {
     width: 400px;
+    margin-bottom: 0px;
 }
 
 .backbutton {
