@@ -348,9 +348,9 @@ function playNextItem(key, stopAutoPlay) {
 
     var nextStory = $(".playingstory .nextstory");
     if (nextStory.length > 0) {
-        top = nextObject.position().top - nextStory.outerHeight() - 40;
+        top = nextObject.position().top - nextStory.outerHeight() - 50;
     }
-    console.log(playKey + ", top:" + top);
+    console.log(playKey + ", top --> " + top);
     window.scrollTo(0, top);
     setTimeout(function () {
         var items = $("#" + playKey + " .audio");
