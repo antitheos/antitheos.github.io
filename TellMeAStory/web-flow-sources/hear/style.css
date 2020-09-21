@@ -65,6 +65,10 @@
     font-size: 24px;
 }
 
+.active .middle-text-bg {
+    display: none;
+
+}
 
 #audioplaysection {
     display: none;
