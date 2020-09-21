@@ -346,17 +346,13 @@ function playNextItem(key, stopAutoPlay) {
         }
     }
 
-    console.log(playKey);
-
     var nextStory = $(".playingstory .nextstory");
     if (nextStory.length > 0) {
         top = nextObject.position().top - nextStory.outerHeight();
     }
-
-
-    $(window).animate({
-        "scrollTop": top + "px"
-    }, 300, function () {
+    console.log(playKey + ", top:" + top);
+    window.scrollTo(0, top);
+    setTimeout(function () {
         var items = $("#" + playKey + " .audio");
         if (items.length > 0) {
             items[0].currentTime = 0;
@@ -364,7 +360,20 @@ function playNextItem(key, stopAutoPlay) {
         if (stopAutoPlay != true) {
             playItem(playKey);
         }
-    })
+    }, 300);
+
+    /*
+        $(window).animate({
+            "scrollTop": top + "px"
+        }, 300, function () {
+            var items = $("#" + playKey + " .audio");
+            if (items.length > 0) {
+                items[0].currentTime = 0;
+            }
+            if (stopAutoPlay != true) {
+                playItem(playKey);
+            }
+        })*/
 }
 
 function playItem(key, stopAutoPlay) {
