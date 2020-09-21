@@ -136,7 +136,7 @@ function populateStoriesToScreen() {
         x.data("mystory", story);
 
         $("#" + key + " .storytext").text(story.extract);
-        $("#" + key + " .audio").attr("src", story.audio);
+        $("#" + key + " .audio").attr("src", "https://antitheos.github.io/TellMeAStory/" + story.audio);
         $("#" + key + " .audio").attr("data-myparent", "astory" + (index));
         $("#" + key + " #audioplaypause").attr("data-myparent", "astory" + (index));
         $("#" + key + " .audio").attr("data-next", "astory" + (index + 1));
