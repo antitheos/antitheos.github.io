@@ -12,6 +12,8 @@
     margin: auto;
     box-sizing: border-box;
     padding: 20px;
+    display: flex;
+    align-items: baseline;
 }
 
 #selectorsection > div {
@@ -34,6 +36,7 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     width: 76%;
+    margin-left: 32px;
     font-size: 24px;
     padding-right: 30px;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/chevron.svg);
