@@ -21,7 +21,6 @@
 }
 
 #selectorsection select {
-    width: 50px;
     border: 1px solid black;
     line-height: 90px;
     height: 90px;
@@ -35,7 +34,6 @@
 
     -moz-appearance: none;
     -webkit-appearance: none;
-    width: 76%;
     margin-left: 32px;
     font-size: 24px;
     padding-right: 30px;
