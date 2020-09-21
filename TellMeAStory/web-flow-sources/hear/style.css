@@ -21,6 +21,7 @@
 .active #selectorsection {
     display: flex;
     align-items: baseline;
+    font-size: 30px;
 
 }
 
@@ -33,7 +34,20 @@
 .active #selectorsection > div {
     display: flex;
     align-items: baseline;
-    width: 573px;
+    width: 400px;
+}
+
+.backbutton {
+    display: none;
+}
+
+.active .backbutton {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-color: cornflowerblue;
+    cursor: pointer;
+    margin-right: 20px;
 }
 
 #selectorsection select {
