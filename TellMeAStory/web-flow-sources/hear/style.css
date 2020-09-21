@@ -35,7 +35,8 @@
 }
 
 .active .titleLabel {
-    width: 400px;
+    min-width: 194px;
+    flex: 0;
     margin-bottom: 0px;
 }
 
@@ -45,7 +46,7 @@
 
 .active .backbutton.material-icons {
     display: block;
-    width: 90px;
+    width: 40px;
     line-height: 90px;
     cursor: pointer;
     margin-right: 20px;
@@ -76,6 +77,8 @@
 
 .active #selectorsection select {
     margin-left: 32px;
+    line-height: 60px;
+    height: 60px;
 }
 
 #selectorsection option {
