@@ -348,7 +348,7 @@ function playNextItem(key, stopAutoPlay) {
 
     var nextStory = $(".playingstory .nextstory");
     if (nextStory.length > 0) {
-        top = nextObject.position().top - nextStory.outerHeight() - 8;
+        top = nextObject.position().top - nextStory.outerHeight() - 100;
     }
     console.log(playKey + ", top --> " + top);
     window.scrollTo(0, top);
