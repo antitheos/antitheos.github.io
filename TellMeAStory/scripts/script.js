@@ -11,7 +11,8 @@ var themesData = {},
     minFeaturedCount = 3,
     maxFeaturedStoriesCount = 6,
     maxPlayingStoriesCount = 3,
-    lastCalculated = 0;
+    lastCalculated = 0,
+    errors = [];
 
 function initializePage() {
 
@@ -81,6 +82,7 @@ function loadThemesToWindow(themesList) {
     var menu = $("#featuredata"),
         template = $("#templates .menuitem");
     var id = 0;
+
     for (var i in themesList) {
 
         var story = template.clone();
@@ -199,39 +201,61 @@ function processGoogleData(dataWeGotViaJsonp) {
     var ls = dataWeGotViaJsonp.feed.entry,
         counter = {},
         themesList = [];
+    var count = ls.length;
     $.each(ls, function (index, data) {
+        var host = window.location.hostname.toLowerCase();
+        var validateFiles = (host == "127.0.0.1" || host == "localhost")
+
         if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {
             var o = {
                 "subject": data.gsx$woman.$t,
                 "city": data.gsx$city.$t,
-                "audio": audioRoot + data.gsx$audio.$t + ".mp3",
+                "key": data.gsx$audio.$t,
+                row: dataEntries.length + 1,
+                "audio": (audioRoot + data.gsx$audio.$t + ".mp3").toLowerCase(),
                 "extract": data.gsx$excerpt.$t,
                 "image": "",
                 "themes": []
             }
-            dataEntries.push(o);
-            $.each(data.gsx$themes.$t.trim().split(","), function (index, theme) {
-                var text = theme.trim();
 
-                if (text.length > 0) {
-                    var key = text.toLowerCase();
-                    o.themes.push({
-                        text: text,
-                        key: key
-                    })
+            var host = window.location.hostname.toLowerCase();
+            if (validateFiles) {
+                $.get(o.audio).fail((e) => processError(o)).done(e => processSuccess(o, data.gsx$themes.$t.trim()))
+            } else {
+                processSuccess(o, data.gsx$themes.$t.trim())
+            }
 
-                    if (themesData[key] == null) {
-                        themesList.push(text);
-                        themesData[key] = {
+
+            function processError(e) {
+                errors.push(e)
+            }
+
+            function processSuccess(ob, themes) {
+                dataEntries.push(ob);
+                $.each(themes.split(","), function (index, theme) {
+                    var text = theme.trim();
+
+                    if (text.length > 0) {
+                        var key = text.toLowerCase();
+                        ob.themes.push({
                             text: text,
-                            list: []
-                        };
-                    }
-                    themesData[key].list.push(o);
-                }
+                            key: key
+                        });
 
-            });
-            processThemeConnections(o.themes);
+                        if (themesData[key] == null) {
+                            themesList.push(text);
+                            themesData[key] = {
+                                text: text,
+                                list: []
+                            };
+                        }
+                        themesData[key].list.push(ob);
+                    }
+
+                });
+                processThemeConnections(ob.themes);
+            }
+
 
 
         }
@@ -239,144 +263,22 @@ function processGoogleData(dataWeGotViaJsonp) {
     });
     //print how many times we see things
     //console.log(counter);
+    processingDone();
 
+    function processingDone() {
+        if (dataEntries.length + errors.length != count) {
+            setTimeout(processingDone, 500)
+        } else {
 
-    dataLoaded = true;
-    loadThemesToWindow(themesList);
-    loadFeaturedStoriesSection(featuredStoriesData);
+            dataLoaded = true;
+            loadThemesToWindow(themesList);
+            loadFeaturedStoriesSection(featuredStoriesData);
+        }
+    };
 }
 
 var audioKeys = {};
 
-function processOmekaTranscripts(dataList) {
-    audioKeys = {};
-    var counter = {},
-        themesList = [];
-    $.each(dataList.data, function (index, data) {
-        if (data.item_type.name != "Audio Extract" || data.files == null || data.files.url == null) {
-            return;
-        }
-
-        var o = {
-            "subject": null,
-            "city": null,
-            "audio": data.files.url,
-            "extract": null,
-            "image": null,
-            "themesTemp": null,
-            "themes": []
-        }
-
-        audioKeys[data.url] = o;
-
-
-        $.each(data.element_texts, function (index, data) {
-
-            if (data.element.name == "Transcription") {
-                o.extract = data.text;
-            }
-            if (data.element.name == "Participants") {
-                o.subject = data.text;
-            }
-            if (data.element.name == "Themes") {
-                o.themesTemp = data.text.trim().split("\n");
-            }
-            if (data.element.name == "City") {
-                o.city = data.text;
-            }
-        });
-
-        if (o.extract == null || o.subject == null || o.city == null || o.themesTemp == null) {
-            return;
-        }
-
-        $.each(o.themesTemp, function (index, theme) {
-            var text = theme.trim();
-
-            if (text.length > 0) {
-                var key = text.toLowerCase();
-                o.themes.push({
-                    text: text,
-                    key: key
-                })
-
-                if (themesData[key] == null) {
-                    themesList.push(text);
-                    themesData[key] = [];
-                }
-                themesData[key].push(o);
-            }
-
-        });
-    });
-
-    var obj = {};
-
-    loadThemesToWindow(themesList);
-    obj = addOmekaHeaders(obj, 'https://historymovestest.omeka.net/api/files', "processOmekaFiles");
-
-    $.ajax(obj);
-}
-
-function processOmekaFiles(dataList) {
-    $.each(dataList.data, function (index, data) {
-        var key = data.item.url;
-        audioKeys[key].audio = data.file_urls.original;
-    });
-    dataLoaded = true;
-    loadFeaturedStoriesSection(featuredStoriesData);
-}
-
-
-function processHerokuRobData(dataList) {
-
-
-    var ls = dataList,
-        counter = {},
-        themesList = [];
-    console.log(dataList);
-    $.each(ls, function (index, data) {
-        //if (data.gsx$audio.$t != null && data.gsx$audio.$t != undefined && data.gsx$audio.$t.trim().length > 0) {}
-
-        var o = {
-            "subject": data.women.name,
-            "city": data.women.location.city,
-            "audio": "",
-            "extract": data.extract,
-            "image": data.images,
-            "themes": []
-        }
-
-        $.each(data.themes, function (index, theme) {
-            var text = theme.theme.trim();
-
-            if (text.length > 0) {
-                var key = text.toLowerCase();
-                o.themes.push({
-                    text: text,
-                    key: key
-                })
-
-                if (themesData[key] == null) {
-                    themesList.push(text);
-                    themesData[key] = [];
-                }
-                themesData[key].push(o);
-            }
-
-        });
-        processThemeConnections(o.themes);
-
-
-    });
-    //print how many times we see things
-    //console.log(counter);
-
-
-    dataLoaded = true;
-    loadThemesToWindow(themesList);
-    loadFeaturedStoriesSection(featuredStoriesData);
-}
 
 
 
@@ -405,7 +307,7 @@ function enableApp() {
     if (themesLoaded == false || dataLoaded == false || featuredLoaded == false) {
         setTimeout(enableApp, 500)
     } else {
-
+        console.log("setting page")
         $("#featuredata .menuitem,#featuredstories .featuredstory").each(function (index, element) {
             var themes = $(element).data("themes"),
                 playList = findThemesData(themes);
