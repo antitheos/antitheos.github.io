@@ -329,6 +329,14 @@ function continuePlaying() {
     playItem(nextObjectId);
 }
 
+function replayAll() {
+
+}
+
+function replay() {
+
+}
+
 function playNextItem(key, stopAutoPlay) {
     var playKey = key;
     var current = $("#stories .playingstory");

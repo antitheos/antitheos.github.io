@@ -96,6 +96,12 @@
     border: 1px solid rgba(0, 0, 0, 0.16);
 }
 
+.nextactions {
+    display: flex;
+    margin-left: auto;
+    width: max-content;
+}
+
 .nextstory {
     cursor: pointer;
     text-align: right;
@@ -104,6 +110,7 @@
     padding-top: 8px;
     padding-right: 12px;
     display: none;
+    margin-left: 20px;
 }
 
 
