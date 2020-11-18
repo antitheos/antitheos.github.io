@@ -330,11 +330,18 @@ function continuePlaying() {
 }
 
 function replayAll() {
-
+    var ls = $(".playingstory audio");
+    if (ls.length == 1) {
+        ls[0].pause()
+    }
+    playNextItem("astory0");
 }
 
-function replay() {
-
+function replay(event) {
+    var ls = $(".playingstory audio");
+    if (ls.length == 1) {
+        ls[0].currentTime = 0
+    }
 }
 
 function playNextItem(key, stopAutoPlay) {
