@@ -125,7 +125,8 @@
 
 
 .astory.playingstory .nextstory {
-    display: block;
+    display: flex;
+    align-items: center;
 }
 
 .nextstory .skiptext {
