@@ -20,7 +20,6 @@
 #sharedstoryfooter {
     position: sticky;
     bottom: 10px;
-    height: 64px;
     overflow: hidden;
 }
 
@@ -128,7 +127,6 @@
     font-weight: 500;
     color: rgba(0, 0, 0, 0.57);
     padding-top: 8px;
-    display: none;
     margin-left: 20px;
 }
 
