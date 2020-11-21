@@ -142,7 +142,11 @@
     margin-top: 100px
 }
 
-#themesblock {}
+.collection-item {
+    text-decoration: underline;
+    cursor: pointer;
+
+}
 
 .theme {
     position: relative;

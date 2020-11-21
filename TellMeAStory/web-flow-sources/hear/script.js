@@ -64,7 +64,7 @@ function selectRandomTheme() {
 function loadCollections() {
     var el = $("#collection-selector");
     for (var x in collection) {
-        el.append("<div class='collection-item' onclick='playCollection(this)" + x + "'>" + x + "</div>");
+        el.append("<div class='collection-item' onclick='playCollection(this)'>" + x + "</div>");
 
     }
 }
