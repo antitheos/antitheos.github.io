@@ -306,6 +306,14 @@
         width: 100%;
     }
 
+    .storysection:not(.playingstory) {
+        opacity: 0%;
+    }
+
+    .nextactions {
+        font-size: 16px;
+    }
+
     .active #storiessection {
         margin-top: 0px;
         padding-top: 30px;
