@@ -17,7 +17,10 @@
     box-sizing: border-box;
 }
 
-
+#selectorsectionwrapper .randomselection {
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .active #selectorsection {
     display: flex;
