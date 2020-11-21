@@ -29,6 +29,7 @@
 
 .relatedstory {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .menuitem:hover,
