@@ -1,8 +1,12 @@
 #selectorsectionwrapper {
-    padding: 100px 0px;
-    background-color: #efefef;
+    background-color: black;
     z-index: 100;
+    color: white;
+    height: 100vh;
+    align-items: center;
+    display: flex;
 }
+
 
 #selectorsection {
     font-size: 50px;
@@ -26,7 +30,7 @@
     position: sticky;
     top: 42px;
     margin-top: 0px;
-    padding: 24px 0px;
+    height: 120px;
 }
 
 .titleLabel {
@@ -53,7 +57,7 @@
 }
 
 #selectorsection select {
-    border: 1px solid black;
+    border: 1px solid white;
     line-height: 90px;
     height: 90px;
     border-radius: 0px;
@@ -154,4 +158,11 @@
 .theme:nth-child(even) {
     margin-left: auto;
     margin-right: 0px;
+}
+
+
+@media screen and (max-width: 991px) {
+    .active #selectorsectionwrapper {
+        margin-top: 7vh;
+    }
 }

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", windowReady);
 var themesData = {};
+var themesDataList = [];
 
 function windowReady() {
     if ($ == null || $ == undefined) {
@@ -16,6 +17,7 @@ function windowReady() {
 
         var el = $("#theme-selector");
         for (var x in themesData) {
+            themesDataList.push(data[x])
             el.append("<option value='" + x + "'>" + data[x].text + "</option>");
 
         }
@@ -40,9 +42,20 @@ function themeSelected(e) {
         return;
     }
 
+    playTheme(th)
 
+}
+
+function playTheme(th) {
     $("body").addClass("active");
     showStory(normalizeThemes([th.text]), th.list, false);
+}
+
+function selectRandomTheme() {
+    var index = Math.floor(Math.random() * Math.floor(themesDataList.length));
+    var rec = themesDataList[index];
+    playTheme(rec)
+
 }
 
 function showRelatedStory(e) {
