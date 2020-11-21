@@ -5,12 +5,12 @@
 
 .active #storiessection {
     margin-top: 0px;
-    padding-top: 30px;
     display: flex;
     align-items: flex-start;
     height: calc(100vh - 300px);
     position: relative;
     overflow: scroll;
+    box-sizing: border-box;
 }
 
 #stories {
@@ -318,7 +318,6 @@
 
     .active #storiessection {
         margin-top: 0px;
-        padding-top: 30px;
     }
 
     .storysection.playingstory {
