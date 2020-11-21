@@ -52,11 +52,12 @@
 }
 
 .storysection {
-    //padding: 16px;
-    //border: 1px solid rgba(0, 0, 0, 0.16);
     margin-bottom: 72px;
     opacity: 0.15;
     transform: scale(0.9);
+    transform: scale(0.9);
+    height: 0;
+    overflow: hidden;
 }
 
 .storysection.playingstory {
@@ -64,6 +65,7 @@
     transform: scale(1.1);
     border-width: 2px;
     transition-duration: 400ms;
+    height: auto;
 }
 
 

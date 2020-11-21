@@ -366,7 +366,7 @@ function playNextItem(key, stopAutoPlay) {
         top = nextObject.position().top - nextStory.outerHeight() - 100;
     }
     console.log(playKey + ", top --> " + top);
-    window.scrollTo(0, top);
+    //window.scrollTo(0, top);
     setTimeout(function () {
         var items = $("#" + playKey + " .audio");
         if (items.length > 0) {
