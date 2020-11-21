@@ -136,10 +136,9 @@ function populateStoriesToScreen() {
         x.data("mystory", story);
 
         $("#" + key + " .storytext").text(story.extract);
-        $("#" + key + " .audio").attr("src", "https://antitheos.github.io/TellMeAStory/" + story.audio);
-        $("#" + key + " .audio").attr("data-myparent", "astory" + (index));
-        $("#" + key + " #audioplaypause").attr("data-myparent", "astory" + (index));
-        $("#" + key + " .audio").attr("data-next", "astory" + (index + 1));
+        $("#" + key).attr("audiosrc", "https://antitheos.github.io/TellMeAStory/" + story.audio);
+        $("#" + key).attr("audio-data-myparent", "astory" + (index));
+        $("#" + key).attr("audio-data-next", "astory" + (index + 1));
 
         $("#" + key + " .person").text(story.subject);
         $("#" + key + " .city").text(story.city);
@@ -303,7 +302,7 @@ function loadNowPlayingThemes(themes) {
 }
 
 function goToNextStory(e) {
-    var o = $(".playingstory audio");
+    var o = $("#audioitem");
 
     if (o.length > 0) {
         var audio = o[0];
@@ -330,7 +329,7 @@ function continuePlaying() {
 }
 
 function replayAll() {
-    var ls = $(".playingstory audio");
+    var ls = $("#audioitem");
     if (ls.length == 1) {
         ls[0].pause()
     }
@@ -338,7 +337,7 @@ function replayAll() {
 }
 
 function replay(event) {
-    var ls = $(".playingstory audio");
+    var ls = $("#audioitem");
     if (ls.length == 1) {
         ls[0].currentTime = 0
     }
@@ -368,7 +367,7 @@ function playNextItem(key, stopAutoPlay) {
     console.log(playKey + ", top --> " + top);
     //window.scrollTo(0, top);
     setTimeout(function () {
-        var items = $("#" + playKey + " .audio");
+        var items = $("#audioitem");
         if (items.length > 0) {
             items[0].currentTime = 0;
         }
@@ -394,9 +393,17 @@ function playNextItem(key, stopAutoPlay) {
 function playItem(key, stopAutoPlay) {
     $(".playingstory").removeClass("playingstory");
     var obj = $("#" + key)
+
+
+    $("#audioitem").attr("src", obj.attr("audiosrc"));
+    $("#audioitem").attr("data-myparent", obj.attr("audio-data-myparent"));
+    $("#audioplaypause").attr("data-myparent", obj.attr("audio-data-myparent"));
+    $("#audioitem").attr("data-next", obj.attr("audio-data-next"));
+
+
     obj.addClass("playingstory");
 
-    var ls = $("#" + key + " .audio");
+    var ls = $("#audioitem");
     if (ls.length > 0) {
         if (stopAutoPlay != true) {
             ls[0].play();
