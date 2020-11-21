@@ -5,10 +5,7 @@
 
 .active #storiessection {
     margin-top: 0px;
-    height: calc(100vh - 300px);
-    position: relative;
-    overflow: scroll;
-    box-sizing: border-box;
+    min-height: calc(100vh - 300px);
 }
 
 #storiesbody {
@@ -18,7 +15,6 @@
 
 #stories {
     margin-right: 20px;
-    min-height: calc(100% - 64px);
 }
 
 #sharedstoryfooter {
