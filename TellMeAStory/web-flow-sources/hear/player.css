@@ -58,6 +58,7 @@
     transform: scale(0.9);
     height: 0;
     overflow: hidden;
+    margin-bottom: 0px;
 }
 
 .storysection.playingstory {
