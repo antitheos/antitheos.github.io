@@ -295,3 +295,18 @@
     }
 
 }
+
+@media screen and (max-width: 479px) {
+    #related {
+        display: none;
+    }
+
+    #stories {
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .storysection.playingstory {
+        transform: scale(1);
+    }
+}
