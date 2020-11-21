@@ -222,8 +222,8 @@
 
 .howtocontinue {
 
-    border-top: 4px solid rgba(0, 0, 0, 0.00);
-    padding-top: 36px;
+    padding-top: 70px;
+    height: 0px;
     overflow: hidden;
     font-weight: 400;
     font-size: 14px;
@@ -231,7 +231,7 @@
 }
 
 .playingstory.howtocontinue {
-    border-top: 4px solid rgba(0, 0, 0, 0.16);
+    height: auto;
 }
 
 .prompts {
