@@ -66,6 +66,10 @@ function togglePlay(event) {
     }
 }
 
+function stopAudio() {
+    var audio = $("#audioitem")[0];
+    audio.pause();
+}
 
 function findThemesData(themes) {
     var playList = themesData[themes[0].key].list;
@@ -364,7 +368,7 @@ function playNextItem(key, stopAutoPlay) {
         top = nextObject.position().top - nextStory.outerHeight() - 100;
     }
     console.log(playKey + ", top --> " + top);
-    //window.scrollTo(0, top);
+    window.scrollTo(0, 0);
     setTimeout(function () {
         var items = $("#audioitem");
         if (items.length > 0) {

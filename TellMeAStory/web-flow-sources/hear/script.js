@@ -27,6 +27,7 @@ function windowReady() {
 
 
 function returnToHome() {
+    stopAudio();
     $("body").removeClass("active");
     window.scrollTo(0, 0);
     $("#stories").html("");
