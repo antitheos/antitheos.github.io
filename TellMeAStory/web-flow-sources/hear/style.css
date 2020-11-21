@@ -136,18 +136,13 @@
 
 #themestitle {
     line-height: 2;
-    font-size: 48px;
+    font-size: 32px;
     text-align: center;
     font-weight: 700;
     margin-top: 100px
 }
 
-#themesblock {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-}
+#themesblock {}
 
 .theme {
     position: relative;
