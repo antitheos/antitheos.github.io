@@ -71,7 +71,8 @@ function playCollection(val) {
             }
         }
         return true;
-    })
+    });
+    console.log(data)
 
 
 
