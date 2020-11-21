@@ -20,6 +20,8 @@
 #selectorsectionwrapper .randomselection {
     text-decoration: underline;
     cursor: pointer;
+    font-size: 30px;
+    line-height: 82px;
 }
 
 .active #selectorsection {
