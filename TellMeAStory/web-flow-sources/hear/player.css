@@ -10,7 +10,7 @@
 #storiesbody {
     display: flex;
     align-items: flex-start;
-    min-height: calc(100vh - 300px);
+    min-height: calc(100vh - 356px);
 }
 
 #stories {
