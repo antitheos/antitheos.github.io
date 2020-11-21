@@ -173,5 +173,6 @@
 @media screen and (max-width: 991px) {
     .active #selectorsectionwrapper {
         margin-top: 7vh;
+        top: 7vh;
     }
 }

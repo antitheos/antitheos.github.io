@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", windowReady);
 var themesData = {};
-var themesDataList = [];
 
 function windowReady() {
     if ($ == null || $ == undefined) {
@@ -17,7 +16,6 @@ function windowReady() {
 
         var el = $("#theme-selector");
         for (var x in themesData) {
-            themesDataList.push(data[x])
             el.append("<option value='" + x + "'>" + data[x].text + "</option>");
 
         }
@@ -52,10 +50,12 @@ function playTheme(th) {
 }
 
 function selectRandomTheme() {
-    var index = Math.floor(Math.random() * Math.floor(themesDataList.length));
-    var rec = themesDataList[index];
-    playTheme(rec)
+    var ls = $("#theme-selector option");
 
+    var index = Math.floor(Math.random() * Math.floor(ls.length - 1));
+    var rec = ls[index + 1];
+    $("#theme-selector").val(rec.value);
+    themeSelected($("#theme-selector"))
 }
 
 function showRelatedStory(e) {
