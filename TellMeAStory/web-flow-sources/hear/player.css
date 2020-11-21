@@ -118,6 +118,7 @@
     display: flex;
     margin-left: auto;
     width: max-content;
+    padding-top: 20px;
 }
 
 .nextstory {
