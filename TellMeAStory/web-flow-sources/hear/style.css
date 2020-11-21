@@ -177,12 +177,12 @@
 }
 
 
-@media screen and (max-width: 479px) {}
+@media screen and (max-width: 479px) {
 
-.widthControl {
-    padding-right: 15px;
-    padding-left: 15px;
-}
+    .widthControl {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
 }
 
 @media screen and (max-width: 991px) {
