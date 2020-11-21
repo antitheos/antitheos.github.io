@@ -5,12 +5,12 @@
 
 .active #storiessection {
     margin-top: 0px;
-    min-height: calc(100vh - 300px);
 }
 
 #storiesbody {
     display: flex;
     align-items: flex-start;
+    min-height: calc(100vh - 300px);
 }
 
 #stories {
