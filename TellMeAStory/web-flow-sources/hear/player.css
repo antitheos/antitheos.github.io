@@ -60,12 +60,9 @@
 }
 
 .storysection {
-    margin-bottom: 72px;
-    opacity: 0.15;
-    transform: scale(0.9);
+    opacity: 0;
     transform: scale(0.9);
     height: 0;
-    overflow: hidden;
     margin-bottom: 0px;
 }
 
@@ -73,8 +70,6 @@
     opacity: 1;
     border-width: 2px;
     transition-duration: 400ms;
-    height: auto;
-    height: calc(100vh - 329px);
 }
 
 
