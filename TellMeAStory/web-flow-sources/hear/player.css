@@ -16,6 +16,15 @@
 #stories {
     width: 64%;
     margin-right: 20px;
+    min-height: calc(100% - 64px);
+    ;
+}
+
+#sharedstoryfooter {
+    position: sticky;
+    bottom: 0;
+    height: 64px;
+    overflow: hidden;
 }
 
 #related {
