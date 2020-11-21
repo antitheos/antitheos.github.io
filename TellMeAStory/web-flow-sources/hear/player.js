@@ -58,7 +58,7 @@ function enableApp() {
 function togglePlay(event) {
     var o = event.srcElement,
         parent = $(o).attr("data-myparent"),
-        audio = $("#" + parent + " #audioitem")[0];
+        audio = $("#audioitem")[0];
     if (audio.paused) {
         audio.play();
     } else {
@@ -210,7 +210,7 @@ function setVolume(event) {
 
 function updateVolume(vol) {
     volume = vol;
-    $(".audio").each(function (index, audioElement) {
+    $("#audioitem").each(function (index, audioElement) {
         audioElement.volume = volume;
     });
 }
@@ -222,7 +222,7 @@ function volumeChanged(event) {
 
 
 
-    $("#" + parent + " .volumelevel").each(function () {
+    $("#sharedstoryfooter .volumelevel").each(function () {
         if ($(this).attr('data-level') <= vol) {
             $(this).addClass('active'); // Or whatever
         } else {
@@ -240,20 +240,20 @@ function timeChanged(event) {
     pct = Math.round(pct * 100) + "%"
     var parent = $(o).attr("data-myparent");
 
-    $("#" + parent + " .progressindicatorinner").css("width", pct);
+    $("#sharedstoryfooter .progressindicatorinner").css("width", pct);
 }
 
 function playbackPaused(event) {
     var o = event.srcElement;
     var parent = $(o).attr("data-myparent");
-    $("#" + parent + " #audioplaypause").text("play_circle_filled");
+    $("#sharedstoryfooter #audioplaypause").text("play_circle_filled");
 }
 var currentObject = null;
 
 function playbackStarted(event) {
     var o = event.srcElement;
     var parent = $(o).attr("data-myparent");
-    $("#" + parent + " #audioplaypause").text("pause_circle_filled");
+    $("#sharedstoryfooter #audioplaypause").text("pause_circle_filled");
     var obj = $("#" + parent);
     var story = obj.data("mystory");
     if (story != currentObject) {
