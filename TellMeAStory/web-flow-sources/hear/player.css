@@ -324,8 +324,12 @@
     }
 
     .howtocontinue .continueelement {
-        min-width: 30%;
-        max-width: 30%;
+        min-width: 31%;
+        max-width: 31%;
+    }
+
+    .responses {
+        flex-wrap: wrap;
     }
 
     #pickrelated {
