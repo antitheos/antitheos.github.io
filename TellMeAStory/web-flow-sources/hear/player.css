@@ -7,6 +7,7 @@
     margin-top: 40px;
     padding-bottom: 72px;
     display: flex;
+    align-items: flex-start;
 }
 
 #stories {
@@ -17,8 +18,9 @@
 
 #related {
     font-size: 15px;
-    position: fixed;
-    left: 66%;
+    position: sticky;
+    margin-left: 19px;
+    top: 200px;
     padding-left: 10px;
     padding-top: 10px;
     font-weight: 400;
@@ -281,4 +283,13 @@
 
 .howtocontinue.allstoriesloaded .continuemore {
     display: none;
+}
+
+
+@media screen and (max-width: 991px) {
+    #related {
+        position: sticky;
+        top: 240px;
+    }
+
 }

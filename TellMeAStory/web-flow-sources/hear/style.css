@@ -148,7 +148,7 @@
 .collection-item {
     text-decoration: underline;
     cursor: pointer;
-    line-height: 1.6;
+    line-height: 2;
     font-size: 18px
 }
 
