@@ -399,7 +399,7 @@ function playItem(key, stopAutoPlay) {
     obj.addClass("playingstory");
 
     var ls = $("#audioitem");
-    else if (obj.hasClass("howtocontinue")) {
+    if (obj.hasClass("howtocontinue")) {
         loadNowPlayingThemes(cummulatedThemes);
     } else if (ls.length > 0) {
 
