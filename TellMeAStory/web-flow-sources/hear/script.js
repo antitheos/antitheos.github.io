@@ -117,6 +117,10 @@ function showRelatedStory(e) {
 
 }
 
+
+function toggleRelatedItems() {
+    $("#storiessection").toggleClass("displayRelated");
+}
 var collection = {
     "How can we center women in the history of HIV/AIDS?": ["Knowledge about HIV/AIDS", "Contracting HIV/AIDS from a male partner", "In the streets", "HIV saved my life", "Future"],
     "How does family matter in the history of HIV / AIDS ?": ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"],

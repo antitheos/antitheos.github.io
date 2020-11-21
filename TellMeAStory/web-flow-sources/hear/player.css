@@ -350,4 +350,19 @@
         width: 40%;
         margin-left: auto;
     }
+
+    #storiessection.displayRelated #stories {
+        display: none;
+    }
+
+    #related {
+        position: unset;
+        top: 240px;
+        padding-left: 0px;
+        margin: 0px;
+    }
+
+    #storiessection.displayRelated #related {
+        display: block;
+    }
 }
