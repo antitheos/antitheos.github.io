@@ -25,7 +25,7 @@
 .active #selectorsection {
     display: flex;
     align-items: center;
-    font-size: 30px;
+    font-size: 28px;
 
 }
 
@@ -37,7 +37,6 @@
     position: sticky;
     top: 42px;
     margin-top: 0px;
-    padding: 42px;
     height: 120px;
 }
 
