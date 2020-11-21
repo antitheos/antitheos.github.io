@@ -400,14 +400,16 @@ function playItem(key, stopAutoPlay) {
 
     var ls = $("#audioitem");
     if (obj.hasClass("howtocontinue")) {
+        $("#sharedstoryfooter").attr("disabled", "disabled");
+
         loadNowPlayingThemes(cummulatedThemes);
     } else if (ls.length > 0) {
-
         $("#audioitem").attr("src", obj.attr("audiosrc"));
         $("#audioitem").attr("data-myparent", obj.attr("audio-data-myparent"));
         $("#audioplaypause").attr("data-myparent", obj.attr("audio-data-myparent"));
         $("#audioitem").attr("data-next", obj.attr("audio-data-next"));
 
+        $("#sharedstoryfooter").attr("disabled", null);
 
         if (stopAutoPlay != true) {
             ls[0].play();
