@@ -4,7 +4,8 @@
 }
 
 .active #storiessection {
-    margin-top: 40px;
+    margin-top: 0px;
+    padding-top: 30px;
     display: flex;
     align-items: flex-start;
     height: calc(100vh - 300px);
