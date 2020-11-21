@@ -29,6 +29,10 @@
 
 }
 
+.active .randomselection {
+    display: none;
+}
+
 .active #selectorsectionwrapper {
     position: sticky;
     top: 42px;
