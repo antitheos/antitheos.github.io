@@ -187,6 +187,32 @@
         padding-right: 15px;
         padding-left: 15px;
     }
+
+    .active #selectorsectionwrapper {
+        min-height: auto;
+        height: auto;
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .active #selectorsection {
+        display: block;
+    }
+
+    .active .backbutton.material-icons {
+        position: absolute;
+    }
+
+    .active .titleLabel {
+        margin-left: 60px;
+        line-height: 90px;
+    }
+
+    .active #theme-selector {
+        margin-left: 60px;
+
+        width: calc(100% - 60px);
+    }
 }
 
 @media screen and (max-width: 991px) {
