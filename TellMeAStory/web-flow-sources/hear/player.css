@@ -5,7 +5,6 @@
 
 .active #storiessection {
     margin-top: 40px;
-    padding-bottom: 72px;
     display: flex;
     align-items: flex-start;
 }
@@ -13,7 +12,6 @@
 #stories {
     width: 64%;
     margin-right: 20px;
-    padding-bottom: 120px;
 }
 
 #related {
