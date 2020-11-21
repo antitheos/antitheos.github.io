@@ -37,8 +37,10 @@
     position: sticky;
     top: 42px;
     margin-top: 0px;
+    padding: 42px;
     height: 120px;
 }
+
 
 .titleLabel {
     margin-bottom: 40px;
