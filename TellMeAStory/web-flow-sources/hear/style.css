@@ -136,8 +136,7 @@
 
 #themestitle {
     line-height: 2;
-    font-size: 32px;
-    text-align: center;
+    font-size: 28px;
     font-weight: 700;
     margin-top: 100px
 }
@@ -145,7 +144,8 @@
 .collection-item {
     text-decoration: underline;
     cursor: pointer;
-
+    line-height: 1.6;
+    font-size: 18px
 }
 
 .theme {
