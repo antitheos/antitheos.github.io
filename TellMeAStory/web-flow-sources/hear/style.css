@@ -2,7 +2,8 @@
     background-color: black;
     z-index: 100;
     color: white;
-    height: 100vh;
+    height: 80vh;
+    min-height: 500px;
     align-items: center;
     display: flex;
 }
@@ -40,6 +41,7 @@
     top: 42px;
     margin-top: 0px;
     height: 120px;
+    min-height: 120px;
 }
 
 
