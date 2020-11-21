@@ -21,6 +21,8 @@
     position: sticky;
     bottom: 10px;
     overflow: hidden;
+    padding: 24px 16px;
+    background-color: rgba(255, 255, 255, 0.97);
 }
 
 #related {
@@ -92,14 +94,10 @@
     height: 32px;
     overflow: hidden;
     align-items: center;
-    margin-top: 20px;
     position: sticky;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.97);
-    padding: 16px;
     width: 100%;
     box-sizing: content-box;
-    margin-left: -16px;
 }
 
 .progresstracker {
@@ -165,7 +163,6 @@
 }
 
 #audioplaypause {
-    padding-left: 16px;
     cursor: pointer;
     font-size: 28px;
 }
