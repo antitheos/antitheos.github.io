@@ -140,8 +140,7 @@ function populateStoriesToScreen() {
         $("#" + key).attr("audio-data-myparent", "astory" + (index));
         $("#" + key).attr("audio-data-next", "astory" + (index + 1));
 
-        $("#" + key + " .person").text(story.subject);
-        $("#" + key + " .city").text(story.city);
+
     }
     var x = $($("#templates .howtocontinue").clone());
     x.attr("id", "hearmore" + $("#stories .astory").length);
@@ -408,6 +407,9 @@ function playItem(key, stopAutoPlay) {
         $("#audioitem").attr("data-myparent", obj.attr("audio-data-myparent"));
         $("#audioplaypause").attr("data-myparent", obj.attr("audio-data-myparent"));
         $("#audioitem").attr("data-next", obj.attr("audio-data-next"));
+        var story = obj.data("mystory");
+        $("#sharedstoryfooter .person").text(story.subject);
+        $("#sharedstoryfooter .city").text(story.city);
 
         $("#sharedstoryfooter").attr("disabled", null);
 
