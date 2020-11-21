@@ -75,12 +75,22 @@ function playCollectionElement(e) {
 }
 
 function playCollection(val) {
-    var themes = collection[val].map(e => e.toLowerCase().trim());
-    var fh = themes.pop();
-    var data = themesData[fh].list;
-    data = data.filter(function (e) {
+    var themesText = collection[val];
+    if (!themesText || themesText.length == 0) {
+        return;
+    }
+
+    var themes = themesText.map(e => e.toLowerCase().trim());
+    var fh = themes[0];
+
+    var data = themesData[fh];
+    if (data == null || data == undefined) {
+        return;
+    }
+    var checkList = themes.splice(0, 1);
+    data = data.list.filter(function (e) {
         var ethemes = e.themes.map(e => e.key);
-        for (var th in themes) {
+        for (var th in checkList) {
             if (!ethemes.find(e => e == th)) {
                 return false;
             }
@@ -88,6 +98,11 @@ function playCollection(val) {
         return true;
     });
     console.log(data)
+    if (data.length == 0) {
+        return;
+    }
+
+    showStory(normalizeThemes(themesText), data, false);
 
 
 
