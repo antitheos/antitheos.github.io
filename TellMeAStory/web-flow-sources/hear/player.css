@@ -322,4 +322,15 @@
     .storysection.playingstory {
         transform: scale(1);
     }
+
+    .howtocontinue .continueelement {
+        min-width: 30%;
+        max-width: 30%;
+    }
+
+    #pickrelated {
+        margin-top: 20px;
+        width: 40%;
+        margin-left: auto;
+    }
 }
