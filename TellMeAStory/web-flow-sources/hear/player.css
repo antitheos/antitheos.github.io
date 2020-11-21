@@ -19,7 +19,7 @@
 
 #sharedstoryfooter {
     position: sticky;
-    bottom: 0;
+    bottom: 10px;
     height: 64px;
     overflow: hidden;
 }
@@ -64,12 +64,14 @@
     transform: scale(0.9);
     height: 0;
     margin-bottom: 0px;
+    overflow: hidden;
 }
 
 .storysection.playingstory {
     opacity: 1;
     border-width: 2px;
     transition-duration: 400ms;
+    height: auto;
 }
 
 
