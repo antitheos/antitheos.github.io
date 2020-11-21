@@ -201,14 +201,16 @@
 
     .active .backbutton.material-icons {
         position: absolute;
+        line-height: 40px;
     }
 
     .active .titleLabel {
         margin-left: 60px;
-        line-height: 90px;
+        line-height: 40px;
+        margin-bottom: 20px;
     }
 
-    .active #theme-selector {
+    .active #selectorsection #theme-selector {
         margin-left: 60px;
 
         width: calc(100% - 60px);
