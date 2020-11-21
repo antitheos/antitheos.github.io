@@ -30,6 +30,7 @@
 .relatedstory {
     cursor: pointer;
     text-decoration: underline;
+    line-height: 30px;
 }
 
 .menuitem:hover,
