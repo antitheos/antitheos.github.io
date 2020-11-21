@@ -19,6 +19,8 @@ function windowReady() {
             el.append("<option value='" + x + "'>" + data[x].text + "</option>");
 
         }
+
+        loadCollections();
     });
 
 }
@@ -58,6 +60,19 @@ function selectRandomTheme() {
     themeSelected($("#theme-selector"))
 }
 
+
+function loadCollections() {
+    var el = $("#collection-selector");
+    for (var x in collection) {
+        el.append("<div class='collection-item' onclick='playCollection(this)" + x + "'>" + x + "</div>");
+
+    }
+}
+
+function playCollectionElement(e) {
+    var val = $(e).text()
+    playCollection(val)
+}
 
 function playCollection(val) {
     var themes = collection[val].map(e => e.toLowerCase().trim());
