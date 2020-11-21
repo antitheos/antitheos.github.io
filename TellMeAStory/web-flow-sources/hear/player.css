@@ -306,6 +306,11 @@
         width: 100%;
     }
 
+    .active #storiessection {
+        margin-top: 0px;
+        padding-top: 30px;
+    }
+
     .storysection.playingstory {
         transform: scale(1);
     }
