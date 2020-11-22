@@ -200,14 +200,15 @@
     }
 
 
-    .active #selectorsection {
-        display: block;
-    }
 
 
 }
 
 @media screen and (max-width: 600px) {
+    .active #selectorsection {
+        display: block;
+    }
+
     .active #selectorsectionwrapper {
         min-height: auto;
         height: auto;
