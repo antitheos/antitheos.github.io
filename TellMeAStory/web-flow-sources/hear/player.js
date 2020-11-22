@@ -394,6 +394,7 @@ function playNextItem(key, stopAutoPlay) {
 }
 
 function playItem(key, stopAutoPlay) {
+    $("#storiessection").removeClass("displayRelated");
     $(".playingstory").removeClass("playingstory");
     var obj = $("#" + key)
 
