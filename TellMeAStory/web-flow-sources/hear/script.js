@@ -16,8 +16,9 @@ function windowReady() {
 
         var el = $("#theme-selector .options");
         for (var x in themesData) {
-            var e = el.append("<div class='option' onclick='playThisTheme(this)'>" + data[x].text + "</div>");
-            $(e).data("theme", data[x]);
+            var e = $("<div class='option' onclick='playThisTheme(this)'>" + data[x].text + "</div>");
+            e.data("theme", data[x]);
+            el.append(e);
         }
 
         loadCollections();
