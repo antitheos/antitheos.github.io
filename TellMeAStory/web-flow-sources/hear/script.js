@@ -16,8 +16,8 @@ function windowReady() {
 
         var el = $("#theme-selector");
         for (var x in themesData) {
-            el.append("<option value='" + x + "'>" + data[x].text + "</option>");
-
+            var e = el.append("<div class='option' onclick='playThisTheme(e)'>" + data[x].text + "</div>");
+            e.data("theme", data[x]);
         }
 
         loadCollections();
@@ -44,6 +44,16 @@ function themeSelected(e) {
     }
 
     playTheme(th)
+
+}
+
+function toggleThemesList() {
+    $("#theme-selector").toggleClass("showOptions");
+}
+
+function playThisTheme(e) {
+    var dt = $(e).data("theme");
+    playTheme(dt);
 
 }
 

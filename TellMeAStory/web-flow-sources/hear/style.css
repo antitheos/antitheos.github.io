@@ -68,7 +68,7 @@
     font-size: 40px;
 }
 
-#selectorsection select {
+#selectorsection #theme-selector {
     border: 1px solid white;
     outline: none;
     line-height: 90px;
@@ -94,12 +94,20 @@
 
 
     padding-right: 41px;
+}
+
+#theme-selector #selectedTheme {
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
 }
 
-.active #selectorsection select {
+#theme-selector.showOptions {
+    height: 50vh;
+    overflow: scroll;
+}
+
+.active #selectorsection #theme-selector {
     margin-left: 32px;
     line-height: 60px;
     height: 60px;
