@@ -127,8 +127,7 @@
 }
 
 #selectorsection #theme-selector.showOptions {
-    border-bottom: 1px solid white;
-    margin-right: 16px;
+    height: auto !important;
 }
 
 #theme-selector.showOptions .options {
