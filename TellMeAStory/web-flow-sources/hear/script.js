@@ -52,6 +52,8 @@ function toggleThemesList() {
 }
 
 function playThisTheme(e) {
+
+    $("#theme-selector").removeClass("showOptions");
     var dt = $(e).data("theme");
     playTheme(dt);
 
