@@ -197,7 +197,9 @@
         padding-left: 15px;
     }
 
-
+    sectionwidth {
+        width: 100%;
+    }
 
 
 }
