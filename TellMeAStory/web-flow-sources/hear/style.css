@@ -89,7 +89,6 @@
     width: 100%;
 
     overflow: hidden;
-    padding-right: 41px;
 }
 
 #theme-selector #selectedTheme {
@@ -107,6 +106,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
+    line-height: 54px;
 }
 
 #theme-selector .options {
