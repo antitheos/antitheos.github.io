@@ -204,7 +204,7 @@
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 767px) {
     .active #selectorsection {
         display: block;
     }
@@ -234,7 +234,6 @@
     }
 }
 
-@media screen and (max-width: 767px) {}
 
 @media screen and (max-width: 991px) {
     .active #selectorsectionwrapper {
