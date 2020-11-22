@@ -23,6 +23,7 @@
     overflow: hidden;
     padding: 24px 0px;
     background-color: rgba(255, 255, 255, 0.97);
+    width: calc(100% - 200px - 20px);
 }
 
 #sharedstoryfooter[disabled] {
@@ -347,6 +348,10 @@
         margin-top: 20px;
         width: 40%;
         margin-left: auto;
+    }
+
+    #sharedstoryfooter {
+        width: 100%;
     }
 
     #storiessection.displayRelated #stories {
