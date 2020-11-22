@@ -32,9 +32,7 @@
 #related {
     font-size: 15px;
     position: sticky;
-    margin-left: 19px;
     top: 200px;
-    padding-left: 10px;
     padding-top: 10px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.54);
@@ -102,6 +100,8 @@
     bottom: 0;
     width: 100%;
     box-sizing: content-box;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
 }
 
 .progresstracker {
