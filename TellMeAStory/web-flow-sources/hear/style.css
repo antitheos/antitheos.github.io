@@ -2,8 +2,8 @@
     background-color: black;
     z-index: 100;
     color: white;
-    height: 70vh;
-    min-height: 500px;
+    min-height: 70vh;
+    padding: 40px 0px;
     align-items: center;
     display: flex;
 }
@@ -70,6 +70,7 @@
 
 #selectorsection #theme-selector {
     border: 1px solid white;
+    background-color: black;
     outline: none;
     line-height: 90px;
     height: 90px;
@@ -219,6 +220,7 @@
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
+    position: absolute;
 }
 
 @media screen and (max-width: 479px) {
