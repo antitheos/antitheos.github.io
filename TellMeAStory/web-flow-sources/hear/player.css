@@ -29,6 +29,7 @@
     width: calc(100% - 230px);
     padding-right: 30px;
     margin-bottom: 30px;
+    border-right: 1px solid black;
 }
 
 #sharedstoryfooter[disabled] {
