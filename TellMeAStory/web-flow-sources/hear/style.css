@@ -199,15 +199,20 @@
         padding-left: 15px;
     }
 
+
+    .active #selectorsection {
+        display: block;
+    }
+
+
+}
+
+@media screen and (max-width: 600px) {
     .active #selectorsectionwrapper {
         min-height: auto;
         height: auto;
         padding-top: 24px;
         padding-bottom: 24px;
-    }
-
-    .active #selectorsection {
-        display: block;
     }
 
     .active .backbutton.material-icons {
