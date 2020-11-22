@@ -107,11 +107,13 @@
     overflow: hidden;
     word-break: break-word;
     line-height: 54px;
+
 }
 
 #theme-selector .options {
     overflow: hidden;
     height: 0px;
+    font-size: 24px;
 }
 
 #selectorsection #theme-selector.showOptions {
@@ -131,9 +133,12 @@
     height: 60px;
 }
 
-#selectorsection option {
-    font-size: 24px;
+.active #selectorsection #theme-selector .option {
+    height: 60px;
 }
+
+
+
 
 
 .active .middle-text-bg {
