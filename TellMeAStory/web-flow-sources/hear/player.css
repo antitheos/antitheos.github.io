@@ -306,9 +306,7 @@
 }
 
 @media screen and (max-width: 479px) {
-    #related {
-        display: none;
-    }
+
 
     #stories {
         margin-right: 0px;
@@ -355,11 +353,18 @@
         display: none;
     }
 
+    .relatedstory {
+        margin-bottom: 16px;
+    }
+
     #related {
+        display: none;
         position: unset;
-        top: 240px;
+        top: 0;
         padding-left: 0px;
         margin: 0px;
+        padding-top: 50px;
+        font-size: 18px;
     }
 
     #storiessection.displayRelated #related {
