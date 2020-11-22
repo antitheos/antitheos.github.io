@@ -167,7 +167,7 @@ function showStory(themes, playlist, stopAutoPlay) {
     cummulatedThemes = {};
     lastCalculated = 0;
     currentPlayList = playlist.slice(); //randomize order 
-    var cText = currentThemes.reduce((c = "", r, i) => (c == "" ? "" : " and ") + r.text, "")
+    var cText = currentThemes.reduce((c = "", r, i) => c + (c == "" ? "" : " and ") + r.text, "")
 
     $("#selectedTheme").text(cText);
 

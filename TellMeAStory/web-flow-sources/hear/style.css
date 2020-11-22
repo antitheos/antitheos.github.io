@@ -39,8 +39,6 @@
     position: sticky;
     top: 42px;
     margin-top: 42px;
-    height: 120px;
-    min-height: 120px;
     overflow: hidden;
 }
 
