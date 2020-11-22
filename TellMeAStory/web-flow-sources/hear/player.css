@@ -11,6 +11,7 @@
     display: flex;
     align-items: flex-start;
     min-height: calc(100vh - 356px);
+    padding-top: 30px;
 }
 
 #stories {
@@ -23,7 +24,7 @@
     overflow: hidden;
     padding: 24px 0px;
     background-color: rgba(255, 255, 255, 0.97);
-    width: calc(100% - 200px - 20px);
+    width: calc(100% - 250px);
 }
 
 #sharedstoryfooter[disabled] {
@@ -66,7 +67,7 @@
 
 .storysection {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.5);
     height: 0;
     margin-bottom: 0px;
     overflow: hidden;
@@ -74,9 +75,9 @@
 
 .storysection.playingstory {
     opacity: 1;
-    border-width: 2px;
     transition-duration: 400ms;
     height: auto;
+    transform: scale(1);
 }
 
 
@@ -113,8 +114,6 @@
 }
 
 .storycontentdiv {
-    padding: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.16);
     padding-bottom: 0px;
     position: relative;
 }
