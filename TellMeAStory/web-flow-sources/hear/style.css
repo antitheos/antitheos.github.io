@@ -102,6 +102,8 @@
     word-break: break-word;
 }
 
+#theme-selector .option {}
+
 #theme-selector.showOptions {
     height: 50vh;
     overflow: scroll;
