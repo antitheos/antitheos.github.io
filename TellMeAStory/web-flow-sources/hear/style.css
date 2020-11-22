@@ -93,6 +93,7 @@
     width: 100%;
 
 
+    overflow: hidden;
     padding-right: 41px;
 }
 
@@ -102,11 +103,26 @@
     word-break: break-word;
 }
 
-#theme-selector .option {}
+#theme-selector .option {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+}
 
-#theme-selector.showOptions {
+#theme-selector .options {
+    overflow: hidden;
+    height: 0px;
+}
+
+#selectorsection #theme-selector.showOptions {
+    height: auto;
+    overflow: hidden;
+}
+
+#theme-selector.showOptions .options {
     height: 50vh;
     overflow: scroll;
+
 }
 
 .active #selectorsection #theme-selector {
