@@ -21,7 +21,7 @@
     text-decoration: underline;
     cursor: pointer;
     font-size: 30px;
-    line-height: 82px;
+    padding: 24px 0px;
 }
 
 .active #selectorsection {
