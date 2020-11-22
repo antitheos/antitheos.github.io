@@ -298,7 +298,7 @@
     display: none;
 }
 
-#relatedgclose {
+#relatedclose {
     display: none;
 }
 
@@ -383,7 +383,7 @@
         font-size: 18px;
     }
 
-    #relatedgclose {
+    #relatedclose {
         display: unset;
     }
 
