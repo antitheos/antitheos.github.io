@@ -397,6 +397,7 @@
 
     #relatedclose span.material-icons {
         margin-right: 10px;
+        line-height: 52px;
     }
 
     #storiessection.displayRelated #related {
