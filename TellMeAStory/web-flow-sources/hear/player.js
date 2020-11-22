@@ -442,3 +442,17 @@ function proceedToContent() {
     $("#overlaymessage").addClass("hidden");
     showStory(itemToPlay);
 }
+
+/*todo:
+- mobile, select drop down wont auto play
+- mobile, bottom section covers related themes
+
+QUESTIONS
+- collections, nothing has 5 themes
+- colllections, should related only show other themes in collection
+- play, how to display mutiple themes selected
+- play, should we show compund related themes
+- back button icon, do they have image
+- wasted space, go back is listed multiple times
+- how to deal with font, colors, etc
+*/
