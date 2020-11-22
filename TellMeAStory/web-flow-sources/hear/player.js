@@ -252,14 +252,16 @@ function timeChanged(event) {
 function playbackPaused(event) {
     var o = event.srcElement;
     var parent = $(o).attr("data-myparent");
-    $("#sharedstoryfooter #audioplaypause").text("play_circle_filled");
+    $("#audioplaypause").text("");
+    $("#audioplaypause").text("play_circle_filled");
 }
 var currentObject = null;
 
 function playbackStarted(event) {
     var o = event.srcElement;
     var parent = $(o).attr("data-myparent");
-    $("#sharedstoryfooter #audioplaypause").text("pause_circle_filled");
+    $("#audioplaypause").text("");
+    $("#audioplaypause").text("pause_circle_filled");
     var obj = $("#" + parent);
     var story = obj.data("mystory");
     if (story != currentObject) {
