@@ -449,8 +449,9 @@ function proceedToContent() {
 }
 
 /*todo:
-- mobile, select drop down wont auto play
-- mobile, style of back to player from relared themes
+-x- mobile, select drop down wont auto play
+-x- play, how to display more than 2 themes selected
+- mobile, style of back to player from related themes
 - wasted space, go back is listed twice, header and on what next
 - play, how to display mutiple themes selected
 
