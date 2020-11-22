@@ -83,15 +83,10 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     font-size: 24px;
-    background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 11px) center;
-    background-size: 20px;
 
-    background-size: 20px;
+
     box-sizing: border-box;
     width: 100%;
-
 
     overflow: hidden;
     padding-right: 41px;
@@ -101,6 +96,10 @@
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
+    background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 11px) center;
+    background-size: 20px;
 }
 
 #theme-selector .option {
