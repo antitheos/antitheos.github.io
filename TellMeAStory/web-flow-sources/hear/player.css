@@ -9,7 +9,7 @@
 
 #storiesbody {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     padding-top: 30px;
 }
 
