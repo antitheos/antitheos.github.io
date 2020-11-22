@@ -29,6 +29,7 @@ function windowReady() {
 function returnToHome() {
     stopAudio();
     $("body").removeClass("active");
+    $("#theme-selector").removeClass("showOptions");
     window.scrollTo(0, 0);
     $("#stories").html("");
 
