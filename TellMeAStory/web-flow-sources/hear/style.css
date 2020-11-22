@@ -101,6 +101,7 @@
     background-position: calc(100% - 11px) center;
     background-size: 20px;
     padding-right: 41px;
+    margin-right: 16px;
 }
 
 #theme-selector .option {
@@ -120,9 +121,14 @@
     font-size: 24px;
 }
 
+#selectorsection #theme-selector.showOptions #selectedTheme {
+    border-bottom: 1px solid white;
+
+}
+
 #selectorsection #theme-selector.showOptions {
-    height: auto !important;
-    overflow: hidden;
+    border-bottom: 1px solid white;
+    margin-right: 16px;
 }
 
 #theme-selector.showOptions .options {
