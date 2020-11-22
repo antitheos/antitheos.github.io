@@ -303,15 +303,14 @@
     display: none;
 }
 
-@media screen and (max-width: 991px) {
-    #related {
-        position: sticky;
-        top: 240px;
-    }
-
+#related {
+    position: sticky;
+    top: 240px;
 }
 
-@media screen and (max-width: 479px) {
+
+
+@media screen and (max-width: 720px) {
 
     #storiesbody {
         padding-top: 15px;
