@@ -10,13 +10,14 @@
 #storiesbody {
     display: flex;
     align-items: flex-start;
-    min-height: calc(100vh - 356px);
     padding-top: 30px;
 }
 
 #stories {
     margin-right: 30px;
     padding-right: 30px;
+    min-height: calc(100vh - 356px);
+    border-right: 1px solid black;
 }
 
 #sharedstoryfooter {
@@ -27,7 +28,6 @@
     background-color: rgba(255, 255, 255, 0.97);
     width: calc(100% - 230px);
     padding-right: 30px;
-    border-right: 1px solid black;
     margin-bottom: 30px;
 }
 
@@ -316,6 +316,8 @@
     #stories {
         margin-right: 0px;
         width: 100%;
+        border-right: none;
+        padding-right: 0px;
     }
 
     .storysection:not(.playingstory) {
