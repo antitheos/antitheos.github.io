@@ -186,6 +186,11 @@
     margin-right: 0px;
 }
 
+.sectionwidth {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+}
 
 @media screen and (max-width: 479px) {
 
