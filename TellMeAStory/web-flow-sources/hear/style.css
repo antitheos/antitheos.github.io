@@ -95,6 +95,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
+    white-space: nowrap;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 11px) center;
@@ -106,7 +107,9 @@
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
+    white-space: nowrap;
     line-height: 54px;
+    height: 54px;
 
 }
 
@@ -133,9 +136,7 @@
     height: 60px;
 }
 
-.active #selectorsection #theme-selector .option {
-    height: 60px;
-}
+
 
 
 
