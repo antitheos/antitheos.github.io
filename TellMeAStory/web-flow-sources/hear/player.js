@@ -452,11 +452,11 @@ function proceedToContent() {
 - mobile, select drop down wont auto play
 - mobile, style of back to player from relared themes
 - wasted space, go back is listed twice, header and on what next
+- play, how to display mutiple themes selected
 
 QUESTIONS
 - collections, nothing matching all 5 themes
 - colllections, should related only show other themes in collection
-- play, how to display mutiple themes selected
 - play, should we show compund related themes
 - back button icon, do they have image
 - how to deal with font, colors, etc
