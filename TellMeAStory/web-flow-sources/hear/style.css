@@ -183,9 +183,12 @@
 }
 
 .sectionwidth {
-    width: 95%;
+    width: 90%;
     max-width: 1200px;
     margin: auto;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 @media screen and (max-width: 479px) {
