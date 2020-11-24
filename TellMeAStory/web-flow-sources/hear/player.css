@@ -193,7 +193,7 @@
 }
 
 .volumelevel {
-    width: 10%;
+    width: 15%;
     background-color: #f2f2f2;
     cursor: pointer;
 }
@@ -314,11 +314,18 @@
     top: 240px;
 }
 
+.hidedesktop {
+    display: none;
+}
 
 @media screen and (max-width: 600px) {
 
     .hidemobile {
         display: none;
+    }
+
+    .hidedesktop {
+        display: block;
     }
 }
 
