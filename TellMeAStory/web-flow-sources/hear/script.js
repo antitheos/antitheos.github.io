@@ -68,12 +68,11 @@ function playTheme(th) {
 }
 
 function selectRandomTheme() {
-    var ls = $("#theme-selector option");
+    var ls = $("#theme-selector .option");
 
     var index = Math.floor(Math.random() * Math.floor(ls.length - 1));
     var rec = ls[index + 1];
-    $("#theme-selector").val(rec.value);
-    themeSelected($("#theme-selector"))
+    playThisTheme(rec)
 }
 
 
