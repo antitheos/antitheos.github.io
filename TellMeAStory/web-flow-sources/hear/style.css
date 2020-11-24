@@ -17,6 +17,7 @@
     margin: auto;
     box-sizing: border-box;
     width: 60vw;
+    padding-left: 0px;
 }
 
 #selectorsectionwrapper .randomselection {
@@ -250,6 +251,7 @@
 @media screen and (max-width: 767px) {
     #selectorsection {
         width: auto;
+        padding-left: 10px;
 
     }
 
