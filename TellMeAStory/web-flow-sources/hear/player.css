@@ -311,6 +311,12 @@
 }
 
 
+@media screen and (max-width: 600px) {
+
+    .hidemobile {
+        display: none;
+    }
+}
 
 @media screen and (max-width: 767px) {
 
@@ -412,6 +418,10 @@
     }
 
     .nextstory .skiptext {
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    .nextstory:first-child {
+        margin-left: 0px;
     }
 }
