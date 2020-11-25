@@ -135,5 +135,5 @@ var collection = {
     "How does family matter in the history of HIV / AIDS ?": ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"],
     "How do institutions impact women living with HIV / AIDS ?": ["Schooling", "Nowhere to go", "Incarceration", "Surveillance", "Women’ s Interagency HIV Study"],
     "How is health more than the absence of disease ?": ["Partnerships", "Addiction and recovery", "Getting and giving support", "Living with HIV", "Healing"],
-    "How do women build healthy worlds ?": ["Healthcare", "Family dynamics", "Taking charge of health and wellness", "Work", "Religion and spirituality"],
+    "How do women build healthy worlds ?": ["Healthcare", "Family dynamics", "Taking charge of health and wellness", "Work", "Spirituality & Religion"],
 }
