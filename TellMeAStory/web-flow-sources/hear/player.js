@@ -444,7 +444,12 @@ function playItem(key, stopAutoPlay) {
     if (obj.hasClass("howtocontinue")) {
         $("#sharedstoryfooter").attr("disabled", "disabled");
         $("#storiessection").addClass("continueprompt");
-        loadNowPlayingThemes(cummulatedThemes);
+        var x = [];
+        for (var a in cummulatedThemes) {
+            x.push(cummulatedThemes[a])
+        };
+
+        loadNowPlayingThemes(x);
     } else if (ls.length > 0) {
         $("#audioitem").attr("src", obj.attr("audiosrc"));
         $("#audioitem").attr("data-myparent", obj.attr("audio-data-myparent"));
