@@ -16,7 +16,7 @@
 #stories {
     margin-right: 30px;
     padding-right: 30px;
-    min-height: calc(100vh - 356px);
+    min-height: calc(100vh - 323px);
     border-right: 1px solid black;
 }
 
@@ -47,7 +47,7 @@
 }
 
 #related {
-    min-height: calc(100vh - 356px);
+    min-height: calc(100vh - 323px);
 }
 
 .relatedstory {
