@@ -121,7 +121,7 @@
     width: 100%;
 }
 
-.showOptions #nowplaying,
+#selectorsectionwrapper.showOptions #nowplaying,
 #nowplaying {
     display: none;
     overflow: hidden;
@@ -190,6 +190,9 @@
 }
 
 
+.active .showOptions #theme-selector {
+    width: auto;
+}
 
 
 
