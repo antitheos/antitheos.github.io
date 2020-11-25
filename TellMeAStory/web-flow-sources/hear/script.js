@@ -22,6 +22,14 @@ function windowReady() {
         }
 
         loadCollections();
+
+        var search = window.location.search.replace("?", "");
+        var index = parseInt(search);
+        if (!Number.isNaN(index)) {
+            playCollection(index);
+        }
+
+
     });
 
 }
