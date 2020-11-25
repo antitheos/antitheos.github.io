@@ -108,7 +108,7 @@
     margin-right: 16px;
 }
 
-#theme-selector #nowplaying {
+#nowplaying {
     display: none;
     overflow: hidden;
 }
@@ -117,17 +117,17 @@
     display: none;
 }
 
-.active #theme-selector #nowplaying {
+.active #nowplaying {
     display: block;
 }
 
-#theme-selector #nowplaying #header {
+#nowplaying #header {
     font-weight: 600;
     font-size: 12px;
     text-transform: uppercase;
 }
 
-#theme-selector #nowplaying #header-title {}
+#nowplaying #header-title {}
 
 #theme-selector .option {
     text-overflow: ellipsis;
