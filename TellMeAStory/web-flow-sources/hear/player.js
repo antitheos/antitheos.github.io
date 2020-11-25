@@ -25,7 +25,7 @@ function normalizeThemes(themes) {
     newThemes.data = {};
     $.each(themes, function (index, theme) {
         if (!theme) {
-            continue;
+            return;
         }
         var t = theme.trim();
         t = {
