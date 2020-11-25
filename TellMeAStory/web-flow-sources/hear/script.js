@@ -62,6 +62,7 @@ function playThisTheme(e) {
 }
 
 function playTheme(th) {
+    collectionThemes = null;
     $("body").addClass("active");
     showStory(normalizeThemes([th.text]), th.list, false);
 }
@@ -93,6 +94,7 @@ function playCollection(val) {
     if (!themesText || themesText.length == 0) {
         return;
     }
+    collectionThemes = themesText;
 
     var themes = themesText.map(e => e.toLowerCase().trim());
     var pList = [];
@@ -133,6 +135,8 @@ function toggleRelatedItems() {
     }
     $("#storiessection").toggleClass("displayRelated");
 }
+
+var collectionThemes = null;
 var collection = {
     "How can we center women in the history of HIV/AIDS?": ["Knowledge about HIV/AIDS", "Contracting HIV/AIDS from a male partner", "In the streets", "HIV saved my life", "Future"],
     "How does family matter in the history of HIV / AIDS ?": ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"],
