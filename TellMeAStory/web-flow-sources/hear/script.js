@@ -114,7 +114,7 @@ function playCollection(val) {
         return;
     }
 
-    showStory(normalizeThemes(themesText), pList, false);
+    showStory(normalizeThemes(themesText), pList, false, val);
 
 
 

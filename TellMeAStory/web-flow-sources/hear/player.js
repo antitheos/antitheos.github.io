@@ -175,7 +175,7 @@ function populateStoriesToScreen() {
 
 
 //handle select topic or story
-function showStory(themes, playlist, stopAutoPlay) {
+function showStory(themes, playlist, stopAutoPlay, pTitle) {
 
 
     currentThemes = themes;
@@ -184,7 +184,7 @@ function showStory(themes, playlist, stopAutoPlay) {
     currentPlayList = playlist.slice(); //randomize order 
     var cText = currentThemes.reduce((c = "", r, i) => c + (c == "" ? "" : " and ") + r.text, "")
 
-    $("#header-title").text(cText);
+    $("#header-title").text(pTitle ? pTitle : cText);
 
     $("#relatedotherthemes").html("");
     $("#relatedcombinedthemes ").html("");
