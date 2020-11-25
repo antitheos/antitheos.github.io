@@ -319,7 +319,7 @@ function loadNowPlayingThemes(themes) {
         });
 
 
-        if (!collectionThemes && (currentThemes.length > 1 || currentThemes.data[theme.key])) {
+        if (!collectionThemes && (currentThemes.length > 1 || !currentThemes.data[theme.key])) {
             var item = template.clone();
             related.append(item);
             $(item).text(theme.text);
