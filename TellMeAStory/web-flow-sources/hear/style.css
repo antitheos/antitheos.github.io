@@ -329,13 +329,7 @@
         margin-bottom: 20px;
     }
 
-    .active #selectorsection #theme-selector {
-        margin-left: 60px;
-
-        width: calc(100% - 60px);
-    }
-
-    .active #selectedTheme {
+    .active #theme-selector {
         width: 60px;
     }
 }
