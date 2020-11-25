@@ -291,6 +291,9 @@ function playbackStarted(event) {
 }
 
 function findRelevantThemes(themes) {
+    if (!themes) {
+        return [];
+    }
     return currentThemes.filter(e => themes.find(x => x.key == e.key) != undefined)
 }
 
