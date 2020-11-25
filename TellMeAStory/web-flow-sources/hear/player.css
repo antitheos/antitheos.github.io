@@ -336,6 +336,7 @@
 
 #playprompter > div {
     cursor: pointer;
+    text-align: center;
 }
 
 #playprompter.showing {
@@ -352,6 +353,8 @@
 
 #playprompter #clicktoplay {
     margin-top: 20px;
+    font-size: 27px;
+    font-weight: 300;
 
 }
 
