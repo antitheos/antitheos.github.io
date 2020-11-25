@@ -69,6 +69,8 @@
     cursor: pointer;
     margin-right: 20px;
     font-size: 40px;
+    position: absolute;
+    left: 5%;
 }
 
 #selectorsection #theme-selector {
@@ -119,6 +121,8 @@
 
 .active #nowplaying {
     display: block;
+
+    flex-grow: 1;
 }
 
 #nowplaying #header {
@@ -165,6 +169,7 @@
     margin-left: 32px;
     line-height: 60px;
     height: 60px;
+    width: 200px;
 }
 
 
