@@ -300,10 +300,6 @@
 @media screen and (max-width: 767px) {
 
 
-    .sectionwidth {
-        width: 90%;
-        padding-left: 10px;
-    }
 
 
 
@@ -342,4 +338,10 @@
         margin-top: 7vh;
         top: 7vh;
     }
+
+    .sectionwidth {
+        width: 90%;
+        padding-left: 10px;
+    }
+
 }
