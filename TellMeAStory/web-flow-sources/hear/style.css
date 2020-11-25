@@ -271,7 +271,6 @@
 }
 
 .sectionwidth {
-    width: 90%;
     max-width: 900px;
     margin: auto;
     box-sizing: border-box;
@@ -335,9 +334,7 @@
 
 
 @media screen and (max-width: 991px) {
-    .active #selectorsection {
-        padding-left: 60px;
-    }
+
 
     .active #selectorsectionwrapper {
         margin-top: 7vh;
@@ -350,4 +347,7 @@
         padding-left: 10px;
     }
 
+    .active #selectorsection {
+        padding-left: 60px;
+    }
 }
