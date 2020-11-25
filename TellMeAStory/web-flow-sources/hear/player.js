@@ -299,19 +299,22 @@ function loadNowPlayingThemes(themes) {
     combined.html("");
     var template = $("#templates .relatedstory");
 
+    var remainThemes = themes;
     $.each(themes, function (index, theme) {
+        remainThemes = remainThemes.filter(e => e.key != theme.key)
 
-        //if (currentThemes.data[theme.key] != true) {
-        //$.each(currentThemes, function (index, cTheme) {
-        var cTheme = theme;
-        var cItem = template.clone();
-        combined.append(cItem);
-        $(cItem).text(cTheme.text + " + " + theme.text);
-        var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
-        $(cItem).data("playList", findThemesData(cItemThemes));
-        $(cItem).data("themes", cItemThemes);
 
-        //});
+        $.each(remainThemes, function (index, cTheme) {
+
+            var cItem = template.clone();
+            combined.append(cItem);
+            $(cItem).text(cTheme.text + " + " + theme.text);
+            var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
+            $(cItem).data("playList", findThemesData(cItemThemes));
+            $(cItem).data("themes", cItemThemes);
+
+        });
+
 
         if (!collectionThemes) {
             var item = template.clone();
@@ -321,7 +324,7 @@ function loadNowPlayingThemes(themes) {
             $(item).data("playList", findThemesData(itemThemes));
             $(item).data("themes", itemThemes);
         }
-        //}
+
     });
 
     if (collectionThemes) {
