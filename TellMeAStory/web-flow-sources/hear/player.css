@@ -312,14 +312,31 @@
     display: none;
 }
 
-@media screen and (max-width: 600px) {}
+.hideOver767 {
+    display: none;
+}
 
-@media screen and (max-width: 767px) {
+.hideUnder767 {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
     .hidemobile {
         display: none;
     }
 
     .hidedesktop {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .hideUnder767 {
+        display: none;
+    }
+
+    .hideOver767 {
         display: block;
     }
 
