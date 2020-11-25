@@ -118,13 +118,15 @@
 .active .showOptions #theme-selector #selectedTheme {
     text-align: left;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
+    width: 100%;
 }
 
-
+.showOptions #nowplaying,
 #nowplaying {
     display: none;
     overflow: hidden;
 }
+
 
 .active .titleLabel {
     display: none;
