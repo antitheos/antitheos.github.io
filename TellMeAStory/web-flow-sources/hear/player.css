@@ -329,13 +329,22 @@
     z-index: -1;
     overflow: hidden;
     opacity: 0;
-
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(2px);
 }
 
+
+
 #playprompter.showing {
-    display: block;
+    display: flex;
     z-index: 10;
     opacity: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+#playprompter i {
+    font-size: 30px;
 }
 
 @media screen and (max-width: 600px) {
