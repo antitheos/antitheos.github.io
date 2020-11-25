@@ -110,6 +110,21 @@
     margin-right: 16px;
 }
 
+.active #selectedTheme {
+    text-align: center;
+    background-image: none;
+}
+
+.active #selectedTheme {
+    text-align: center;
+}
+
+.active .showOptions #selectedTheme {
+
+    background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
+}
+
+
 #nowplaying {
     display: none;
     overflow: hidden;
