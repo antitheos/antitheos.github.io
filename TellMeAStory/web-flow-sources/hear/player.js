@@ -274,7 +274,7 @@ function playbackStarted(event) {
             }
         });
 
-        loadNowPlayingThemes(collectionThemes ? collectionThemes : story.themes);
+        loadNowPlayingThemes(story.themes);
     }
 }
 
@@ -300,16 +300,27 @@ function loadNowPlayingThemes(themes) {
 
             });
 
-            var item = template.clone();
-            related.append(item);
-            $(item).text(theme.text);
-            var itemThemes = normalizeThemes([theme.text]);
-            $(item).data("playList", findThemesData(itemThemes));
-            $(item).data("themes", itemThemes);
-
-
+            if (!collectionThemes) {
+                var item = template.clone();
+                related.append(item);
+                $(item).text(theme.text);
+                var itemThemes = normalizeThemes([theme.text]);
+                $(item).data("playList", findThemesData(itemThemes));
+                $(item).data("themes", itemThemes);
+            }
         }
     });
+
+    if (collectionThemes) {
+        $.each(collectionThemes, function (index, theme) {
+            var item = template.clone();
+            related.append(item);
+            $(item).text(theme);
+            var itemThemes = normalizeThemes([theme]);
+            $(item).data("playList", findThemesData(itemThemes));
+            $(item).data("themes", itemThemes);
+        });
+    }
 }
 
 function goToNextStory(e) {
