@@ -240,7 +240,7 @@
     height: 0px;
     overflow: hidden;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
 
 }
 
@@ -268,7 +268,7 @@
     box-sizing: border-box;
     padding: 8px 12px;
     height: 64px;
-    color: rgba(0, 0, 0, 0.54);
+    padding-left: 0px;
 }
 
 .continuemore,
@@ -278,7 +278,9 @@
 }
 
 
-
+.continuemore br {
+    display: none;
+}
 
 .howtocontinue.allstoriesloaded .responses {
     padding-bottom: 56px;
@@ -327,6 +329,10 @@
         justify-content: space-between;
     }
 
+    .howtocontinue {
+        font-size: 14px;
+    }
+
     .howtocontinue .continueelement {
         min-width: 31%;
         max-width: 31%;
@@ -339,6 +345,13 @@
         border-radius: 6px;
     }
 
+    .continueclickelement {
+        padding-left: 12px;
+    }
+
+    .continuemore br {
+        display: unset;
+    }
 
     #storiesbody {
         padding-top: 15px;
