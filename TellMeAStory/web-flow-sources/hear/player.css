@@ -324,6 +324,18 @@
 }
 
 @media screen and (max-width: 767px) {
+    .continueprompt .relatedclose {
+        display: none;
+    }
+
+    .continueprompt #stories {
+        min-height: 0px;
+    }
+
+    .continueprompt #related {
+        display: block;
+    }
+
     .responses {
         display: flex;
         justify-content: space-between;
