@@ -76,6 +76,7 @@
     font-size: 40px;
     position: absolute;
     left: 5%;
+    padding-left: 7px;
 }
 
 #theme-selector {
