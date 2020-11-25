@@ -96,23 +96,19 @@ function playCollection(val) {
     }
 
     var themes = themesText.map(e => e.toLowerCase().trim());
-    var fh = themes[0];
-
-    var data = themesData[fh];
-    if (data == null || data == undefined) {
-        return;
-    }
-    var checkList = themes.splice(0, 1);
-    data = data.list.filter(function (e) {
-        var ethemes = e.themes.map(e => e.key);
-        for (var th in checkList) {
-            if (!ethemes.find(e => e == th)) {
-                return false;
-            }
+    var pList = [];
+    for (var t in themes) {
+        var key = themes[t];
+        var data = themesData[fh];
+        if (!data || !data.list) {
+            continue;
         }
-        return true;
-    });
-    console.log(data)
+        data = data.list.filter(e => pList.find(p => p.key == e.key) == undefined)
+        pList = pList.concat(data);
+    }
+
+
+    console.log(pList)
     if (data.length == 0) {
         return;
     }
