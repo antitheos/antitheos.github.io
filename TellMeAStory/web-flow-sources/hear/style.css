@@ -144,7 +144,11 @@
     text-transform: uppercase;
 }
 
-#nowplaying #header-title {}
+#nowplaying #header-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 #theme-selector .option {
     text-overflow: ellipsis;
