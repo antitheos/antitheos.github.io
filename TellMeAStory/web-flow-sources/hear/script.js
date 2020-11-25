@@ -79,24 +79,21 @@ function selectRandomTheme() {
 function loadCollections() {
     var el = $("#collection-selector");
     for (var x in collection) {
-        el.append("<div class='collection-item' onclick='playCollectionElement(this)'>" + x + "</div>");
+        el.append("<div class='collection-item' onclick='playCollection(" + x + ")'>" + collection[x].text + "</div>");
 
     }
 }
 
-function playCollectionElement(e) {
-    var val = $(e).text()
-    playCollection(val)
-}
 
-function playCollection(val) {
-    var themesText = collection[val];
-    if (!themesText || themesText.length == 0) {
+
+function playCollection(index) {
+    var colGroup = collection[index];
+    if (!colGroup || !colGroup.themes) {
         return;
     }
-    collectionThemes = themesText;
+    collectionThemes = colGroup.themes;
 
-    var themes = themesText.map(e => e.toLowerCase().trim());
+    var themes = collectionThemes.map(e => e.toLowerCase().trim());
     var pList = [];
     for (var t in themes) {
         var key = themes[t];
@@ -114,7 +111,7 @@ function playCollection(val) {
         return;
     }
 
-    showStory(normalizeThemes(themesText), pList, false, val);
+    showStory(normalizeThemes(collectionThemes), pList, false, val);
 
 
 
@@ -142,10 +139,25 @@ function toggleRelatedItems() {
 }
 
 var collectionThemes = null;
-var collection = {
-    "How can we center women in the history of HIV/AIDS?": ["Knowledge about HIV/AIDS", "Contracting HIV/AIDS from a male partner", "In the streets", "HIV saved my life", "Future"],
-    "How does family matter in the history of HIV / AIDS ?": ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"],
-    "How do institutions impact women living with HIV / AIDS ?": ["Schooling", "Nowhere to go", "Incarceration", "Surveillance", "Women’ s Interagency HIV Study"],
-    "How is health more than the absence of disease ?": ["Partnerships", "Addiction and recovery", "Getting and giving support", "Living with HIV", "Healing"],
-    "How do women build healthy worlds ?": ["Healthcare", "Family dynamics", "Taking charge of health and wellness", "Work", "Spirituality & Religion"],
-}
+var collection = [
+    {
+        text: "How can we center women in the history of HIV/AIDS?",
+        themes: ["Knowledge about HIV/AIDS", "Contracting HIV/AIDS from a male partner", "In the streets", "HIV saved my life", "Future"]
+    },
+    {
+        text: "How does family matter in the history of HIV / AIDS ?",
+        themes: ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"]
+    },
+    {
+        text: "How do institutions impact women living with HIV / AIDS ?",
+        themes: ["Schooling", "Nowhere to go", "Incarceration", "Surveillance", "Women’ s Interagency HIV Study"]
+    },
+    {
+        text: "How is health more than the absence of disease ?",
+        themes: ["Partnerships", "Addiction and recovery", "Getting and giving support", "Living with HIV", "Healing"]
+    },
+    {
+        text: "How do women build healthy worlds ?",
+        themes: ["Healthcare", "Family dynamics", "Taking charge of health and wellness", "Work", "Spirituality & Religion"]
+    },
+]
