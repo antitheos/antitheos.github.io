@@ -111,7 +111,7 @@ function playCollection(index) {
         return;
     }
 
-    showStory(normalizeThemes(collectionThemes), pList, false, val);
+    showStory(normalizeThemes(collectionThemes), pList, false, colGroup.text);
 
 
 
