@@ -324,7 +324,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .continueprompt .relatedclose {
+    .continueprompt #relatedclose {
         display: none;
     }
 
