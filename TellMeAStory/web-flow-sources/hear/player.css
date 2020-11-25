@@ -323,7 +323,7 @@
     display: none;
     left: 0;
     right: 0;
-    min-height: calc(100vh - 184px);
+    min-height: calc(100vh - 167px);
     top: 0;
     position: absolute;
     z-index: -1;
