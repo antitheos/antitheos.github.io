@@ -334,7 +334,9 @@
 
 }
 
-
+#playprompter > div {
+    cursor: pointer;
+}
 
 #playprompter.showing {
     display: flex;
