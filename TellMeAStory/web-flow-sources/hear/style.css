@@ -121,8 +121,8 @@
 
 .active #nowplaying {
     display: block;
-
     flex-grow: 1;
+    margin-right: 61px;
 }
 
 #nowplaying #header {
@@ -166,7 +166,7 @@
 }
 
 .active #selectorsection #theme-selector {
-    margin-left: 32px;
+
     line-height: 60px;
     height: 60px;
     width: 200px;
