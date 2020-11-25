@@ -128,6 +128,9 @@ function showRelatedStory(e) {
 
 
 function toggleRelatedItems() {
+    if (!$("#storiessection").hasClass("displayRelated")) {
+        stopAudio()
+    }
     $("#storiessection").toggleClass("displayRelated");
 }
 var collection = {
