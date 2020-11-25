@@ -110,16 +110,12 @@
     margin-right: 16px;
 }
 
-.active #selectedTheme {
+.active #theme-selector #selectedTheme {
     text-align: center;
     background-image: none;
 }
 
-.active #selectedTheme {
-    text-align: center;
-}
-
-.active .showOptions #selectedTheme {
+.active .showOptions #theme-selector #selectedTheme {
     text-align: left;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
 }
