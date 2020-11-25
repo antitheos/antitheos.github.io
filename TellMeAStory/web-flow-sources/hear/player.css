@@ -255,16 +255,7 @@
     margin-bottom: 20px;
 }
 
-.responses {
-    display: flex;
-    justify-content: space-between;
-}
 
-.howtocontinue .continueelement {
-    min-width: 24%;
-    max-width: 24%;
-
-}
 
 .continuemore {
     width: 100%
@@ -282,10 +273,11 @@
 
 .continuemore,
 .continuemmainmenu {
-    border: 1px solid rgba(0, 0, 0, 0.16);
     cursor: pointer;
-    border-radius: 6px;
+    margin-bottom: 23px;
 }
+
+
 
 
 .howtocontinue.allstoriesloaded .responses {
@@ -330,6 +322,23 @@
 }
 
 @media screen and (max-width: 767px) {
+    .responses {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .howtocontinue .continueelement {
+        min-width: 31%;
+        max-width: 31%;
+
+    }
+
+    .continuemore,
+    .continuemmainmenu {
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        border-radius: 6px;
+    }
+
 
     #storiesbody {
         padding-top: 15px;
