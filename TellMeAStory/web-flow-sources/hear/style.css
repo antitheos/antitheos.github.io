@@ -253,15 +253,11 @@
 
 
     .sectionwidth {
-
+        width: 90%;
         padding-left: 10px;
     }
 
-    #selectorsection {
-        width: auto;
-        padding-left: 10px;
 
-    }
 
     .active #selectorsection {
         display: block;
