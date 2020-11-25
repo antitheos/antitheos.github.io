@@ -130,10 +130,15 @@ function showRelatedStory(e) {
 
 
 function toggleRelatedItems() {
+
     if (!$("#storiessection").hasClass("displayRelated")) {
         stopAudio()
     }
+
     $("#storiessection").toggleClass("displayRelated");
+    if (!$("#storiessection").hasClass("displayRelated")) {
+        $("#audioitem")[0].play();
+    }
 }
 
 var collectionThemes = null;
