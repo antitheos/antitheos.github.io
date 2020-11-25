@@ -74,6 +74,23 @@ function stopAudio() {
     audio.pause();
 }
 
+
+function playAudio() {
+    var audio = $("#audioitem")[0];
+    var promise = audio.play();
+
+
+    if (promise !== undefined) {
+        promise.then(_ => {
+            // Autoplay started!
+            $("#playprompter").removeClass("showing");
+        }).catch(error => {
+            // Autoplay was prevented.
+            // Show a "Play" button so that user can start playback.
+            $("#playprompter").addClass("showing");
+        });
+    }
+}
 //get all stories with all listed themes
 function findThemesData(themes) {
     var playList = [];
@@ -462,7 +479,7 @@ function playItem(key, stopAutoPlay) {
         $("#sharedstoryfooter").attr("disabled", null);
 
         if (stopAutoPlay != true) {
-            ls[0].play();
+            playAudio();
         }
 
     }

@@ -315,6 +315,28 @@
     display: none;
 }
 
+#storiessection {
+    position: relative;
+}
+
+#playprompter {
+    display: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0;
+
+}
+
+#playprompter.showing {
+    display: block;
+    z-index: 10;
+    opacity: 1;
+}
 
 @media screen and (max-width: 600px) {
     .hidemobile {
