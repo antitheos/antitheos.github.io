@@ -300,7 +300,10 @@
 @media screen and (max-width: 767px) {
 
 
-
+    .sectionwidth {
+        width: 90%;
+        padding-left: 10px;
+    }
 
 
     .active #selectorsection {
@@ -339,7 +342,7 @@
         top: 7vh;
     }
 
-    .sectionwidth {
+    .sectionwidth:not(#selectorsection) {
         width: 90%;
         padding-left: 10px;
     }
