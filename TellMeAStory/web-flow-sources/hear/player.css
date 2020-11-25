@@ -323,7 +323,7 @@
     display: none;
     left: 0;
     right: 0;
-    bottom: 0;
+    min-height: calc(100vh - 184px);
     top: 0;
     position: absolute;
     z-index: -1;
@@ -345,7 +345,12 @@
 }
 
 #playprompter i {
-    font-size: 30px;
+    font-size: 120px;
+}
+
+#playprompter #clicktoplay {
+    margin-top: 20px;
+
 }
 
 @media screen and (max-width: 600px) {
