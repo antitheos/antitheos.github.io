@@ -334,6 +334,10 @@
 
         width: calc(100% - 60px);
     }
+
+    .active #selectedTheme {
+        width: 60px;
+    }
 }
 
 
