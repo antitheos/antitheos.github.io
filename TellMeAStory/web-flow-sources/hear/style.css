@@ -150,16 +150,16 @@
     font-size: 24px;
 }
 
-#selectorsection #theme-selector.showOptions #selectedTheme {
+.showOptions #selectorsection #theme-selector #selectedTheme {
     border-bottom: 1px solid white;
 
 }
 
-#selectorsection #theme-selector.showOptions {
+.showOptions #selectorsection #theme-selector {
     height: auto !important;
 }
 
-#theme-selector.showOptions .options {
+.showOptions #theme-selector .options {
     height: 50vh;
     overflow: scroll;
 

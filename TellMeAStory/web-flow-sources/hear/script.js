@@ -51,12 +51,11 @@ function themeSelected(e) {
 }
 
 function toggleThemesList() {
-    $("#theme-selector").toggleClass("showOptions");
+    $("#selectorsectionwrapper").toggleClass("showOptions");
 }
 
 function playThisTheme(e) {
-
-    $("#theme-selector").removeClass("showOptions");
+    $("#selectorsectionwrapper").removeClass("showOptions");
     var dt = $(e).data("theme");
     playTheme(dt);
 
