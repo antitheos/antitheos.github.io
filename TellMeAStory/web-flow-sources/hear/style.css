@@ -306,9 +306,7 @@
     }
 
 
-    .active #selectorsection {
-        padding-left: 60px;
-    }
+
 
     .active #selectorsectionwrapper {
         min-height: auto;
@@ -337,11 +335,16 @@
 
 
 @media screen and (max-width: 991px) {
+    .active #selectorsection {
+        padding-left: 60px;
+    }
+
     .active #selectorsectionwrapper {
         margin-top: 7vh;
         top: 7vh;
     }
 
+    .active #selectorsection,
     .sectionwidth:not(#selectorsection) {
         width: 90%;
         padding-left: 10px;
