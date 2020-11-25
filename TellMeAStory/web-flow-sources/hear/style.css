@@ -167,12 +167,12 @@
     font-size: 24px;
 }
 
-.showOptions #selectorsection #theme-selector #selectedTheme {
+.showOptions #theme-selector #selectedTheme {
     border-bottom: 1px solid white;
 
 }
 
-.showOptions #selectorsection #theme-selector {
+.showOptions #theme-selector {
     height: auto !important;
 }
 
@@ -182,7 +182,7 @@
 
 }
 
-.active #selectorsection #theme-selector {
+.active #theme-selector {
 
     line-height: 60px;
     height: 60px;
@@ -191,7 +191,7 @@
 
 
 .active .showOptions #theme-selector {
-    width: auto;
+    width: 100%;
 }
 
 
