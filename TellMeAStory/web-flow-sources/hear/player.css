@@ -328,6 +328,10 @@
         display: none;
     }
 
+    #storiesbody {
+        display: block;
+    }
+
     .continueprompt #stories {
         min-height: 0px;
     }
