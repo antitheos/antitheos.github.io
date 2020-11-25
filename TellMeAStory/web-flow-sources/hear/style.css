@@ -97,7 +97,7 @@
     overflow: hidden;
 }
 
-#theme-selector #selectedTheme {
+#selectedTheme {
     text-overflow: ellipsis;
     overflow: hidden;
     word-break: break-word;
@@ -106,19 +106,20 @@
     background-repeat: no-repeat;
     background-position: calc(100% - 11px) center;
     background-size: 20px;
-    padding-right: 41px;
     margin-right: 16px;
 }
 
-.active #theme-selector #selectedTheme {
+.active #selectedTheme {
     text-align: center;
     background-image: none;
 }
 
-.active .showOptions #theme-selector #selectedTheme {
+.active .showOptions #selectedTheme {
     text-align: left;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
     width: 100%;
+
+    padding-right: 41px;
 }
 
 #selectorsectionwrapper.showOptions #nowplaying,
