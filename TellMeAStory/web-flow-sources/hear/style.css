@@ -325,6 +325,7 @@
 
     .active #theme-selector {
         width: 60px;
+        min-width: 60px;
     }
 
     .active #nowplaying {
