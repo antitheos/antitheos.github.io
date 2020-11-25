@@ -318,10 +318,7 @@
         padding-bottom: 24px;
     }
 
-    .active .backbutton.material-icons {
-        position: absolute;
-        line-height: 40px;
-    }
+
 
     .active .titleLabel {
         margin-left: 60px;
