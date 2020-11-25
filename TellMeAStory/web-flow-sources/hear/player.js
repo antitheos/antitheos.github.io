@@ -74,26 +74,37 @@ function stopAudio() {
     audio.pause();
 }
 
+//get all stories with all listed themes
 function findThemesData(themes) {
     console.log(themes);
-    var playList = themesData[themes[0].key].list;
-    if (playList == null || playList == undefined) {
-        return [];
+    var playList = [];
+    var firstTheme = themes[0];
+
+    if (!themesData[firstTheme.key] || !themesData[firstTheme.key].list) {
+        //no data return empty list
+        console.log("non data for theme")
+        console.log(firstTheme)
+        return playList;
     }
-    if (themes.length > 1) {
-        $.each(themes, function (index, ctheme) {
+    playList = themesData[firstTheme.key].list;
 
-            if (ctheme.key != themes[0].key) { //we have already filtered this, dont waste cycles
+    var remaingThemes = themes.splice(0, 1);
 
-                playList = playList.filter(function (story, index, array) {
-                    var ary = story.themes.filter(function (storyTheme, index, array) {
-                        return storyTheme.key == ctheme.key;
-                    });
-                    return ary.length > 0;
-                });
-            }
+    $.each(remaingThemes, function (index, ctheme) {
+        if (!themesData[ctheme.key] || !themesData[ctheme.key].list) {
+            //no data for theme, return to null;
+            console.log("non data for theme")
+            console.log(ctheme)
+            playList = [];
+            return;
+        }
+
+        playList = playList.filter(function (story, index, array) {
+            return story.themes.find(th => th.key == ctheme.key) != undefined;
+
         });
-    }
+    })
+
     return playList;
 }
 
