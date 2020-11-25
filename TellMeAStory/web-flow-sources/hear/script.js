@@ -99,7 +99,7 @@ function playCollection(val) {
     var pList = [];
     for (var t in themes) {
         var key = themes[t];
-        var data = themesData[fh];
+        var data = themesData[key];
         if (!data || !data.list) {
             continue;
         }
