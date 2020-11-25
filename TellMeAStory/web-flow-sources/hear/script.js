@@ -109,11 +109,11 @@ function playCollection(val) {
 
 
     console.log(pList)
-    if (data.length == 0) {
+    if (pList.length == 0) {
         return;
     }
 
-    showStory(normalizeThemes(themesText), data, false);
+    showStory(normalizeThemes(themesText), pList, false);
 
 
 
