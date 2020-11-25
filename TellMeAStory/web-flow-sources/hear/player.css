@@ -312,8 +312,9 @@
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {}
 
+@media screen and (max-width: 767px) {
     .hidemobile {
         display: none;
     }
@@ -321,9 +322,7 @@
     .hidedesktop {
         display: block;
     }
-}
 
-@media screen and (max-width: 767px) {
     .continueprompt #relatedclose {
         display: none;
     }
