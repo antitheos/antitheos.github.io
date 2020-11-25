@@ -120,7 +120,7 @@
 }
 
 .active .showOptions #selectedTheme {
-
+    text-align: left;
     background-image: url(https://antitheos.github.io/TellMeAStory/content/white-dropdown-selector.svg);
 }
 
