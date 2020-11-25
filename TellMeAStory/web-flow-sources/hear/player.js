@@ -304,7 +304,10 @@ function loadNowPlayingThemes(themes) {
         remainThemes = remainThemes.filter(e => e.key != theme.key)
 
 
-        $.each(remainThemes, function (index, cTheme) {
+        $.each(currentThemes, function (index, cTheme) {
+            if (cTheme.key == theme.key) {
+                return;
+            }
 
             var cItem = template.clone();
             combined.append(cItem);
