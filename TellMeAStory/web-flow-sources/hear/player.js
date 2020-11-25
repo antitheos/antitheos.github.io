@@ -75,6 +75,7 @@ function stopAudio() {
 }
 
 function findThemesData(themes) {
+    console.log(themes);
     var playList = themesData[themes[0].key].list;
     if (playList == null || playList == undefined) {
         return [];
@@ -253,8 +254,8 @@ function timeChanged(event) {
 }
 
 function playbackPaused(event) {
-    var o = event.srcElement;
-    var parent = $(o).attr("data-myparent");
+    //var o = event.srcElement;
+    //var parent = $(o).attr("data-myparent");
     $("#audioplaypause").text("");
     $("#audioplaypause").text("play_circle_filled");
 }
