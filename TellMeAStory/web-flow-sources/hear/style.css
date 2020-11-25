@@ -308,7 +308,7 @@
 
 
     .active #selectorsection {
-        display: block;
+        padding-left: 60px;
     }
 
     .active #selectorsectionwrapper {
