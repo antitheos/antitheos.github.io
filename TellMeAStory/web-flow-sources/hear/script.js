@@ -33,7 +33,7 @@ function returnToHome() {
     $("#theme-selector").removeClass("showOptions");
     window.scrollTo(0, 0);
     $("#stories").html("");
-    $("#selectedTheme").text("Select Theme");
+    $("#selectedTheme").text("...");
 
 }
 
