@@ -139,7 +139,6 @@
     text-align: right;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.57);
-    padding-top: 8px;
     margin-left: 20px;
     display: flex;
     align-items: center;
@@ -334,7 +333,7 @@
     }
 
     .hideOver767 {
-        display: block;
+        display: inherit;
     }
 
     .continueprompt #relatedclose {
@@ -398,9 +397,6 @@
         opacity: 0%;
     }
 
-    .nextactions {
-        font-size: 16px;
-    }
 
     .active #storiessection {
         margin-top: 0px;
