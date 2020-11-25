@@ -306,8 +306,6 @@ function loadNowPlayingThemes(themes) {
     var template = $("#templates .relatedstory");
 
     var remainThemes = findRelevantThemes(themes);
-    console.log(remainThemes)
-    console.log(themes)
     $.each(themes, function (index, theme) {
 
         $.each(remainThemes, function (index, cTheme) {
