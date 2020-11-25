@@ -76,14 +76,11 @@ function stopAudio() {
 
 //get all stories with all listed themes
 function findThemesData(themes) {
-    console.log(themes);
     var playList = [];
     var firstTheme = themes[0];
 
     if (!themesData[firstTheme.key] || !themesData[firstTheme.key].list) {
-        //no data return empty list
-        console.log("non data for theme")
-        console.log(firstTheme)
+        //no data return empty list 
         return playList;
     }
     playList = themesData[firstTheme.key].list;
@@ -92,9 +89,7 @@ function findThemesData(themes) {
 
     $.each(remaingThemes, function (index, ctheme) {
         if (!themesData[ctheme.key] || !themesData[ctheme.key].list) {
-            //no data for theme, return to null;
-            console.log("non data for theme")
-            console.log(ctheme)
+            //no data for theme, return to null; 
             playList = [];
             return;
         }
