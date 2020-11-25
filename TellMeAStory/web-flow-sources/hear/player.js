@@ -290,6 +290,9 @@ function playbackStarted(event) {
     }
 }
 
+function findRelevantThemes(themes) {
+    return currentThemes.filter(e => themes.find(x => x.key == e.key) != undefined)
+}
 
 function loadNowPlayingThemes(themes) {
     var related = $("#related #relatedotherthemes");
@@ -301,10 +304,8 @@ function loadNowPlayingThemes(themes) {
 
     var remainThemes = themes;
     $.each(themes, function (index, theme) {
-        remainThemes = remainThemes.filter(e => e.key != theme.key)
 
-
-        $.each(currentThemes, function (index, cTheme) {
+        $.each(findRelevantThemes(currentThemes), function (index, cTheme) {
             if (cTheme.key == theme.key) {
                 return;
             }
