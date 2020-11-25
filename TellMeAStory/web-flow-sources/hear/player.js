@@ -302,10 +302,10 @@ function loadNowPlayingThemes(themes) {
     combined.html("");
     var template = $("#templates .relatedstory");
 
-    var remainThemes = themes;
+    var remainThemes = findRelevantThemes(themes);
     $.each(themes, function (index, theme) {
 
-        $.each(findRelevantThemes(currentThemes), function (index, cTheme) {
+        $.each(remainThemes, function (index, cTheme) {
             if (cTheme.key == theme.key) {
                 return;
             }
