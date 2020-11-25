@@ -301,26 +301,27 @@ function loadNowPlayingThemes(themes) {
 
     $.each(themes, function (index, theme) {
 
-        if (currentThemes.data[theme.key] != true) {
-            $.each(currentThemes, function (index, cTheme) {
-                var cItem = template.clone();
-                combined.append(cItem);
-                $(cItem).text(cTheme.text + " + " + theme.text);
-                var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
-                $(cItem).data("playList", findThemesData(cItemThemes));
-                $(cItem).data("themes", cItemThemes);
+        //if (currentThemes.data[theme.key] != true) {
+        //$.each(currentThemes, function (index, cTheme) {
+        var cTheme = theme;
+        var cItem = template.clone();
+        combined.append(cItem);
+        $(cItem).text(cTheme.text + " + " + theme.text);
+        var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
+        $(cItem).data("playList", findThemesData(cItemThemes));
+        $(cItem).data("themes", cItemThemes);
 
-            });
+        //});
 
-            if (!collectionThemes) {
-                var item = template.clone();
-                related.append(item);
-                $(item).text(theme.text);
-                var itemThemes = normalizeThemes([theme.text]);
-                $(item).data("playList", findThemesData(itemThemes));
-                $(item).data("themes", itemThemes);
-            }
+        if (!collectionThemes) {
+            var item = template.clone();
+            related.append(item);
+            $(item).text(theme.text);
+            var itemThemes = normalizeThemes([theme.text]);
+            $(item).data("playList", findThemesData(itemThemes));
+            $(item).data("themes", itemThemes);
         }
+        //}
     });
 
     if (collectionThemes) {
