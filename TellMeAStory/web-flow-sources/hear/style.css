@@ -308,6 +308,10 @@
         padding-left: 10px;
     }
 
+    #selectorsection {
+        width: 60vw;
+    }
+
     .active #selectorsection {
         padding-left: 60px;
         width: 90%;
