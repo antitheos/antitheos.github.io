@@ -146,7 +146,7 @@
     flex-grow: 1;
     margin-right: 61px;
 
-    height: 40px;
+    height: 58px;
 }
 
 #nowplaying #header {
@@ -498,7 +498,7 @@
 
     .active #nowplaying {
         margin-right: 11px;
-
+        height: 50px
     }
 
     #storiessection.displayRelated #sharedstoryfooter {
@@ -535,6 +535,10 @@
         width: 100%;
         padding-left: 15px;
         padding-right: 15px;
+    }
+
+    .active #nowplaying {
+        height: 40px;
     }
 
     #header-title {
