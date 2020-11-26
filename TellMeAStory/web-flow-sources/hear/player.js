@@ -201,10 +201,10 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
     $("#header-title").text(txt);
     $("#header-title").attr("title", txt);
 
-    if ($("#header-title").width() < $("#nowplaying").width()) {
-        $("#header-title").removeClass("animate")
-    } else {
+    if ($("#header-title").width() > $("#nowplaying").width()) {
         $("#header-title").addClass("animate")
+    } else {
+        $("#header-title").removeClass("animate")
     }
 
 

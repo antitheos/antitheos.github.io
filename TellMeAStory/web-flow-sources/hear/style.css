@@ -304,9 +304,11 @@
     position: relative;
 }
 
-.active #header-title.animate {
-
+.active #header-title {
     position: absolute;
+}
+
+.active #header-title.animate {
     /* Starting position */
     -moz-transform: translateX(0%);
     -webkit-transform: translateX(0%);
