@@ -329,6 +329,12 @@
         padding-left: 0px;
     }
 
+    .active #selectorsection {
+        width: 100%;
+        padding-right: 27px;
+        max-width: 100%;
+        padding-left: 90px;
+    }
 
     .active #selectorsectionwrapper {
         min-height: auto;
