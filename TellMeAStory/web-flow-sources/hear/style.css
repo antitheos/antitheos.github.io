@@ -297,6 +297,128 @@
     opacity: 1;
 }
 
+#nowplaying {
+    position: relative;
+}
+
+.active .#header-title {
+
+    position: absolute;
+    /* Starting position */
+    -moz-transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    opacity: 0;
+    /* Apply animation to this element */
+    -moz-animation: example1 15s linear infinite;
+    -webkit-animation: example1 15s linear infinite;
+    animation: example1 15s linear infinite;
+}
+
+
+
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+    0% {
+        -moz-transform: translateX(0%);
+        opacity: 0;
+    }
+
+    5% {
+        -moz-transform: translateX(0%);
+        opacity: 1;
+    }
+
+    13% {
+        -moz-transform: translateX(0%);
+        opacity: 1;
+    }
+
+    90% {
+        -moz-transform: translateX(-100%);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform: translateX(-100%);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes example1 {
+    0% {
+        -webkit-transform: translateX(0%);
+        opacity: 0;
+    }
+
+    5% {
+        -webkit-transform: translateX(0%);
+        opacity: 1;
+    }
+
+    13% {
+        -webkit-transform: translateX(0%);
+        opacity: 1;
+    }
+
+    90% {
+        -webkit-transform: translateX(-100%);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateX(-100%);
+        opacity: 1;
+    }
+}
+
+@keyframes example1 {
+
+    0% {
+        -moz-transform: translateX(0%);
+        /* Firefox bug fix */
+        -webkit-transform: translateX(0%);
+        /* Firefox bug fix */
+        transform: translateX(0%);
+        opacity: 0;
+    }
+
+    5% {
+        -moz-transform: translateX(0%);
+        /* Firefox bug fix */
+        -webkit-transform: translateX(0%);
+        /* Firefox bug fix */
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    13% {
+        -moz-transform: translateX(0%);
+        /* Firefox bug fix */
+        -webkit-transform: translateX(0%);
+        /* Firefox bug fix */
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    90% {
+        -moz-transform: translateX(-100%);
+        /* Firefox bug fix */
+        -webkit-transform: translateX(-100%);
+        /* Firefox bug fix */
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform: translateX(-100%);
+        /* Firefox bug fix */
+        -webkit-transform: translateX(-100%);
+        /* Firefox bug fix */
+        transform: translateX(-100%);
+        opacity: 1;
+    }
+}
 
 @media screen and (max-width: 991px) {
 
