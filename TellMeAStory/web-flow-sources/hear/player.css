@@ -244,6 +244,8 @@
 .playingstory.howtocontinue {
     height: auto;
     padding-top: 70px;
+    position: sticky;
+    top: 200px;
 }
 
 .prompts {

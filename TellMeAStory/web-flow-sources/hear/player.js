@@ -321,14 +321,20 @@ function loadNowPlayingThemes(themes) {
     var template = $("#templates .relatedstory");
 
     var remainThemes = findRelevantThemes(themes);
+    var count = 0;
     $.each(themes, function (index, theme) {
+        if (count > 10) {
+            return;
+        }
         remainThemes = remainThemes.filter(e => e.key != theme.key);
         $.each(remainThemes, function (index, cTheme) {
-            if (cTheme.key == theme.key) {
+            if (cTheme.key == theme.key || count > 10) {
                 return;
             }
             var caption = cTheme.text + " + " + theme.text;
-            appendThemeSection(template, caption, [cTheme.text, theme.text], combined);
+            if (appendThemeSection(template, caption, [cTheme.text, theme.text], combined)) {
+                count++;
+            }
 
 
         });
@@ -358,6 +364,7 @@ function appendThemeSection(template, caption, themes, parent) {
         $(item).data("playList", pl);
         $(item).data("themes", itemThemes);
     }
+    return pl.length > 0;
 }
 
 function goToNextStory(e) {
