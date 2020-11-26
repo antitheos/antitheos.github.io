@@ -201,11 +201,6 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
     $("#header-title").text(txt);
     $("#header-title").attr("title", txt);
 
-    if ($("#header-title").width() > $("#nowplaying").width()) {
-        $("#header-title").addClass("animate")
-    } else {
-        $("#header-title").removeClass("animate")
-    }
 
 
     $("#relatedotherthemes").html("");
@@ -213,19 +208,6 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
     var data = $("#stories");
     data.html("");
 
-
-    /*
-       var theme = $(e).text();
-       $("#SelectedStory").html("");
-       var counter = 0;
-       $.each(currentThemes, function (index, theme) {
-           counter++;
-           if (counter > 1 && counter == currentThemes.length) {
-               $("#SelectedStory").append("<span> and </span>");
-           }
-           $("#SelectedStory").append("<span class='theme'>" + theme.text + "</span>");
-
-       });*/
 
 
     populateStoriesToScreen();
@@ -358,6 +340,13 @@ function loadNowPlayingThemes(themes) {
             appendThemeSection(template, theme, [theme], related);
         });
     }
+
+    if ($("#header-title").width() > $("#nowplaying").width()) {
+        $("#header-title").addClass("animate")
+    } else {
+        $("#header-title").removeClass("animate")
+    }
+
 }
 
 function appendThemeSection(template, caption, themes, parent) {
