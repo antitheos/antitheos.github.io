@@ -324,6 +324,10 @@
     }
 
 
+    #selectorsection {
+        max-width: 85vw;
+        padding-left: 0px;
+    }
 
 
     .active #selectorsectionwrapper {
