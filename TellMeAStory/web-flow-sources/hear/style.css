@@ -31,7 +31,7 @@
 .active #selectorsection {
     display: flex;
     align-items: center;
-    font-size: 28px;
+    font-size: 27px;
 
 }
 
@@ -380,6 +380,14 @@
         display: none;
 
     }
+
+    #nowplaying #header {
+        font-size: 10px;
+    }
+
+    #header-title {
+        font-size: 24px;
+    }
 }
 
 @media screen and (max-width: 479px) {
@@ -398,5 +406,8 @@
         padding-right: 15px;
     }
 
+    #header-title {
+        font-size: 16px;
+    }
 
 }
