@@ -380,10 +380,14 @@
 
 .continueprompt #stories {
     width: 300px;
+
+    transition-duration: 400ms;
 }
 
 .continueprompt #related {
     font-size: 19px;
+
+    transition-duration: 400ms;
 }
 
 @media screen and (max-width: 600px) {
