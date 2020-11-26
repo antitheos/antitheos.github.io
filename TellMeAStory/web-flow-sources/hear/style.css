@@ -301,7 +301,7 @@
     position: relative;
 }
 
-.active .#header-title {
+.active #header-title {
 
     position: absolute;
     /* Starting position */
