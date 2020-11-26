@@ -28,7 +28,7 @@ function windowReady() {
         }
         setTimeout(function () {
             $("body").addClass("loaded");
-        }, 400)
+        }, 100)
 
 
     });
