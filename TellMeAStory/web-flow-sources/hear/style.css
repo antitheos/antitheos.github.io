@@ -313,6 +313,7 @@
 
     #selectorsection {
         width: 60vw;
+        padding-left: 0px;
     }
 
     .active #selectorsection {
@@ -338,6 +339,8 @@
     #selectorsection {
         max-width: 85vw;
         width: 85vw;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .active #selectorsection {
