@@ -86,7 +86,10 @@ function selectRandomTheme() {
     playThisTheme(rec)
 }
 
-
+function playCollClick(index) {
+    window.location.pathname = "/hear?" + index;
+    playCollection(index);
+}
 
 function playCollection(index) {
     var colGroup = collection[index];
