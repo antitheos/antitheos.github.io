@@ -347,10 +347,11 @@
 #playbuttonwrapper {
     display: none;
     position: sticky;
-    top: 250px;
+    top: 200px;
     box-sizing: border-box;
-    height: 0px;
+    height: 285px;
     z-index: 20;
+    margin-top: -285px;
 
 }
 
