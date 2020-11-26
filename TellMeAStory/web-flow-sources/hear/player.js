@@ -201,6 +201,13 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
     $("#header-title").text(txt);
     $("#header-title").attr("title", txt);
 
+    if ($("#header-title").width() < $("#nowplaying").width()) {
+        $("#header-title").removeClass("animate")
+    } else {
+        $("#header-title").addClass("animate")
+    }
+
+
     $("#relatedotherthemes").html("");
     $("#relatedcombinedthemes ").html("");
     var data = $("#stories");
@@ -430,7 +437,7 @@ function playNextItem(key, stopAutoPlay) {
     if (nextStory.length > 0) {
         top = nextObject.position().top - nextStory.outerHeight() - 100;
     }
-    console.log(playKey + ", top --> " + top);
+    //console.log(playKey + ", top --> " + top);
     window.scrollTo(0, 0);
     setTimeout(function () {
         var items = $("#audioitem");
