@@ -323,13 +323,15 @@
 
 
     .sectionwidth {
-        width: 90%;
-        padding-left: 10px;
+        width: 100%;
+        padding-right: 6%;
+        padding-left: 6%;
     }
 
 
     #selectorsection {
         max-width: 85vw;
+        width: 100%;
         padding-left: 0px;
     }
 
