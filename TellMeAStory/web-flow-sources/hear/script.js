@@ -87,8 +87,10 @@ function selectRandomTheme() {
 }
 
 function playCollClick(index) {
-    window.location.pathname = "/hear?" + index;
     playCollection(index);
+    if (window && window.history) {
+        window.history.pushState({}, "Hear", "?" + index)
+    }
 }
 
 function playCollection(index) {
