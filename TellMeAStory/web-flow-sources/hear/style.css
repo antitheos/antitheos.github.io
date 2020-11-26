@@ -151,6 +151,9 @@
     font-weight: 600;
     font-size: 12px;
     text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #nowplaying #header-title {
@@ -320,7 +323,10 @@
 
 
 @media screen and (max-width: 767px) {
-
+    .middle-text {
+        width: 100%;
+        max-width: 100%;
+    }
 
     .sectionwidth {
         width: 100%;
@@ -330,15 +336,15 @@
 
 
     #selectorsection {
-        max-width: 100%;
-        width: 100%;
+        max-width: 85vw;
+        width: 85vw;
     }
 
     .active #selectorsection {
         width: 100%;
         padding-right: 27px;
         max-width: 100%;
-        padding-left: 90px;
+        padding-left: 100px;
     }
 
     .active #selectorsectionwrapper {
