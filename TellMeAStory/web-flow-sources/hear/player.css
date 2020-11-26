@@ -343,20 +343,27 @@
 }
 
 
-#playbutton {
+
+#playbuttonwrapper {
     display: none;
+    position: sticky;
+    top: 250px;
+    box-sizing: border-box;
+    height: 0px;
+    z-index: 20;
+
+}
+
+#storiessection.promptplay #playbuttonwrapper {
+    display: block;
 }
 
 #storiessection.promptplay #playbutton {
-    position: sticky;
-    top: 250px;
     cursor: pointer;
     text-align: center;
     width: 200px;
     padding: 60px 20px;
     margin: auto;
-    z-index: 20;
-    display: block;
 }
 
 
