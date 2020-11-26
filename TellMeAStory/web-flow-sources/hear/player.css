@@ -44,10 +44,8 @@
     padding-top: 10px;
     font-weight: 400;
     min-width: 200px;
-}
-
-#related {
     min-height: calc(100vh - 323px);
+    flex-grow: 1;
 }
 
 .relatedstory {
@@ -378,6 +376,10 @@
     font-size: 23px;
     font-weight: 300;
 
+}
+
+.continueprompt #stories {
+    width: 300px;
 }
 
 @media screen and (max-width: 600px) {
