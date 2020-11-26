@@ -51,7 +51,7 @@
 .relatedstory {
     cursor: pointer;
     text-decoration: underline;
-    line-height: 25px;
+    line-height: 1.6;
     margin-bottom: 15px;
 }
 
@@ -378,16 +378,17 @@
 
 }
 
-.continueprompt #stories {
-    width: 300px;
-
+#stories,
+#related {
     transition-duration: 400ms;
+}
+
+.continueprompt #stories {
+    max-width: 300px;
 }
 
 .continueprompt #related {
     font-size: 20px;
-
-    transition-duration: 400ms;
 }
 
 @media screen and (max-width: 600px) {
