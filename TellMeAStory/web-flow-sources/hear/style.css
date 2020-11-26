@@ -302,14 +302,15 @@
         top: 7vh;
     }
 
-    .active #selectorsection,
-    .sectionwidth:not(#selectorsection) {
+
+    .sectionwidth {
         width: 90%;
         padding-left: 10px;
     }
 
     .active #selectorsection {
         padding-left: 60px;
+        width: 90%;
     }
 }
 
