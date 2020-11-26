@@ -24,17 +24,19 @@ function windowReady() {
         var search = window.location.search.replace("?", "");
         var index = parseInt(search);
         if (!Number.isNaN(index)) {
-            playCollection(index - 1);
+            if (!playCollection(index - 1)) {
+                hasLoaded();
+            }
+        } else {
+            hasLoaded();
         }
-        setTimeout(function () {
-            $("body").addClass("loaded");
-        }, 100)
-
-
     });
 
 }
 
+function hasLoaded() {
+    $("body").addClass("loaded");
+}
 
 function returnToHome() {
     stopAudio();
@@ -89,7 +91,7 @@ function selectRandomTheme() {
 function playCollection(index) {
     var colGroup = collection[index];
     if (!colGroup || !colGroup.themes) {
-        return;
+        return false;
     }
     collectionThemes = colGroup.themes;
 
@@ -108,10 +110,11 @@ function playCollection(index) {
 
     console.log(pList)
     if (pList.length == 0) {
-        return;
+        return false;
     }
 
     showStory(normalizeThemes(collectionThemes), pList, false, colGroup.text);
+    return true;
 
 
 
