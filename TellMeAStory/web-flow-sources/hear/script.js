@@ -26,7 +26,7 @@ function windowReady() {
         if (!Number.isNaN(index)) {
             playCollection(index - 1);
         }
-        $("body").addClass("loaded");
+        //$("body").addClass("loaded");
 
     });
 
