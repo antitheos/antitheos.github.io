@@ -83,11 +83,11 @@ function playAudio() {
     if (promise !== undefined) {
         promise.then(_ => {
             // Autoplay started!
-            $("#playprompter").removeClass("showing");
+            $("#storiessection").removeClass("promptplay");
         }).catch(error => {
             // Autoplay was prevented.
             // Show a "Play" button so that user can start playback.
-            $("#playprompter").addClass("showing");
+            $("#storiessection").addClass("promptplay");
         });
     }
 }
