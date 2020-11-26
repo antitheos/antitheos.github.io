@@ -412,6 +412,7 @@
 
     .continueprompt #stories {
         min-height: 0px;
+        width: 100%;
     }
 
     .continueprompt #related {
