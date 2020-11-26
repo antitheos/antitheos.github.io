@@ -195,8 +195,9 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
     lastCalculated = 0;
     currentPlayList = playlist.slice(); //randomize order 
     var cText = currentThemes.reduce((c = "", r, i) => c + (c == "" ? "" : " and ") + r.text, "")
-
-    $("#header-title").text(pTitle ? pTitle : cText);
+    var txt = pTitle ? pTitle : cText;
+    $("#header-title").text(txt);
+    $("#header-title").attr("title", txt);
 
     $("#relatedotherthemes").html("");
     $("#relatedcombinedthemes ").html("");
