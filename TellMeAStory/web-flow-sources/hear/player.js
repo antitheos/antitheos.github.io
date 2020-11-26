@@ -327,37 +327,36 @@ function loadNowPlayingThemes(themes) {
             if (cTheme.key == theme.key) {
                 return;
             }
+            var caption = cTheme.text + " + " + theme.text;
+            appendThemeSection(template, caption, [cTheme.text, theme.text], combined);
 
-            var cItem = template.clone();
-            combined.append(cItem);
-            $(cItem).text(cTheme.text + " + " + theme.text);
-            var cItemThemes = normalizeThemes([cTheme.text, theme.text]);
-            $(cItem).data("playList", findThemesData(cItemThemes));
-            $(cItem).data("themes", cItemThemes);
 
         });
 
 
         if (!collectionThemes && (currentThemes.length > 1 || !currentThemes.data[theme.key])) {
-            var item = template.clone();
-            related.append(item);
-            $(item).text(theme.text);
-            var itemThemes = normalizeThemes([theme.text]);
-            $(item).data("playList", findThemesData(itemThemes));
-            $(item).data("themes", itemThemes);
+            appendThemeSection(template, theme.text, [theme.text], related);
         }
 
     });
 
     if (collectionThemes) {
         $.each(collectionThemes, function (index, theme) {
-            var item = template.clone();
-            related.append(item);
-            $(item).text(theme);
-            var itemThemes = normalizeThemes([theme]);
-            $(item).data("playList", findThemesData(itemThemes));
-            $(item).data("themes", itemThemes);
+            appendThemeSection(template, theme, [theme], related);
         });
+    }
+}
+
+function appendThemeSection(template, caption, themes, parent) {
+
+    var itemThemes = normalizeThemes(themes);
+    var pl = findThemesData(itemThemes)
+    if (pl.length > 0) {
+        var item = template.clone();
+        parent.append(item);
+        $(item).text(caption);
+        $(item).data("playList", pl);
+        $(item).data("themes", itemThemes);
     }
 }
 
@@ -508,9 +507,9 @@ function proceedToContent() {
 
 /*todo:
  
- 
-- mobile, style of back to player from related themes 
-- play, how to display mutiple themes selected
+- auto scroll title on playing
+- mobile, style of back to player from related theme 
+- combine items, test for presence of data before loading.
 
 QUESTIONS
 - collections, nothing matching all 5 themes
