@@ -207,7 +207,8 @@
     width: 100%;
 }
 
-.active .middle-text-bg {
+.active .middle-text-bg,
+.active .full-section {
     display: none;
     visibility: hidden;
     width: 0px;
