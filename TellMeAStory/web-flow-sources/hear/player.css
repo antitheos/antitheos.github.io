@@ -327,7 +327,6 @@
 }
 
 
-#storiessection.promptplay::before,
 #storiessection.promptplay #playprompter {
     left: 0;
     right: 0;
@@ -346,7 +345,7 @@
 
 #storiessection.promptplay #playbutton {
     position: sticky;
-    top: 100px;
+    top: 250px;
     cursor: pointer;
     text-align: center;
     width: auto;
