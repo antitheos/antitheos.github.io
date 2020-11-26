@@ -281,6 +281,14 @@
     padding-left: 0px;
 }
 
+.hideuntiload {
+    opacity: 0;
+}
+
+.loaded .hideuntiload {
+    opacity: 1;
+}
+
 @media screen and (max-width: 479px) {
 
 

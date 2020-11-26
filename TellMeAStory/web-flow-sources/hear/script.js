@@ -22,6 +22,7 @@ function windowReady() {
         }
 
         loadCollections();
+        $("body").addClass("loaded");
 
         var search = window.location.search.replace("?", "");
         var index = parseInt(search);
