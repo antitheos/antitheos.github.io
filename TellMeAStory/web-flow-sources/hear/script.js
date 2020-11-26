@@ -21,9 +21,6 @@ function windowReady() {
             el.append(e);
         }
 
-        loadCollections();
-
-
         var search = window.location.search.replace("?", "");
         var index = parseInt(search);
         if (!Number.isNaN(index)) {
@@ -82,17 +79,6 @@ function selectRandomTheme() {
     var index = Math.floor(Math.random() * Math.floor(ls.length - 1));
     var rec = ls[index + 1];
     playThisTheme(rec)
-}
-
-
-function loadCollections() {
-    return;
-    var el = $("#collection-selector");
-    for (var x in collection) {
-        el.append("<div class='collection-item' onclick='playCollection(" + x + ")'>" + collection[x].text + "</div>");
-
-    }
-
 }
 
 
