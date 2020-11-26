@@ -332,12 +332,12 @@
         opacity: 1;
     }
 
-    13% {
+    10% {
         -moz-transform: translateX(0%);
         opacity: 1;
     }
 
-    90% {
+    96% {
         -moz-transform: translateX(-100%);
         opacity: 1;
     }
@@ -359,12 +359,12 @@
         opacity: 1;
     }
 
-    13% {
+    10% {
         -webkit-transform: translateX(0%);
         opacity: 1;
     }
 
-    90% {
+    96% {
         -webkit-transform: translateX(-100%);
         opacity: 1;
     }
@@ -395,7 +395,7 @@
         opacity: 1;
     }
 
-    13% {
+    10% {
         -moz-transform: translateX(0%);
         /* Firefox bug fix */
         -webkit-transform: translateX(0%);
@@ -404,7 +404,7 @@
         opacity: 1;
     }
 
-    90% {
+    96% {
         -moz-transform: translateX(-100%);
         /* Firefox bug fix */
         -webkit-transform: translateX(-100%);
