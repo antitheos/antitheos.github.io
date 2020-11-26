@@ -352,16 +352,16 @@
     width: auto;
     padding: 20px;
     margin: auto;
-    z-index: 10;
+    z-index: 20;
 }
 
 
 
-#playprompter i {
+#playbutton i {
     font-size: 120px;
 }
 
-#playprompter #clicktoplay {
+#playbutton #clicktoplay {
     margin-top: 20px;
     font-size: 23px;
     font-weight: 300;
