@@ -395,6 +395,12 @@
         font-size: 37px;
     }
 
+    .active #selectorsection {
+        padding-right: 0px;
+        max-width: 100%;
+        padding-left: 10px;
+    }
+
     .widthcontrol {
         padding-left: 15px;
         padding-right: 15px;
