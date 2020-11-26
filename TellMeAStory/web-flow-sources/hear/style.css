@@ -358,7 +358,9 @@
 }
 
 @media screen and (max-width: 479px) {
-
+    #selectorsection {
+        font-size: 37px;
+    }
 
     .widthcontrol {
         padding-left: 15px;
