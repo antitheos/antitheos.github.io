@@ -22,14 +22,14 @@ function windowReady() {
         }
 
         loadCollections();
-        $("body").addClass("loaded");
+
 
         var search = window.location.search.replace("?", "");
         var index = parseInt(search);
         if (!Number.isNaN(index)) {
             playCollection(index - 1);
         }
-
+        $("body").addClass("loaded");
 
     });
 
