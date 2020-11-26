@@ -327,7 +327,7 @@
 }
 
 
-#storiessection.promptplay::after,
+#storiessection.promptplay::before,
 #storiessection.promptplay #playprompter {
     left: 0;
     right: 0;
@@ -339,6 +339,7 @@
     opacity: 1;
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(2px);
+    content: "";
 }
 
 
