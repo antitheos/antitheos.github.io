@@ -245,7 +245,7 @@
     margin-top: 100px
 }
 
-a.collection-item {
+.collection-item {
     text-decoration: underline;
     cursor: pointer;
     line-height: 2;
