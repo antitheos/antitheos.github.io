@@ -322,7 +322,7 @@ function loadNowPlayingThemes(themes) {
 
     var remainThemes = findRelevantThemes(themes);
     $.each(themes, function (index, theme) {
-
+        remainThemes = remainThemes.filter(e => e.key != theme.key);
         $.each(remainThemes, function (index, cTheme) {
             if (cTheme.key == theme.key) {
                 return;
@@ -435,18 +435,6 @@ function playNextItem(key, stopAutoPlay) {
         }
     }, 300);
 
-    /*
-        $(window).animate({
-            "scrollTop": top + "px"
-        }, 300, function () {
-            var items = $("#" + playKey + " .audio");
-            if (items.length > 0) {
-                items[0].currentTime = 0;
-            }
-            if (stopAutoPlay != true) {
-                playItem(playKey);
-            }
-        })*/
 }
 
 function playItem(key, stopAutoPlay) {
