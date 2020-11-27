@@ -24,7 +24,7 @@ function windowReady() {
         var search = window.location.search.replace("?", "");
         var index = parseInt(search);
         if (!Number.isNaN(index)) {
-            if (!playCollection(index - 1)) {
+            if (!playCollection(index)) {
                 hasLoaded();
             }
         } else {
@@ -87,14 +87,18 @@ function selectRandomTheme() {
 }
 
 function playCollClick(index) {
-    playCollection(index);
-    if (window && window.history) {
+
+
+    if (playCollection(index) && window && window.history) {
         window.history.pushState({}, "Hear", "?" + index)
     }
 }
 
 function playCollection(index) {
-    var colGroup = collection[index];
+    if (index < 1 || index > collection.length) {
+        return false;
+    }
+    var colGroup = collection[index - 1];
     if (!colGroup || !colGroup.themes) {
         return false;
     }
