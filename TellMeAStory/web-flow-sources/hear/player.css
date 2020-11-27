@@ -527,7 +527,7 @@
         margin: 0px;
         padding-top: 50px;
         font-size: 18px;
-        padding-left: 60px;
+        padding-left: 100px;
         min-height: calc(100vh - 210px);
     }
 
@@ -578,5 +578,11 @@
 
     .nextstory:first-child {
         margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    #related {
+        padding-left: 60px;
     }
 }
