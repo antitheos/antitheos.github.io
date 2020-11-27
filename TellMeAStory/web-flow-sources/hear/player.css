@@ -526,18 +526,22 @@
         margin: 0px;
         padding-top: 50px;
         font-size: 18px;
+        padding-left: 60px;
     }
 
     #relatedclose {
-        display: unset;
-        display: block;
         line-height: 52px;
-        margin-bottom: 40px;
         cursor: pointer;
         color: black;
         border: 1px solid;
         padding: 0px 16px;
         font-size: 24px;
+        align-items: center;
+    }
+
+    #storiessection.displayRelated #relatedclose {
+
+        display: flex;
     }
 
     #relatedclose span.material-icons {
