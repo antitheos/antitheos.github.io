@@ -528,11 +528,11 @@
         padding-top: 50px;
         font-size: 18px;
         padding-left: 60px;
-        min-height: calc(100vh - 243px);
+        min-height: calc(100vh - 210px);
     }
 
     #relatedclose {
-        line-height: 62px;
+        line-height: 70px;
         cursor: pointer;
         color: black;
         border-top: 1px solid rgba(0, 0, 0, 0.17);
