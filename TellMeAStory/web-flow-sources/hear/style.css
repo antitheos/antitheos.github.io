@@ -552,3 +552,7 @@
 .hideUnder767.nextstory {
     display: none !important;
 }
+
+.continuemorewrapper.continueelement.hideUnder767 {
+    display: none !important;
+}
