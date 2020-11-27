@@ -113,7 +113,7 @@ function playCollection(index) {
     }
 
 
-    console.log(pList)
+    //console.log(pList)
     if (pList.length == 0) {
         return false;
     }
