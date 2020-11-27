@@ -555,12 +555,14 @@
         margin-right: 10px;
         margin-left: auto;
         line-height: 70px;
+        color: #333;
     }
 
     #relatedclose span.text {
         margin-right: auto;
         line-height: 70px;
         font-size: 21px;
+        color: #333;
     }
 
 
