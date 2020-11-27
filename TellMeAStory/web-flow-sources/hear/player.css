@@ -26,6 +26,7 @@
     overflow: hidden;
     padding-top: 24px;
     background-color: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(2px);
     width: calc(100% - 230px);
     padding-right: 30px;
     margin-bottom: 30px;
@@ -527,11 +528,11 @@
         padding-top: 50px;
         font-size: 18px;
         padding-left: 60px;
-        min-height: calc(100vh - 210px);
+        min-height: calc(100vh - 243px);
     }
 
     #relatedclose {
-        line-height: 52px;
+        line-height: 62px;
         cursor: pointer;
         color: black;
         border-top: 1px solid rgba(0, 0, 0, 0.17);
@@ -540,6 +541,9 @@
         align-items: center;
         position: sticky;
         bottom: 0px;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(2px);
     }
 
     #storiessection.displayRelated #relatedclose {
