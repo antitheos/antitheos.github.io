@@ -150,23 +150,23 @@ function toggleRelatedItems() {
 var collectionThemes = null;
 var collection = [
     {
-        text: "How can we center women in the history of HIV / AIDS?",
-        themes: ["Knowledge about HIV/AIDS", "Contracting HIV/AIDS from a male partner", "In the streets", "HIV saved my life", "Future"]
+        text: "How can we center women in the history of HIV/AIDS?",
+        themes: ["Knowledge about HIV/AIDS", "partner had HIV/AIDS", "In the streets", "HIV saved my life", "Future"]
     },
     {
-        text: "How does family matter in the history of HIV / AIDS?",
-        themes: ["Childhood", "Migrations", "Trauma", "Talking about HIV in families", "Children"]
+        text: "How does family matter in the history of HIV/AIDS?",
+        themes: ["Childhood", "Migrations", "Trauma", "HIV in families", "Children"]
     },
     {
-        text: "How do institutions impact women living with HIV / AIDS?",
-        themes: ["Schooling", "Nowhere to go", "Incarceration", "Surveillance", "Women’ s Interagency HIV Study"]
+        text: "How do institutions impact women living with HIV/AIDS?",
+        themes: ["Schooling", "Nowhere to go", "Incarceration", "Surveillance", "WIHS"]
     },
     {
         text: "How is health more than the absence of disease?",
-        themes: ["Partnerships", "Addiction and recovery", "Getting and giving support", "Living with HIV", "Healing"]
+        themes: ["Partnerships", "Addiction & recovery", "Social support", "Living with HIV", "Healing"]
     },
     {
         text: "How do women build healthy worlds?",
-        themes: ["Healthcare", "Family dynamics", "Taking charge of health and wellness", "Work", "Spirituality & Religion"]
+        themes: ["Health care", "Families", "Taking charge of health and wellness", "Work", "Spirituality & Religion"]
     },
 ]
