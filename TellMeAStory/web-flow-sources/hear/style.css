@@ -548,3 +548,7 @@
     }
 
 }
+
+.hideUnder767.nextstory {
+    display: none !important;
+}
