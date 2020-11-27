@@ -350,6 +350,14 @@ function loadNowPlayingThemes(themes) {
         });
     }
 
+    if ($("#relatedcombinedthemes .relatedstory").length == 0) {
+        $($(".relatedesectiontitle")[0]).hide();
+        combined.hide();
+    } else {
+        $($(".relatedesectiontitle")[0]).show();
+        combined.show();
+    }
+
 
 }
 
