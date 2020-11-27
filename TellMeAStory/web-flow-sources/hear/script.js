@@ -141,6 +141,7 @@ function toggleRelatedItems() {
     }
 
     $("#storiessection").toggleClass("displayRelated");
+    window.scrollTo(0, 0);
     if (!$("#storiessection").hasClass("displayRelated")) {
         $("#audioitem")[0].play();
     }

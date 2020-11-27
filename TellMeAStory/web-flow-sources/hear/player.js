@@ -509,10 +509,7 @@ function proceedToContent() {
 }
 
 /*todo:
- 
-- auto scroll title on playing
-- mobile, style of back to player from related theme 
-- combine items, test for presence of data before loading.
+  
 
 QUESTIONS
 - collections, nothing matching all 5 themes
