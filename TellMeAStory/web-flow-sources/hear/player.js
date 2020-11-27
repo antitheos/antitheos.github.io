@@ -218,6 +218,15 @@ function showStory(themes, playlist, stopAutoPlay, pTitle) {
         playNextItem("astory0");
     }
 
+    $("#header-title").removeClass("animate");
+    setTimeout(function () {
+        if ($("#header-title").width() > $("#nowplaying").width()) {
+            $("#header-title").addClass("animate")
+        }
+    }, 100);
+
+
+
 }
 
 function returnHome() {
@@ -341,11 +350,6 @@ function loadNowPlayingThemes(themes) {
         });
     }
 
-    if ($("#header-title").width() > $("#nowplaying").width()) {
-        $("#header-title").addClass("animate")
-    } else {
-        $("#header-title").removeClass("animate")
-    }
 
 }
 
