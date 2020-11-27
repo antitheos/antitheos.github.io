@@ -528,7 +528,7 @@
         margin: 0px;
         padding-top: 50px;
         font-size: 18px;
-        padding-left: 100px;
+        padding-left: 60px;
         min-height: calc(100vh - 210px);
     }
 
@@ -562,7 +562,7 @@
     #relatedclose span.text {
         margin-right: auto;
         line-height: 70px;
-        font-size: 21px;
+        font-size: 20px;
         color: #333;
     }
 
