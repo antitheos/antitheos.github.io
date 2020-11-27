@@ -536,7 +536,6 @@
         cursor: pointer;
         color: black;
         border-top: 1px solid rgba(0, 0, 0, 0.17);
-        padding: 0px 16px;
         font-size: 23px;
         font-weight: 300;
         align-items: center;
@@ -554,8 +553,15 @@
 
     #relatedclose span.material-icons {
         margin-right: 10px;
-        line-height: 52px;
+        margin-left: auto;
+        line-height: 70px;
     }
+
+    #relatedclose span.text {
+        margin-right: auto;
+        line-height: 70px;
+    }
+
 
     #storiessection.displayRelated #related {
         display: block;
