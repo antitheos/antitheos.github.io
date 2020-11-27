@@ -527,16 +527,19 @@
         padding-top: 50px;
         font-size: 18px;
         padding-left: 60px;
+        min-height: calc(100vh - 210px);
     }
 
     #relatedclose {
         line-height: 52px;
         cursor: pointer;
         color: black;
-        border: 1px solid;
+        border-top: 1px solid rgba(0, 0, 0, 0.17);
         padding: 0px 16px;
         font-size: 24px;
         align-items: center;
+        position: sticky;
+        bottom: 0px;
     }
 
     #storiessection.displayRelated #relatedclose {
