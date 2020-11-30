@@ -39,11 +39,11 @@
 }
 
 #related {
-    font-size: 15px;
+    /* font-size: 15px;
+    font-weight: 400;*/
     position: sticky;
     top: 200px;
     padding-top: 10px;
-    font-weight: 400;
     min-width: 200px;
     min-height: calc(100vh - 323px);
     flex-grow: 1;
@@ -52,20 +52,17 @@
 .relatedstory {
     cursor: pointer;
     text-decoration: underline;
-    line-height: 1.6;
+    /*line-height: 1.6;*/
     margin-bottom: 15px;
 }
 
 .menuitem:hover,
 #featuredstories .featuredstory:hover,
-.relatedstory:hover {
-    color: rgba(0, 0, 0, 0.87)
-}
+.relatedstory:hover {}
 
 #related .relatedesectiontitle {
     padding-bottom: 8px;
     /*font-weight: 500;*/
-    color: rgba(0, 0, 0, 0.87);
 }
 
 #relatedotherthemes,
@@ -151,9 +148,10 @@
 }
 
 .nextstory .skiptext {
-    font-size: 10px;
-    padding-right: 3px;
+    /*font-size: 10px;
     line-height: 20px;
+*/
+    padding-right: 3px;
 }
 
 .nextstory i.material-icons {
@@ -251,8 +249,8 @@
 }
 
 .prompts {
-    font-weight: 200;
-    font-size: 32px;
+    /*font-weight: 200;
+    font-size: 32px;*/
     margin-bottom: 20px;
 }
 
