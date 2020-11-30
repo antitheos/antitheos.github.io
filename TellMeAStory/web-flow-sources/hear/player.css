@@ -64,7 +64,7 @@
 
 #related .relatedesectiontitle {
     padding-bottom: 8px;
-    font-weight: 500;
+    /*font-weight: 500;*/
     color: rgba(0, 0, 0, 0.87);
 }
 
@@ -91,14 +91,14 @@
 
 
 .storytext {
-    font-size: 17px;
-    line-height: 32px;
+    /* font-size: 17px;
+    line-height: 32px;*/
     min-height: 320px;
 }
 
 .storyinfo {
-    font-size: 12px;
-    font-weight: 600;
+    /*font-size: 12px;
+    font-weight: 600;*/
 }
 
 .storyfooter {
