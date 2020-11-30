@@ -145,18 +145,16 @@
     display: block;
     flex-grow: 1;
     margin-right: 61px;
-
-    height: 58px;
+    height: 60px;
 }
 
 #nowplaying #header {
-    font-weight: 600;
-    font-size: 12px;
+    /*font-weight: 600;
+    font-size: 12px;*/
     text-transform: uppercase;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    padding-top: 8px;
 }
 
 #nowplaying #header-title {
