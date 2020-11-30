@@ -100,7 +100,7 @@
 
 .storyfooter {
     display: flex;
-    height: 32px;
+    height: 60px;
     overflow: hidden;
     align-items: center;
     position: sticky;

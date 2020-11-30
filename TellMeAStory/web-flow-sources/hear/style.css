@@ -255,7 +255,7 @@
     cursor: pointer;
     /* line-height: 1.7;
     font-size: 18px;*/
-    margin-bottom: 21px;
+    margin-bottom: 8px;
     color: #333;
     display: block;
 }
@@ -661,5 +661,11 @@
         font-size: 14px;
         line-height: 20px;
         font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .collection-item {
+        margin-bottom: 12px;
     }
 }
