@@ -170,7 +170,7 @@ var collection = [
         themes: ["Partnerships", "Addiction & recovery", "Social support", "Living with HIV", "Healing"]
     },
     {
-        text: "How do women build healthy worlds?",
+        text: "How have women built healthy worlds?",
         themes: ["Health care", "Families", "Taking charge of health and wellness", "Work", "Spirituality & Religion"]
     },
 ]
