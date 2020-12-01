@@ -389,9 +389,10 @@
     max-width: 280px;
 }
 
+/*
 .continueprompt #related {
     font-size: 19px;
-}
+}*/
 
 @media screen and (max-width: 600px) {
     .hidemobile {
@@ -522,8 +523,8 @@
         padding-left: 0px;
         margin: 0px;
         padding-top: 50px;
-        font-size: 18px;
-        padding-left: 60px;
+        /*font-size: 18px;
+        padding-left: 60px;*/
         min-height: calc(100vh - 210px);
     }
 
