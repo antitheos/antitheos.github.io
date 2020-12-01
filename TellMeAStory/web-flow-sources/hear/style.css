@@ -423,7 +423,12 @@
     }
 }
 
+@media screen and (max-width: 1919px) {
 
+    .active #nowplaying {
+        height: 56px
+    }
+}
 
 @media screen and (max-width: 991px) {
 
@@ -448,6 +453,11 @@
         padding-left: 60px;
         width: 90%;
     }
+
+    .active #nowplaying {
+        height: 56px
+    }
+
 }
 
 
