@@ -168,9 +168,11 @@
     overflow: hidden;
     word-break: break-word;
     white-space: nowrap;
+    /*
     line-height: 54px;
-    height: 54px;
+    height: 54px;*/
     padding-right: 8px;
+    margin-bottom: 12px;
 
 }
 
