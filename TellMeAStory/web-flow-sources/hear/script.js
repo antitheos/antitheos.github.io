@@ -155,7 +155,7 @@ var collectionThemes = null;
 var collection = [
     {
         text: "How can we center women in the history of HIV/AIDS?",
-        themes: ["Knowledge about HIV/AIDS", "partner had HIV/AIDS", "In the streets", "HIV saved my life", "Future"]
+        themes: ["Knowledge about HIV/AIDS", "Partner had HIV/AIDS", "In the streets", "HIV saved my life", "Future"]
     },
     {
         text: "How does family matter in the history of HIV/AIDS?",
