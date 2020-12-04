@@ -145,7 +145,8 @@
     display: block;
     flex-grow: 1;
     margin-right: 61px;
-    height: 60px;
+
+    height: 76px;
 }
 
 #nowplaying #header {
@@ -286,7 +287,7 @@
 }
 
 .sectionwidth {
-    max-width: 900px;
+    max-width: 60vw;
     margin: auto;
     box-sizing: border-box;
 
@@ -429,9 +430,9 @@
 
 @media screen and (max-width: 1919px) {
 
-    /* .active #nowplaying {
-        height: 56px
-    }*/
+    .active #nowplaying {
+        height: 60px;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -444,6 +445,7 @@
 
 
     .sectionwidth {
+        max-width: 900px;
         width: 90%;
         padding-left: 10px;
     }
