@@ -1,8 +1,13 @@
-.my-story{
-    width: 80%;
-    margin: auto;
+#my-story{  
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.my-story .hidden{
+#my-story .hidden{
     display:none;
+}
+
+#my-story input{
+    font-size: 18px;
+    line-height: 2.7;
 }
