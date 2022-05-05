@@ -7,6 +7,11 @@
     display:none;
 }
 
+#my-story .login-row{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 #my-story input{
     font-size: 18px;
     line-height: 2.7;
