@@ -204,12 +204,14 @@ function doLogin() {
   if (name == "ade" && dob == "2022-01-01") {
     $("#my-story .login-section").addClass("hidden");
     $("#my-story .login-failed").addClass("hidden");
+    $("#my-story").addClass("hidden");
     $("#my-story .login-passed").removeClass("hidden");
     $("#play-section").removeClass("hidden");
     playTheme(themesData["healing"]);
   } else {
     $("#my-story .login-passed").addClass("hidden");
     $("#play-section").addClass("hidden");
+    $("#my-story").removeClass("hidden");
     $("#my-story .login-failed").removeClass("hidden");
   }
 }
