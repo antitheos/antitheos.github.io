@@ -17,11 +17,14 @@
 }
 #my-story .login-row input{
     font-size: 18px;
-    line-height: 2.7;
+    line-height:47px;
 }
 
 #my-story .login-row button{
-    width: 40%;
+    width: 40%; 
+    line-height: 47px;
+    height: 47px;
+
     max-width: 300px;
     margin: auto;
     display: block;
