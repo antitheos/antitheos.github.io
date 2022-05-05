@@ -1,0 +1,8 @@
+.my-story{
+    width: 80%;
+    margin: auto;
+}
+
+.my-story .hidden{
+    display:none;
+}
