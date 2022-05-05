@@ -10,14 +10,22 @@
 #my-story .login-row{
     padding-top: 10px;
     padding-bottom: 10px;
+    max-width:600px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 #my-story .login-row label{
     width:150px;
     margin-right: 10px;
+    flex-grow: 0;
 }
 #my-story .login-row input{
     font-size: 18px;
     line-height:47px;
+    width: 100%;
+    flex-grow: 1;
 }
 
 #my-story .login-row button{
