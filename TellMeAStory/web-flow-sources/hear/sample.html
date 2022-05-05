@@ -1,8 +1,14 @@
 <div id="my-story" class="sectionwidth">
   <div class="login-section">
-    <div class="login-row"><input id="name" type="text" /></div>
-    <div class="login-row"><input id="dob" type="date" /></div>
-    <div class="login-row"><button id="login-button">Enter</button></div>
+    <div class="login-row">
+      <label>Your Name</label><input id="name" type="text" />
+    </div>
+    <div class="login-row">
+      <label>Date Birth</label><input id="dob" type="date" />
+    </div>
+    <div class="login-row">
+      <button id="login-button" onclick="doLogin()">Enter</button>
+    </div>
 
     <div class="login-failed hidden">
       Sorry looks you dont access, please try again

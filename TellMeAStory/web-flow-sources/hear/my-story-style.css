@@ -11,8 +11,19 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-#my-story input{
+#my-story .login-row label{
+    width:150px;
+    margin-right: 10px;
+}
+#my-story .login-row input{
     font-size: 18px;
     line-height: 2.7;
+}
+
+#my-story .login-row button{
+    width: 40%;
+    max-width: 300px;
+    margin: auto;
+    display: block;
+
 }
