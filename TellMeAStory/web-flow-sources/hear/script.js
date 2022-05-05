@@ -200,14 +200,12 @@ var collection = [
 function doLogin() {
   var name = $("#my-story #name").val();
   var dob = $("#my-story #dob").val();
-  console.log(name);
-  console.log(dob);
   $("#my-story .login-failed").addClass("hidden");
-  if (name == "ade" && dob == "2022/01/01") {
+  if (name == "ade" && dob == "2022-01-01") {
     $("#my-story .login-section").addClass("hidden");
     $("#my-story .login-failed").addClass("hidden");
     $("#my-story .login-passed").removeClass("hidden");
-    playTheme("Healing");
+    playTheme(themesData["healing"]);
   } else {
     $("#my-story .login-passed").addClass("hidden");
     $("#my-story .login-failed").removeClass("hidden");

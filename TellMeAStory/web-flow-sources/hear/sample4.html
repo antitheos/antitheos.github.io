@@ -1,0 +1,177 @@
+<div id="selectorsectionwrapper" class="widthcontrol">
+  <div id="selectorsection" class="sectionwidth hideuntiload">
+    <a class="backbutton material-icons" href="/hear">arrow_back</a>
+    <div class="titleLabel">
+      <span>Tell me about</span>
+    </div>
+    <div id="nowplaying">
+      <div id="header" class="a-suheader">NOW PLAYING</div>
+      <div id="header-title" class="a-header">one two three</div>
+    </div>
+    <div id="theme-selector">
+      <div id="selectedTheme" onclick="toggleThemesList()">...</div>
+      <div class="options a-header"></div>
+    </div>
+    <div class="randomselection" onclick="selectRandomTheme()">
+      or pick a topic for me
+    </div>
+  </div>
+</div>
+
+<div
+  id="storiessection"
+  class="hideuntiload hiddenWithoutStory staticwidth content widthcontrol sectionwidth"
+>
+  <div id="playbuttonwrapper">
+    <div id="playbutton" onclick="playAudio()">
+      <i class="material-icons">play_circle_filled</i>
+      <div id="clicktoplay" class="a-bodytext">Play Stories</div>
+    </div>
+  </div>
+  <div id="storiesbody">
+    <div id="stories"></div>
+    <div id="related">
+      <div class="relatedesectiontitle a-suheader">Tell me more about</div>
+      <div id="relatedcombinedthemes" class="a-bodytext"></div>
+      <div
+        class="relatedesectiontitle a-suheader"
+        id="relatedcombinedthemestitle"
+      >
+        Tell me about
+      </div>
+      <div id="relatedotherthemes" class="a-bodytext"></div>
+    </div>
+  </div>
+  <div id="relatedclose" onclick="toggleRelatedItems()">
+    <span class="material-icons">play_circle_filled</span>
+    <span class="text a-bodytext">Continue Listening</span>
+  </div>
+  <div id="sharedstoryfooter">
+    <audio
+      class="audio"
+      src=""
+      id="audioitem"
+      onvolumechange="volumeChanged(event)"
+      ontimeupdate="timeChanged(event)"
+      onplaying="playbackStarted(event)"
+      onpause="playbackPaused(event)"
+      onended="playbackEnd(event)"
+    ></audio>
+    <div class="storyfooter">
+      <div class="storyinfo">
+        <div class="person a-suheader"></div>
+        <div class="city a-suheader"></div>
+      </div>
+      <div
+        id="audioplaypause"
+        class="material-icons"
+        onclick="togglePlay(event)"
+      >
+        play_circle_filled
+      </div>
+      <div class="progresstracker">
+        <div class="progressindicator">
+          <div class="progressindicatorinner"></div>
+        </div>
+      </div>
+
+      <div class="volumecontrol">
+        <div
+          class="volumelevel"
+          data-level="0"
+          onclick="setVolume(event)"
+        ></div>
+        <div
+          class="volumelevel"
+          data-level="0.2"
+          onclick="setVolume(event)"
+        ></div>
+        <div
+          class="volumelevel"
+          data-level="0.4"
+          onclick="setVolume(event)"
+        ></div>
+        <div
+          class="volumelevel"
+          data-level="0.6"
+          onclick="setVolume(event)"
+        ></div>
+        <div
+          class="volumelevel"
+          data-level="0.8"
+          onclick="setVolume(event)"
+        ></div>
+        <div
+          class="volumelevel"
+          data-level="1"
+          onclick="setVolume(event)"
+        ></div>
+      </div>
+    </div>
+    <div class="nextactions">
+      <div class="nextstory" title="Replay all" onclick="replayAll()">
+        <span class="skiptext a-smalltext">
+          <span class="hidedesktop">Restart</span>
+          <span class="hidemobile a-smalltext">Start Over</span></span
+        >
+        <i class="material-icons">arrow_upward</i>
+      </div>
+      <div class="nextstory" title="Restart" onclick="replay()">
+        <span class="skiptext a-smalltext">Replay</span>
+        <i class="material-icons">replay</i>
+      </div>
+      <div class="nextstory" title="Skip story " onclick="goToNextStory()">
+        <span class="skiptext a-smalltext">Skip</span>
+        <i class="material-icons">arrow_downward</i>
+      </div>
+      <div
+        class="hideOver767 nextstory"
+        title="Related Topics"
+        onclick="toggleRelatedItems()"
+      >
+        <span class="skiptext">
+          <span class="a-smalltext">Related</span>
+          <span class="hidemobile a-smalltext"> Topics</span>
+        </span>
+        <i class="material-icons">arrow_forward</i>
+      </div>
+    </div>
+  </div>
+  <div id="playprompter"></div>
+</div>
+
+<div id="templates">
+  <div class="relatedstory" onclick="showRelatedStory(this)"></div>
+  <div class="storysection astory" id="astory">
+    <div class="storycontentdiv">
+      <div class="storytext a-bodytext">
+        This is some interesting text, get excited now
+      </div>
+    </div>
+  </div>
+
+  <div class="storysection howtocontinue">
+    <div class="prompts a-header">Now What?</div>
+    <div class="responses">
+      <div class="continuemorewrapper continueelement">
+        <div
+          class="continuemore continueclickelement a-bodytext"
+          onclick="replayAll()"
+        >
+          <div><span>Play</span><br /><span> Again</span></div>
+          <i class="material-icons">arrow_upward</i>
+        </div>
+      </div>
+      <div class="continuemorewrapper continueelement">
+        <div
+          class="continuemore continueclickelement a-bodytext"
+          onclick="continuePlaying()"
+        >
+          <div><span>Keep</span><br /><span> Listening</span></div>
+          <i class="material-icons">arrow_downward</i>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+</div>
