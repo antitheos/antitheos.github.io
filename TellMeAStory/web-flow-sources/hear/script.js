@@ -205,9 +205,11 @@ function doLogin() {
     $("#my-story .login-section").addClass("hidden");
     $("#my-story .login-failed").addClass("hidden");
     $("#my-story .login-passed").removeClass("hidden");
+    $("#play-section").removeClass("hidden");
     playTheme(themesData["healing"]);
   } else {
     $("#my-story .login-passed").addClass("hidden");
+    $("#play-section").addClass("hidden");
     $("#my-story .login-failed").removeClass("hidden");
   }
 }
